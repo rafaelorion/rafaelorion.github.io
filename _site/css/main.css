@@ -776,3 +776,13 @@ pre {
   font-style: italic;
   font-size: 16px;
 }
+
+.img-avatar
+{
+  align: left;
+  text-align: left;
+  float: left;
+  width: 60%;
+  height: 60%;
+  padding-right: 30px;
+}
