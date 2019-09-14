@@ -20,7 +20,7 @@ baseurl: ""
 
 # List of links in the navigation bar
 navbar-links:
-  Home: "https://rafaelorion.github.io"
+  Home: "index"
   Sobre: "aboutme"
   Contato: "contact"
   Resources:
