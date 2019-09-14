@@ -1,3 +1,8 @@
+bundle update
+bundle exec jekyll build
+
+
+
 #run on http://localhost:4000/
 bundle exec jekyll serve
 
