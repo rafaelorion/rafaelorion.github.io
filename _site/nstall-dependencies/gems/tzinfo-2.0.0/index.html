@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>TZInfo - Ruby Time Zone Library</title>
+
+  <meta name="author" content="Rafael Orion" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - A virtual proof that I'm awesome" href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="TZInfo - Ruby Time Zone Library" />
+  
+
+   
+  <meta property="og:description" content="# TZInfo - Ruby Time Zone Library [![Gem Version](https://badge.fury.io/rb/tzinfo.svg)](https://badge.fury.io/rb/tzinfo) [![Travis CI Build Status](https://travis-ci.org/tzinfo/tzinfo.svg?branch=master)](https://travis-ci.org/tzinfo/tzinfo) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/btinuu4g8sdachj3/branch/master?svg=true)](https://ci.appveyor.com/project/philr/tzinfo/branch/master) [TZInfo](https://tzinfo.github.io) is a Ruby library that provides access to time zone data and allows times to be converted using time zone rules. ## Data Sources TZInfo requires a source of time zone data. There...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/nstall-dependencies/gems/tzinfo-2.0.0/" />
+  <link rel="canonical" href="http://localhost:4000/nstall-dependencies/gems/tzinfo-2.0.0/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/dev.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="TZInfo - Ruby Time Zone Library" />
+  
+
+  
+  <meta name="twitter:description" content="# TZInfo - Ruby Time Zone Library [![Gem Version](https://badge.fury.io/rb/tzinfo.svg)](https://badge.fury.io/rb/tzinfo) [![Travis CI Build Status](https://travis-ci.org/tzinfo/tzinfo.svg?branch=master)](https://travis-ci.org/tzinfo/tzinfo) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/btinuu4g8sdachj3/branch/master?svg=true)](https://ci.appveyor.com/project/philr/tzinfo/branch/master) [TZInfo](https://tzinfo.github.io) is a Ruby library that provides access to time zone data and allows times to be converted using time zone rules. ## Data Sources TZInfo requires a source of time zone data. There...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/dev.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">Rafael Orion / Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://rafaelorion.github.io">Home</a></li>
+          <li><a href="/aboutme">Sobre</a></li>
+          <li><a href="/contact">Contato</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Resources</a>
+            <div class="navlinks-children">
+              <a href="https://jekyllrb.com/">Jekell</a>
+              <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+              <a href="http://www.markdowntutorial.com/">Learn markdown</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/dev.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>TZInfo - Ruby Time Zone Library</h1>
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1 id="tzinfo---ruby-time-zone-library">TZInfo - Ruby Time Zone Library</h1>
+
+<p><a href="https://badge.fury.io/rb/tzinfo"><img src="https://badge.fury.io/rb/tzinfo.svg" alt="Gem Version" /></a> <a href="https://travis-ci.org/tzinfo/tzinfo"><img src="https://travis-ci.org/tzinfo/tzinfo.svg?branch=master" alt="Travis CI Build Status" /></a> <a href="https://ci.appveyor.com/project/philr/tzinfo/branch/master"><img src="https://ci.appveyor.com/api/projects/status/btinuu4g8sdachj3/branch/master?svg=true" alt="AppVeyor Build Status" /></a></p>
+
+<p><a href="https://tzinfo.github.io">TZInfo</a> is a Ruby library that provides access to
+time zone data and allows times to be converted using time zone rules.</p>
+
+<h2 id="data-sources">Data Sources</h2>
+
+<p>TZInfo requires a source of time zone data. There are two options:</p>
+
+<ol>
+  <li>A zoneinfo directory containing timezone definition files. These files are
+generated from the <a href="https://www.iana.org/time-zones">IANA Time Zone Database</a>
+using the <code class="highlighter-rouge">zic</code> utility. Most Unix-like systems include a zoneinfo directory.</li>
+  <li>The TZInfo::Data library (the tzinfo-data gem). TZInfo::Data contains a set
+of Ruby modules that are also generated from the IANA Time Zone Database.</li>
+</ol>
+
+<p>By default, TZInfo will attempt to use TZInfo::Data. If TZInfo::Data is not
+available (i.e. if <code class="highlighter-rouge">require 'tzinfo/data'</code> fails), then TZInfo will search for a
+zoneinfo directory instead (using the search path specified by
+<code class="highlighter-rouge">TZInfo::ZoneinfoDataSource::DEFAULT_SEARCH_PATH</code>).</p>
+
+<p>If no data source can be found, a <code class="highlighter-rouge">TZInfo::DataSourceNotFound</code> exception will be
+raised when TZInfo is used. Further information is available
+<a href="https://tzinfo.github.io/datasourcenotfound">in the wiki</a> to help resolve
+<code class="highlighter-rouge">TZInfo::DataSourceNotFound</code> errors.</p>
+
+<p>The default data source selection can be overridden by calling
+<code class="highlighter-rouge">TZInfo::DataSource.set</code>.</p>
+
+<p>Custom data sources can also be used. See the <code class="highlighter-rouge">TZInfo::DataSource.set</code>
+documentation for further details.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>The TZInfo gem can be installed by running <code class="highlighter-rouge">gem install tzinfo</code> or by adding
+to <code class="highlighter-rouge">gem 'tzinfo'</code> to your <code class="highlighter-rouge">Gemfile</code> and running <code class="highlighter-rouge">bundle install</code>.</p>
+
+<p>To use the Ruby modules as the data source, TZInfo::Data will also need to be
+installed by running <code class="highlighter-rouge">gem install tzinfo-data</code> or by adding <code class="highlighter-rouge">gem 'tzinfo-data'</code>
+to your <code class="highlighter-rouge">Gemfile</code>.</p>
+
+<h2 id="iana-time-zone-database">IANA Time Zone Database</h2>
+
+<p>The data returned and used by TZInfo is sourced from the
+<a href="http://www.iana.org/time-zones">IANA Time Zone Database</a>. The
+<a href="https://data.iana.org/time-zones/theory.html">Theory and pragmatics of the tz code and data</a>
+document gives details of how the data is organized and managed.</p>
+
+<h2 id="example-usage">Example Usage</h2>
+
+<p>To use TZInfo, it must first be required with:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'tzinfo'</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">TZInfo::Timezone</code> class provides access to time zone data and methods for
+converting times.</p>
+
+<p>The <code class="highlighter-rouge">all_identifiers</code> method returns a list of valid time zone identifiers:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">identifiers</span> <span class="o">=</span> <span class="no">TZInfo</span><span class="o">::</span><span class="no">Timezone</span><span class="p">.</span><span class="nf">all_identifiers</span>
+<span class="c1"># =&gt; ["Africa/Adibdjan", "Africa/Accra", ..., "Zulu"]</span>
+</code></pre></div></div>
+
+<p>A <code class="highlighter-rouge">TZInfo::Timezone</code> instance representing an individual time zone can be
+obtained with <code class="highlighter-rouge">TZInfo::Timezone.get</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span> <span class="o">=</span> <span class="no">TZInfo</span><span class="o">::</span><span class="no">Timezone</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'America/New_York'</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;TZInfo::DataTimezone: America/New_York&gt;</span>
+</code></pre></div></div>
+
+<p>A time can be converted to the local time of the time zone with <code class="highlighter-rouge">to_local</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-02-01 07:30:00 -0500</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-07-01 08:30:00 -0400</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'+01:00'</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-07-01 08:30:00 -0400</span>
+</code></pre></div></div>
+
+<p>Local times with the appropriate offset for the time zone can be constructed
+with <code class="highlighter-rouge">local_time</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-02-01 07:30:00 -0500</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-07-01 08:30:00 -0400</span>
+</code></pre></div></div>
+
+<p>Local times can be converted to UTC by using <code class="highlighter-rouge">local_time</code> and calling <code class="highlighter-rouge">utc</code> on
+the result:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nf">utc</span>
+<span class="c1"># =&gt; 2018-02-01 12:30:00 UTC</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nf">utc</span>
+<span class="c1"># =&gt; 2018-07-01 12:30:00 UTC</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">local_to_utc</code> method can also be used to convert a time object to UTC. The
+offset of the time is ignored - it is treated as if it were a local time for the
+time zone:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_to_utc</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-02-01 12:30:00 UTC</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_to_utc</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'+01:00'</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-02-01 12:30:00 UTC</span>
+</code></pre></div></div>
+
+<p>Information about the time zone can be obtained from returned local times:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">local_time</span> <span class="o">=</span> <span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">local_time</span><span class="p">.</span><span class="nf">utc_offset</span>  <span class="c1"># =&gt; -18000</span>
+<span class="n">local_time</span><span class="p">.</span><span class="nf">dst?</span>        <span class="c1"># =&gt; false</span>
+<span class="n">local_time</span><span class="p">.</span><span class="nf">zone</span>        <span class="c1"># =&gt; "EST"</span>
+
+<span class="n">local_time</span> <span class="o">=</span> <span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">local_time</span><span class="p">.</span><span class="nf">utc_offset</span>  <span class="c1"># =&gt; -14400</span>
+<span class="n">local_time</span><span class="p">.</span><span class="nf">dst?</span>        <span class="c1"># =&gt; true</span>
+<span class="n">local_time</span><span class="p">.</span><span class="nf">zone</span>        <span class="c1"># =&gt; "EDT"</span>
+</code></pre></div></div>
+
+<p>Time zone information can be included when formatting times with <code class="highlighter-rouge">strftime</code>
+using the <code class="highlighter-rouge">%z</code> and <code class="highlighter-rouge">%Z</code> directives:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)).</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-%d %H:%M:%S %z %Z'</span><span class="p">)</span>
+<span class="c1"># =&gt; "2018-02-01 07:30:00 -0500 EST"</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)).</span><span class="nf">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-%d %H:%M:%S %z %Z'</span><span class="p">)</span>
+<span class="c1"># =&gt; "2018-07-01 08:30:00 -0400 EDT"</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">period_for</code> method can be used to obtain information about the observed
+time zone information at a particular time as a <code class="highlighter-rouge">TZInfo::TimezonePeriod</code> object:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">period</span> <span class="o">=</span> <span class="n">tz</span><span class="p">.</span><span class="nf">period_for</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">base_utc_offset</span>          <span class="c1"># =&gt; -18000</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">std_offset</span>               <span class="c1"># =&gt; 3600</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">observed_utc_offset</span>      <span class="c1"># =&gt; -14400</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">abbreviation</span>             <span class="c1"># =&gt; "EDT"</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">dst?</span>                     <span class="c1"># =&gt; true</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">local_starts_at</span><span class="p">.</span><span class="nf">to_time</span>  <span class="c1"># =&gt; 2018-03-11 03:00:00 -0400</span>
+<span class="n">period</span><span class="p">.</span><span class="nf">local_ends_at</span><span class="p">.</span><span class="nf">to_time</span>    <span class="c1"># =&gt; 2018-11-04 02:00:00 -0400</span>
+</code></pre></div></div>
+
+<p>A list of transitions between periods where different rules are observed can be
+obtained with the <code class="highlighter-rouge">transitions_up_to</code> method. The result is returned as an
+<code class="highlighter-rouge">Array</code> of <code class="highlighter-rouge">TZInfo::TimezoneTransition</code> objects:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transitions</span> <span class="o">=</span> <span class="n">tz</span><span class="p">.</span><span class="nf">transitions_up_to</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">transitions</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+  <span class="p">[</span><span class="n">t</span><span class="p">.</span><span class="nf">local_end_at</span><span class="p">.</span><span class="nf">to_time</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="nf">offset</span><span class="p">.</span><span class="nf">observed_utc_offset</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="nf">offset</span><span class="p">.</span><span class="nf">abbreviation</span><span class="p">]</span>
+<span class="k">end</span>
+<span class="c1"># =&gt; [[2017-03-12 02:00:00 -0500, -14400, "EDT"],</span>
+<span class="c1">#     [2017-11-05 02:00:00 -0400, -18000, "EST"],</span>
+<span class="c1">#     [2018-03-11 02:00:00 -0500, -14400, "EDT"],</span>
+<span class="c1">#     [2018-11-04 02:00:00 -0400, -18000, "EST"]]</span>
+</code></pre></div></div>
+
+<p>A list of the unique offsets used by a time zone can be obtained with the
+<code class="highlighter-rouge">offsets_up_to</code> method. The result is returned as an <code class="highlighter-rouge">Array</code> of
+<code class="highlighter-rouge">TZInfo::TimezoneOffset</code> objects:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">offsets</span> <span class="o">=</span> <span class="n">tz</span><span class="p">.</span><span class="nf">offsets_up_to</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">offsets</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span><span class="o">|</span><span class="n">o</span><span class="o">|</span> <span class="p">[</span><span class="n">o</span><span class="p">.</span><span class="nf">observed_utc_offset</span><span class="p">,</span> <span class="n">o</span><span class="p">.</span><span class="nf">abbreviation</span><span class="p">]</span> <span class="p">}</span>
+<span class="c1"># =&gt; [[-17762, "LMT"],</span>
+<span class="c1">#     [-18000, "EST"],</span>
+<span class="c1">#     [-14400, "EDT"],</span>
+<span class="c1">#     [-14400, "EWT"],</span>
+<span class="c1">#     [-14400, "EPT"]]</span>
+</code></pre></div></div>
+
+<p>All <code class="highlighter-rouge">TZInfo::Timezone</code> methods that accept a time as a parameter can be used
+with either instances of <code class="highlighter-rouge">Time</code>, <code class="highlighter-rouge">DateTime</code> or <code class="highlighter-rouge">TZInfo::Timestamp</code>. Arbitrary
+<code class="highlighter-rouge">Time</code>-like objects that respond to both <code class="highlighter-rouge">to_i</code> and <code class="highlighter-rouge">subsec</code> and optionally
+<code class="highlighter-rouge">utc_offset</code> will be treated as if they are instances of <code class="highlighter-rouge">Time</code>.</p>
+
+<p><code class="highlighter-rouge">TZInfo::Timezone</code> methods that both accept and return times will return an
+object with a type matching that of the parameter (actually a
+<code class="highlighter-rouge">TZInfo::TimeWithOffset</code>, <code class="highlighter-rouge">TZInfo::DateTimeWithOffset</code> or
+<code class="highlighter-rouge">TZInfo::TimestampWithOffset</code> subclass when returning a local time):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-07-01 08:30:00 -0400</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">DateTime</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; #&lt;TZInfo::DateTimeWithOffset: 2018-07-01T08:30:00-04:00 ((2458301j,45000s,0n),-14400s,2299161j)&gt;</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">TZInfo</span><span class="o">::</span><span class="no">Timestamp</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="ss">:utc</span><span class="p">))</span>
+<span class="c1"># =&gt; #&lt;TZInfo::TimestampWithOffset: @value=1530448200, @sub_second=0, @utc_offset=-14400, @utc=false&gt;</span>
+</code></pre></div></div>
+
+<p>In addition to <code class="highlighter-rouge">local_time</code>, which returns <code class="highlighter-rouge">Time</code> instances, the
+<code class="highlighter-rouge">local_datetime</code> and <code class="highlighter-rouge">local_timestamp</code> methods can be used to construct local
+<code class="highlighter-rouge">DateTime</code> and <code class="highlighter-rouge">TZInfo::Timestamp</code> instances with the appropriate offset:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-02-01 07:30:00 -0500</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;TZInfo::DateTimeWithOffset: 2018-02-01T07:30:00-05:00 ((2458151j,45000s,0n),-18000s,2299161j)&gt;</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_timestamp</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;TZInfo::TimestampWithOffset: @value=1517488200, @sub_second=0, @utc_offset=-18000, @utc=false&gt;</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">local_to_utc</code>, <code class="highlighter-rouge">local_time</code>, <code class="highlighter-rouge">local_datetime</code> and <code class="highlighter-rouge">local_timestamp</code> methods
+may raise a <code class="highlighter-rouge">TZInfo::PeriodNotFound</code> or a <code class="highlighter-rouge">TZInfo::AmbiguousTime</code> exception.
+<code class="highlighter-rouge">TZInfo::PeriodNotFound</code> signals that there is no equivalent UTC time (for
+example, during the transition from standard time to daylight savings time when
+the clocks are moved forward and an hour is skipped). <code class="highlighter-rouge">TZInfo::AmbiguousTime</code>
+signals that there is more than one equivalent UTC time (for example, during the
+transition from daylight savings time to standard time where the clocks are
+moved back and an hour is repeated):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># raises TZInfo::PeriodNotFound (2018-03-11 02:30:00 is an invalid local time.)</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># raises TZInfo::AmbiguousTime (2018-11-04 01:30:00 is an ambiguous local time.)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">TZInfo::PeriodNotFound</code> exceptions can only be resolved by adjusting the time,
+for example, by advancing an hour:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-03-11 03:30:00 -0400</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">TZInfo::AmbiguousTime</code> exceptions can be resolved by setting the <code class="highlighter-rouge">dst</code>
+parameter and/or specifying a block to choose one of the interpretations:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-11-04 01:30:00 -0400</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kp">false</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-11-04 01:30:00 -0500</span>
+
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="nb">p</span><span class="p">.</span><span class="nf">first</span> <span class="p">}</span>
+<span class="c1"># =&gt; 2018-11-04 01:30:00 -0400</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="nb">p</span><span class="p">.</span><span class="nf">last</span> <span class="p">}</span>
+<span class="c1"># =&gt; 2018-11-04 01:30:00 -0500</span>
+</code></pre></div></div>
+
+<p>The default value of the <code class="highlighter-rouge">dst</code> parameter can also be set globally:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">TZInfo</span><span class="o">::</span><span class="no">Timezone</span><span class="p">.</span><span class="nf">default_dst</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-11-04 01:30:00 -0400</span>
+<span class="no">TZInfo</span><span class="o">::</span><span class="no">Timezone</span><span class="p">.</span><span class="nf">default_dst</span> <span class="o">=</span> <span class="kp">false</span>
+<span class="n">tz</span><span class="p">.</span><span class="nf">local_time</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># =&gt; 2018-11-04 01:30:00 -0500</span>
+</code></pre></div></div>
+
+<p>TZInfo also provides information about
+<a href="https://www.iso.org/iso-3166-country-codes.html">ISO 3166-1</a> countries and
+their associated time zones via the <code class="highlighter-rouge">TZInfo::Country</code> class.</p>
+
+<p>A list of valid ISO 3166-1 (alpha-2) country codes can be obtained by calling
+<code class="highlighter-rouge">TZInfo::Country.all_codes</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">TZInfo</span><span class="o">::</span><span class="no">Country</span><span class="p">.</span><span class="nf">all_codes</span>
+<span class="c1"># =&gt; ["AD", "AE", ..., "ZW"]</span>
+</code></pre></div></div>
+
+<p>A <code class="highlighter-rouge">TZInfo::Country</code> instance representing an individual time zone can be
+obtained with <code class="highlighter-rouge">TZInfo::Country.get</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span> <span class="o">=</span> <span class="no">TZInfo</span><span class="o">::</span><span class="no">Country</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'US'</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;TZInfo::Country: US&gt;</span>
+<span class="n">c</span><span class="p">.</span><span class="nf">name</span>
+<span class="c1"># =&gt; "United States"</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">zone_identifiers</code> method returns a list of the time zone identifiers used
+in a country:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span><span class="p">.</span><span class="nf">zone_identifiers</span>
+<span class="c1"># =&gt; ["America/New_York", "America/Detroit", ..., "Pacific/Honolulu"]</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">zone_info</code> method returns further information about the time zones used in
+a country as an <code class="highlighter-rouge">Array</code> of <code class="highlighter-rouge">TZInfo::CountryTimezone</code> instances:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zi</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">zone_info</span><span class="p">.</span><span class="nf">first</span>
+<span class="n">zi</span><span class="p">.</span><span class="nf">identifier</span>               <span class="c1"># =&gt; "America/New_York"</span>
+<span class="n">zi</span><span class="p">.</span><span class="nf">latitude</span><span class="p">.</span><span class="nf">to_f</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>   <span class="c1"># =&gt; 40.71417</span>
+<span class="n">zi</span><span class="p">.</span><span class="nf">longitude</span><span class="p">.</span><span class="nf">to_f</span><span class="p">.</span><span class="nf">round</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># =&gt; -74.00639</span>
+<span class="n">zi</span><span class="p">.</span><span class="nf">description</span>              <span class="c1"># =&gt; "Eastern (most areas)"</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">zones</code> method returns an <code class="highlighter-rouge">Array</code> of <code class="highlighter-rouge">TZInfo::Timezone</code> instances for a
+country. A <code class="highlighter-rouge">TZInfo::Timezone</code> instance can be obtained from a
+<code class="highlighter-rouge">TZInfo::CountryTimezone</code> using the <code class="highlighter-rouge">timezone</code> method:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">zi</span><span class="p">.</span><span class="nf">timezone</span><span class="p">.</span><span class="nf">to_local</span><span class="p">(</span><span class="no">Time</span><span class="p">.</span><span class="nf">utc</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; 2018-02-01 07:30:00 -0500</span>
+</code></pre></div></div>
+
+<p>For further detail, please refer to the API documentation for the
+<code class="highlighter-rouge">TZInfo::Timezone</code> and <code class="highlighter-rouge">TZInfo::Country</code> classes.</p>
+
+<h2 id="time-zone-selection">Time Zone Selection</h2>
+
+<p>The Time Zone Database maintainers recommend that time zone identifiers are not
+made visible to end-users (see <a href="https://data.iana.org/time-zones/theory.html#naming">Names of
+timezones</a>).</p>
+
+<p>Instead of displaying a list of time zone identifiers, time zones can be
+selected by the user’s country. Call <code class="highlighter-rouge">TZInfo::Country.all</code> to obtain a list of
+<code class="highlighter-rouge">TZInfo::Country</code> objects, each with a unique <code class="highlighter-rouge">code</code> and a <code class="highlighter-rouge">name</code> that can be
+used for display purposes.</p>
+
+<p>Most countries have a single time zone. When choosing such a country, the time
+zone can be inferred and selected automatically.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">croatia</span> <span class="o">=</span> <span class="no">TZInfo</span><span class="o">::</span><span class="no">Country</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'HR'</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;TZInfo::Country: HR&gt;</span>
+<span class="n">croatia</span><span class="p">.</span><span class="nf">zone_info</span><span class="p">.</span><span class="nf">length</span>
+<span class="c1"># =&gt; 1</span>
+<span class="n">croatia</span><span class="p">.</span><span class="nf">zone_info</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">identifier</span>
+<span class="c1"># =&gt; "Europe/Belgrade"</span>
+</code></pre></div></div>
+
+<p>Some countries have multiple time zones. The <code class="highlighter-rouge">zone_info</code> method can be used
+to obtain a list of user-friendly descriptions of the available options:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">australia</span> <span class="o">=</span> <span class="no">TZInfo</span><span class="o">::</span><span class="no">Country</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'AU'</span><span class="p">)</span>
+<span class="c1"># =&gt; #&lt;TZInfo::Country: AU&gt;</span>
+<span class="n">australia</span><span class="p">.</span><span class="nf">zone_info</span><span class="p">.</span><span class="nf">length</span>
+<span class="c1"># =&gt; 13</span>
+<span class="n">australia</span><span class="p">.</span><span class="nf">zone_info</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="p">[</span><span class="n">i</span><span class="p">.</span><span class="nf">identifier</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="nf">description</span><span class="p">]</span> <span class="p">}</span>
+<span class="c1"># =&gt; [["Australia/Lord_Howe", "Lord Howe Island"],</span>
+<span class="c1">#     ["Antarctica/Macquarie", "Macquarie Island"],</span>
+<span class="c1">#     ...</span>
+<span class="c1">#     ["Australia/Eucla", "Western Australia (Eucla)"]]</span>
+</code></pre></div></div>
+
+<p>Please note that country information available through TZInfo is intended as an
+aid to help users select a time zone data appropriate for their practical needs.
+It is not intended to take or endorse any position on legal or territorial
+claims.</p>
+
+<h2 id="compatibility">Compatibility</h2>
+
+<p>TZInfo v2.0.0 requires a minimum of Ruby MRI 1.9.3, JRuby 1.7 (in 1.9 mode or
+later) or Rubinius 3.</p>
+
+<h2 id="thread-safety">Thread-Safety</h2>
+
+<p>The <code class="highlighter-rouge">TZInfo::Country</code> and <code class="highlighter-rouge">TZInfo::Timezone</code> classes are thread-safe. It is safe
+to use class and instance methods of <code class="highlighter-rouge">TZInfo::Country</code> and <code class="highlighter-rouge">TZInfo::Timezone</code> in
+concurrently executing threads. Instances of both classes can be shared across
+thread boundaries.</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>API documentation for TZInfo is available on
+<a href="https://www.rubydoc.info/gems/tzinfo/">RubyDoc.info</a>.</p>
+
+<h2 id="license">License</h2>
+
+<p>TZInfo is released under the MIT license, see LICENSE for details.</p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>Source code for TZInfo is available on
+<a href="https://github.com/tzinfo/tzinfo">GitHub</a>.</p>
+
+<h2 id="issue-tracker">Issue Tracker</h2>
+
+<p>Please post any bugs, issues, feature requests or questions about TZInfo to the
+<a href="https://github.com/tzinfo/tzinfo/issues">GitHub issue tracker</a>.</p>
+
+<p>Issues with the underlying time zone data should be raised on the
+<a href="https://mm.icann.org/mailman/listinfo/tz">Time Zone Database Discussion mailing list</a>.</p>
+
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:rafael.orion+contatoblog@gmail.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://www.facebook.com/rafaelorion" title="Facebook"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Facebook</span>
+              </a>
+            </li><li><a href="https://github.com/rafaelorion" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/rafaelorion" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://linkedin.com/in/rafaelorion" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li><li><a href="https://www.instagram.com/rafaelorion" title="Instagram"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Instagram</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Rafael Orion
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000/">https://rafaelorion.github.io/blog</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>

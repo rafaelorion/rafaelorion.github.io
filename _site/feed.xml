@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rafael Orion / Blog</title>
+    <description>A virtual proof that I'm awesome</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Domain Driven Design (DDD)</title>
+        <description>
+          
+          
+
+Comecei a ouvir falar de Domain Driven Design (ou DDD para os íntimos) na  época em que entrei no grupo de discuções do DotNet Architects, percebi que tinha muita gente da comunidade falando a respeito e resolvi entender um pouco mais sobre esse tipo de arquitetura.
+
+O DDD  é um modelo de arquitetura proposto pelo Eric Evans apoiado por grandes gurus da informática, reúne muitos aspectos já existentes formando um padrão que é considerado por muitos como “o retorno da orientação a objeto”.
+
+O foco do DDD é no Domínio (domínio é todo o universo que envolve o seu problema), através da utilização de uma Linguagem Ubliqua e um Modelo Rico, ele tenta prover uma arquitetura clara que revele com facilidade as características e funções de cada elemento do seu sistema assim como a interação entre eles.
+
+Linguagem Ubliqua (ou linguagem onipresente) trata-se da padronização os termos usados na análise e no desenvolvimento, linguagem comum utilizando os mesmos termos do negocio no desenvolvimento evitando modificação dos mesmos ou abuso de termos técnicos não correspondentes ao negocio .
+
+Modelo Rico basicamente seria o uso de objetos com propriedades e  métodos, diferente do modelo anêmico onde os objetos possuem somente propriedades, e os métodos com a regra de negocio concentram-se em classes diferente.
+
+Para criar um bom software você tem que conhecer bem o cenário, refletir o mundo real em código não é algo fácil, e a utilização de uma linguagem Ubliqua  ajuda bastante na hora de construir essa ponte entre o mundo real e as classes. Todos os envolvidos devem estar falando a mesma língua, nada de “tecnês” que não faça parte do domínio.
+
+DDD é ideal principalmente para domínios com regras de negócio complexas pois esse foco em separação de papeis, coesão e simplicidade ajuda e muito na hora de entender cada ponto do sistema para desenvolver e dar manutenção.
+
+Este padrão arquitetural é constituído por alguns elementos, não é necessário utilizar todos, tudo depende do seu cenário; Alguns de seus elementos são: Serviços, Repositórios, Entidades, Objetos de Valor, Agregados, Factories, Modelo Rico,…
+
+Brevemente vou descrever mais detalhadamente cada um de seus elementos.
+
+Por mais que eu goste de DDD e acredite que é uma arquitetura muito poderosa não podemos dizer que ela veio para substituir as outras,  um arquiteto de verdade deve saber observar o problema antes de tudo e decidir a melhor arquitetura que se encaixa ao cenário.
+
+Gosto de trabalhar voltado a DDD de uma forma mais evolutiva, sem me prender logo de cara a todas suas recomendações, vou aplicando cada elemento conforme vai surgindo a necessidade.
+
+E para quem quer se aprofundar no assunto recomendo a leitura do livro do Evans, também tem um e-book gratuito sobre o assunto no infoQ alem da palestra do Giovanni Bassi sobre DDD que dá uma boa ideia geral sobre o assunto.
+
+Estrutura do DDD:
+
+
+
+Até a próxima.
+
+        </description>
+        <pubDate>Sun, 11 Mar 2012 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2012-03-11-domain-driven-design/</link>
+        <guid isPermaLink="true">http://localhost:4000/2012-03-11-domain-driven-design/</guid>
+      </item>
+    
+      <item>
+        <title>Acessando propriedades de uma master page através de uma content page</title>
+        <description>
+          Quick Tip - 
+          
+
+Agora vou dar uma dica bem simples de como acessar propriedades que estão em uma master page por uma de suas paginas filho.
+Primeiramente vamos declarar uma propriedade publica na MasterPage:
+
+
+
+Public String PropriedadePublica
+{
+       get { return (String)Session[&quot;PropriedadePublica&quot;]; }
+       set { Session[&quot;PropriedadePublica&quot;] = value; }
+}
+
+
+Estou utilizando sessions para que os valores da propriedade não sejão perdidos a cada postback.
+Já na pagina filha para que possamos enchergar a propriedade da masterPage é preciso adicionar uma diretiva no aspx.
+
+&amp;lt;% @MasterType VirtualPath=&quot;~/Site.master&quot; %&amp;gt;
+
+
+Lembrando que o caminho informado deve ser o mesmo que na propriedade MasterPageFile.
+Com isso já é possível acessar as propriedades de uma master page da seguinte forma:
+
+lblTeste.Text = Master.PropriedadePublica;
+
+
+Outra forma de acessar dados da Masterpage é atavéz de seus componentes;
+Para isso basta usar o comando FindControl como no exemplo:
+
+var teste = ((Label)Master.FindControl(&quot;lblTeste&quot;)).Text
+
+
+Até a próxima.
+
+        </description>
+        <pubDate>Tue, 28 Feb 2012 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/</link>
+        <guid isPermaLink="true">http://localhost:4000/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/</guid>
+      </item>
+    
+      <item>
+        <title>Utilizando MSMQ (Microsoft Message Queue) no C#</title>
+        <description>
+          
+          
+
+O MSMQ (Microsoft Message Queue) é uma implementaçao da Microsoft presente desde o windows 95 para  o enfileiramento de Mensagens.
+
+As filas trabalham com a politica  FIFO (First In First Out), ou seja, em uma fila podemos empilhar uma serie de mensagens, e sempre sera recuperado uma a uma começando pela ultima que foi inserida.
+
+O MSMQ trabalha de forma assincrona, possibilitando que diferentes aplicaçoes comuniquem-se por meio de mensagens, o software envia as mensagens que serão empilhadas em uma fila gerenciada pelo proprio windows até que o programa receptor va até la pegar as mensagens.
+
+Tipos de Filas
+
+No MSMQ podemos criar filas Publicas ou Privadas. As filas publicas podem ser acessadas apartir de qualquer computador que faça parte do mesmo Dominio atravez do Active Directory, já as filas privadas são compartilhadas somente com os programas rodando na mesma maquina.
+
+Transacional
+
+Tambem podemos definir a fila como transacional ou não, protegendo a inserçao e remoçao de mensagens em casos de erros.
+
+Instalando o MSMQ
+
+Para começao a utilizar o MSMQ precisamos ir no “painel de controle” &amp;gt; “Programas e Recursos” &amp;gt; “Ativar ou desativar recursos do Windows” e marcar o checkbox “Serviços do MSMQ (Microsoft Message Queue)” como na imagem abaixo.
+
+
+
+Mãos a Obra
+
+Primeiramente é necessário adicionar a referencia para o  “System.Messaging ” no projeto.
+
+Como o MSMQ pode gerenciar varias filas quando formos criar/utilizar uma fila precisaremos dar um nome e caminho a ela.
+
+Como no exemplo vou utilizar uma lista privada o caminho da lista deve ser “.\Private$\”, caso estivese criando uma lista Publica o caminho seria o o nome do dominio da Rede. O caminho deve ser passado junto com o nome da nossa lista.
+
+Criando/Abrindo uma lista
+
+MessageQueue msg;
+var qName = @&quot;.\Private$\teste_app&quot;;
+if (MessageQueue.Exists(qName))
+    msg = new MessageQueue(qName);
+else
+    msg = MessageQueue.Create(qName);
+
+
+Essa lista pode receber qualquer tipo de objeto, porem devemos escolher entre 2 tipos de formato, pode ser uma classe serializada ou binario.
+Lembrando que se optarmos pelo formato em binario tanto o programa que envia qnt o receptor deve fazer referencia para a mesma dll que contem o objeto.
+
+No exemplo vou passar o seguinte objeto serializado.
+
+[Serializable]
+public class Job
+{
+    public int ID { get; set; }
+    public String Nome { get; set; }
+}
+
+
+Vamos configurar o formato:
+
+msg.Formatter = new XmlMessageFormatter(new Type[] { typeof(Job) });
+
+
+Agora basta enviar o objeto para a fila
+
+var obj = new CommomLib.Job(){ ID = 10 ,  Nome = &quot;Processo 1&quot; };
+msg.Send(obj);
+
+
+Para pegar um item da Lista a outra aplicaçao devera primeiramente abrir a lista da mesma forma utilizada anteriormente, em seguida utilizar o seguinte código:
+
+var myMessage = msg.Receive();
+Job myJob = (Job)myMessage.Body;
+
+
+Pronto! simples, agora vamos parar de utilizar banco de dados para gerenciar filas ok 😉
+
+Até a próxima. []s
+
+        </description>
+        <pubDate>Thu, 02 Feb 2012 00:00:00 -0200</pubDate>
+        <link>http://localhost:4000/2012-02-02-utilizando-msmq/</link>
+        <guid isPermaLink="true">http://localhost:4000/2012-02-02-utilizando-msmq/</guid>
+      </item>
+    
+      <item>
+        <title>Como adicionar confirmação de exclusão em um ActionLink</title>
+        <description>
+          Quick Tip - 
+          
+
+Para adicionar uma confirmação de exclusão ou qualquer alerta em um ActionLink do asp.Net MVC é muito simples.
+
+
+Segue um exemplo abaixo:
+
+@Html.ActionLink(“Excluir”, “Delete”, new { id = item.Id }, new { @onClick =  “javascript:return ” + “confirm(‘Confirma a exclusão?’)”})
+
+
+Em algumas sobrecargas o ActionLink recebe um Object para htmlAttributes, e é nele que colocamos o nosso javascript para o atributo onClick.
+
+Lembrando que também podemos setar qualquer atributo html para o ActionLink dessa mesma forma.
+
+Até a próxima.
+
+        </description>
+        <pubDate>Wed, 28 Dec 2011 00:00:00 -0200</pubDate>
+        <link>http://localhost:4000/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/</guid>
+      </item>
+    
+      <item>
+        <title>Utilizando Tipos Nulos em c# (Nullable Types)</title>
+        <description>
+          
+          
+
+Em alguns casos precisamos trabalhar com tipos nulos, mas por padrão nem todos os tipos de variáveis aceitam, porem em c# é muito simples criarmos variáveis que possam assumir valores nulos.
+
+Nullable
+Qualquer tipo pode passar a ser nullable , por exemplo uma variável do tipo int por padrão não pode receber null, para resolver isso basta adicionar o operador ? logo depois do tipo desejado.
+Declararmos da seguinte forma:
+
+int? numero;
+numero = null;
+
+//ou
+
+Nullable numero2;
+numero2 = null;
+
+
+Com isso criamos uma variável do tipo int nullable.
+
+Utilizo bastante variáveis nullables  por exemplo quando quero passar um parametro bool? ativo em uma funçao onde quando o valor  for True trarei todos os registros ativos, False todos os Inativos e Null para trazer todos os ativos e inativos.
+
+Operador ??
+O operador ?? apesar de pouco conhecido é muito útil, com ele podemos verificar de forma rápida e elegante se uma variável possui valor nulo;
+
+Exemplo:
+int? numero = null;
+int numero2 = numero??99;
+
+string mensagem = null;
+string mensagem2 = mensagem??&quot;Mensagem Nula&quot;;
+
+
+Com isso caso o valor da variável que  antecede o operador ?? for nulo, será atribuido o valor que está posterior ao operador ??, caso contrario será atribuido o valor da variável em questão.
+
+Ele trabalha de forma bem parecida a um if ternário:
+
+int? numero = null;
+int numero2 = numero == null ? 99 : numero;
+
+
+Esse operador pode ser muito útil por exemplo em Getters para evitar retorno de um objeto não instanciado:
+
+private IList empresas;
+public IList Empresas
+{
+    get { return empresas = empresas ?? new List(); }
+    set { empresas = value; }
+}
+
+
+Ou quando precisamos reistanciar algum objeto caso esteja nulo.
+
+repositorio = repositorio ?? new Repositorio();
+//Somente será reinstanciada caso sejá nulo.
+
+
+Até a próxima.
+
+[]s
+
+        </description>
+        <pubDate>Mon, 28 Nov 2011 00:00:00 -0200</pubDate>
+        <link>http://localhost:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</guid>
+      </item>
+    
+      <item>
+        <title>Consultando desempenho da maquina com o PerformanceCounter</title>
+        <description>
+          
+          
+
+Com o PerformanceCounter podemos obter diversas informações sobre o desempenho atual da maquina, como por exemplo quantidade de memória em uso, espaço livre no HD, processamento, etc.
+
+Quando precisamos rodar um processo muito pesado em um servidor  através de um serviço  periódico muitas vezes vale a pena conferir a situação da maquina antes de iniciar o processo para evitar travamento do sistema. Ou ate mesmo utilizar essas  informações para criar um monitorador dos recursos, vai da sua necessidade e criatividade.
+
+Vamos para o que interessa.
+
+Para pegar informações básicas sobre o uso de memória, hd e processador é muito simples, basta utilizar os seguintes comandos:
+
+var cpu = new System.Diagnostics.PerformanceCounter(&quot;Processor&quot;, &quot;% Processor Time&quot;, &quot;_Total&quot;);
+var memory = new System.Diagnostics.PerformanceCounter(&quot;Memory&quot;, &quot;% Committed Bytes In Use&quot;);
+var hd = new System.Diagnostics.PerformanceCounter(&quot;PhysicalDisk&quot;, &quot;% Disk Time&quot;, &quot;_Total&quot;);
+
+Console.WriteLine(&quot; % Uso do Processador: {0}&quot;, cpu.NextValue());
+Console.WriteLine(&quot; % Uso de Memória: {0}&quot;, memory.NextValue());
+Console.WriteLine(&quot; % Acesso ao HD: {0}&quot;, hd.NextValue());
+
+
+Para mais informações clique aqui
+
+Até a próxima.
+[]s
+
+        </description>
+        <pubDate>Sun, 27 Nov 2011 00:00:00 -0200</pubDate>
+        <link>http://localhost:4000/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/</guid>
+      </item>
+    
+      <item>
+        <title>Debugando Windows Service</title>
+        <description>
+          
+          
+
+Hoje vou ensinar uma forma para debugar windows service.
+
+Ao criarmos um projeto do tipo WindowsService não conseguimos debugar normalmente como qualquer outro tipo de projeto, porem temos uma forma bem simples para contornar esse problema.
+
+Primeiramente devemos criar uma condição na classe Program.cs para identificar se o nosso projeto foi executado em modo de Debug para redirecionarmos a chamada.
+
+Program.cs
+
+  static void Main()
+  {
+
+      if (System.Diagnostics.Debugger.IsAttached)
+      {
+          MeuServico service = new MeuServico();
+          service.StartDebug(new string[2]);
+          System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
+
+      }
+      else
+      {
+          ServiceBase[] ServicesToRun;
+          ServicesToRun = new ServiceBase[] { new MeuServico() };
+          ServiceBase.Run(ServicesToRun);
+      }
+  }
+
+
+Apos feito isso, basta editar a classe do nosso serviço e adicionar um método StartDebug como no exemplo abaixo.
+
+No service:
+
+   public void StartDebug(string[] args)
+   {
+       OnStart(args);
+   }
+
+
+Como o Método OnStarde é do tipo protected criamos esse novo método publico para redirecionar a chamada.
+
+Pronto! já podemos debugar nosso projeto normalmente sem nenhum problema.
+
+[]s
+
+        </description>
+        <pubDate>Fri, 25 Nov 2011 00:00:00 -0200</pubDate>
+        <link>http://localhost:4000/2011-11-25-debugando-windows-service/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-11-25-debugando-windows-service/</guid>
+      </item>
+    
+      <item>
+        <title>Como criar um actionLink para outra Area no Asp.Net MVC3</title>
+        <description>
+          Quick Tip - 
+          
+
+Fala ae galera.
+
+Quando comecei a trabalhar com áreas no asp.net MVC3 me deparei com essa situação de criar um link que aponte para uma área diferente.
+Apesar de ser algo simples fica a dica.
+
+&amp;lt;%= Html.ActionLink(“Descrição do Link”, “NomeDaPagina”, new { area=”NomeDaArea”, controller=”NomeDoController” } )%&amp;gt;
+
+Ou na sintaxe do Razor:
+
+@Html.ActionLink(“Descrição do Link”, “NomeDaPagina”, new { area=”NomeDaArea”, controller=”NomeDoController” } )
+
+Abraços,
+
+        </description>
+        <pubDate>Thu, 24 Nov 2011 00:00:00 -0200</pubDate>
+        <link>http://localhost:4000/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/</guid>
+      </item>
+    
+      <item>
+        <title>Comandos do Nuget</title>
+        <description>
+          
+          
+
+No post anterior falei um pouco sobre o NuGet, agora vou listar alguns dos principais comandos para você utilizar no console do Visual Studio.
+
+Para exibir o shell de comandos do NuGet, vá no menu View/Other Windows/Package Manage Console.
+
+A seguinte janela irá ficar  visível:
+
+
+
+No combo do lado esquerdo selecionamos qual será nosso repositório, por padrão ele busca da web mas podemos informar um repositório privado.
+
+No combo do lado direito selecionamos o projeto no qual as referencias serão aplicadas.
+
+Pesquisando um pacote pelo NuGet:
+
+Para pesquisar um pacote, por exemplo o NHibernate basta digitar o seguinte comando:
+
+PM&amp;gt; Get-Package nhibernate -remote
+
+Esse comando trará todos os pacotes que possuem “NHibernate” no nome.
+
+O parametro “- remote” indica que o pacote será pesquisado no repositório selecionado em vez de buscar os pacotes instalados no projeto.
+
+Adicionando referência de um pacote ao Projeto:
+
+Para adicionar a referencia de um pacote, por exemplo o FluentNhibernate:
+
+PM&amp;gt; Install-Package fluentnhibernate
+
+Esse comando instalará o fluent e todas suas  dependências, como por exemplo o NHibernate e Iesi.Collections, ele buscará sempre a versão mais atual.
+
+Para não instalar as dependências basta adicionar o parâmetro  “-ignoreDependencies”
+
+PM&amp;gt; Install-Package fluentnhibernate -IgnoreDependencies
+
+Também podemos informar qual versão desejamos instalar com o parâmetro  -Version
+
+Removendo um pacote do Projeto:
+
+Para remover uma referencia basta usar o comando:
+
+PM&amp;gt; Uninstall-Package FluentNHibernate
+
+Atualizando um pacote adicionado:
+
+Para atualizar um pacote para a versão mais recente:
+PM&amp;gt; Update-Package FluentNHibernate
+
+Para atualizar um pacote para uma versão especifica:
+PM&amp;gt; Update-Package FluentNHibernate -version 1.0.0
+
+Listando os pacotes Instalados:
+
+Para listar os pacotes instalados a lógica é a mesma de quando buscamos no repositório, basta omitir o parâmetro “-remote”
+
+Para listar todos instalados:
+PM&amp;gt; Get-Package
+
+Para buscar algum especifico:
+PM&amp;gt; Get-Package nhibernate
+
+
+
+A documentação completa em inglês pode ser encontrada aqui.
+
+Dica
+
+O NuGet possui AutoComplete para auxiliar na digitação dos comandos e nomes de pacotes, basta pressionar a tecla Tab depois de digitar o inicio do comando.
+
+        </description>
+        <pubDate>Thu, 15 Sep 2011 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2011-09-15-commandos-nuget/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-09-15-commandos-nuget/</guid>
+      </item>
+    
+      <item>
+        <title>Como zerar o valor de um campo Identity</title>
+        <description>
+          Quick Tip - 
+          
+
+Fala ae Galera.
+
+Vou postar uma dica simples mas útil. Ao Criarmos uma coluna identity no Sql Server, mesmo depois de apagar todos os dados da tabela, ao inserirmos um novo registro ele continuará incrementando o valor desse campo a partir do ultimo valor inserido. Para zerar esse contador basta executar o seguinte script:
+
+DBCC CHECKIDENT( ‘ [NOME_DA_TABELA] ‘ , RESEED, 0)
+
+ex:
+DBCC CHECKIDENT(‘Funcionarios’, RESEED, 0)
+
+Também podemos modificar esse valor para que comece a partir de algum numero específico.
+
+Ex:
+DBCC CHECKIDENT(‘Funcionarios’, RESEED, 50)
+
+Nesse caso o Próximo registro inserido na tabela Funcionários assumira o valor 51.
+
+Abraços,
+
+Rafael Orion
+
+        </description>
+        <pubDate>Sun, 04 Sep 2011 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/</guid>
+      </item>
+    
+      <item>
+        <title>Nuget</title>
+        <description>
+          
+          
+
+NuGet é um projeto open source para gerenciar pacotes na plataforma .NET.
+
+Com o NuGet as tarefas de adicionar uma biblioteca,configurar e atualizar ficaram muito mais fáceis.  Basta buscar nele a biblioteca que deseja utilizar que fará o trabalho de configurar seu ambiente e instalar todas as dependências necessárias deixando tudo bem organizado e centralizado.
+
+Por padrão o NuGet buscará as referências em um repositório publico na internet, mas você também pode montar um repositório local na sua empresa para suas bibliotecas, e apontar o nuget para buscar a partir dela.
+
+Por exemplo, para adicionar o FluentNhibernate em nosso projeto da forma convencional precisaríamos seguir os seguintes passos:
+
+
+  Entrar no site do NHibernate e baixar a ultima versão.
+  Efetuar o download de todas as dlls dependentes, como por exemplo, o NHibernate.
+  Descompactar e copiar a dll para o nosso projeto.
+  Referenciar as dlls no projeto.
+  Em alguns casos efetuar alguma configuração no webconfig.
+  E torcer para não estar faltando nenhuma outra dependência.
+
+
+Um pouco trabalhoso não acham? Mas como faríamos isso utilizando o NuGet?
+
+No visual studio (com o plug-in do NuGet instalado) basta abrir o Console do NuGet e digitar a seguinte linha de comando:
+
+Install-Package FluentNHinernate
+
+Pronto! Já está funcionando!, Simples não é mesmo?
+
+Ao executar esse comando, o NuGet vai até o seu repositório publico na internet e busca a versão mais recente do componente, todas suas dependências, efetua o download, joga em uma pasta chamada Packages dentro da sua solution e configura oque for necessário.
+
+Também é possível especificar a versão do componente que será baixado, ignorar as dependências, remover pacotes, buscar por pacotes no repositório, atualizar referencias do projeto para uma versão mais recente, etc etc.
+
+Para instalar o plug-in do NuGet, o projeto está hospedado no Github , lá você vai encontrar o código fonte, documentação, exemplos e o plug-in para o visual studio 2010.
+
+A instalação não foge do padrão next, next , finish. E para visualizar o shell após a instalação vá no menu do VisualStudio View/Other Windows/Package Manager Console.
+
+Depois farei um novo post demonstrando os principais comandos.
+
+Abraços,
+Rafael Orion
+
+        </description>
+        <pubDate>Sun, 04 Sep 2011 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2011-09-04-nuget/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-09-04-nuget/</guid>
+      </item>
+    
+      <item>
+        <title>Hello world!</title>
+        <description>
+          
+          
+
+Finalmente, depois de algum tempo enrrolando, resolvi tomar vergonha na cara e criar um blog próprio (depois de algumas experiencias em um blog com o pessoal da faculdade).
+
+O objetivo é compartilhar um pouco de conhecimento e dos meus estudos.
+
+Let’s go!
+
+        </description>
+        <pubDate>Sun, 29 May 2011 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2011-05-29-hello-world/</link>
+        <guid isPermaLink="true">http://localhost:4000/2011-05-29-hello-world/</guid>
+      </item>
+    
+  </channel>
+</rss>

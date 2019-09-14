@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Current</title>
+
+  <meta name="author" content="Rafael Orion" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - A virtual proof that I'm awesome" href="http://localhost:4000/feed.xml" />
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Current" />
+  
+
+   
+  <meta property="og:description" content="## Current ## Release v1.1.5, edge v0.5.0 (10 mar 2019) concurrent-ruby: * fix potential leak of context on JRuby and Java 7 concurrent-ruby-edge: * Add finalized Concurrent::Cancellation * Add finalized Concurrent::Throttle * Add finalized Concurrent::Promises::Channel * Add new Concurrent::ErlangActor ## Release v1.1.4 (14 Dec 2018) * (#780) Remove java_alias of...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/nstall-dependencies/gems/concurrent-ruby-1.1.5/CHANGELOG/" />
+  <link rel="canonical" href="http://localhost:4000/nstall-dependencies/gems/concurrent-ruby-1.1.5/CHANGELOG/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/dev.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Current" />
+  
+
+  
+  <meta name="twitter:description" content="## Current ## Release v1.1.5, edge v0.5.0 (10 mar 2019) concurrent-ruby: * fix potential leak of context on JRuby and Java 7 concurrent-ruby-edge: * Add finalized Concurrent::Cancellation * Add finalized Concurrent::Throttle * Add finalized Concurrent::Promises::Channel * Add new Concurrent::ErlangActor ## Release v1.1.4 (14 Dec 2018) * (#780) Remove java_alias of...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/dev.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+  
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">Rafael Orion / Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://rafaelorion.github.io">Home</a></li>
+          <li><a href="/aboutme">Sobre</a></li>
+          <li><a href="/contact">Contato</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Resources</a>
+            <div class="navlinks-children">
+              <a href="https://jekyllrb.com/">Jekell</a>
+              <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+              <a href="http://www.markdowntutorial.com/">Learn markdown</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/dev.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>Current</h1>
+		  
+		  
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h2 id="current">Current</h2>
+
+<h2 id="release-v115-edge-v050-10-mar-2019">Release v1.1.5, edge v0.5.0 (10 mar 2019)</h2>
+
+<p>concurrent-ruby:</p>
+
+<ul>
+  <li>fix potential leak of context on JRuby and Java 7</li>
+</ul>
+
+<p>concurrent-ruby-edge:</p>
+
+<ul>
+  <li>Add finalized Concurrent::Cancellation</li>
+  <li>Add finalized Concurrent::Throttle</li>
+  <li>Add finalized Concurrent::Promises::Channel</li>
+  <li>Add new Concurrent::ErlangActor</li>
+</ul>
+
+<h2 id="release-v114-14-dec-2018">Release v1.1.4 (14 Dec 2018)</h2>
+
+<ul>
+  <li>(#780) Remove java_alias of ‘submit’ method of Runnable to let executor service work on java 11</li>
+  <li>(#776) Fix NameError on defining a struct with a name which is already taken in an ancestor</li>
+</ul>
+
+<h2 id="release-v113-7-nov-2018">Release v1.1.3 (7 Nov 2018)</h2>
+
+<ul>
+  <li>(#775) fix partial require of the gem (although not officially supported)</li>
+</ul>
+
+<h2 id="release-v112-6-nov-2018">Release v1.1.2 (6 Nov 2018)</h2>
+
+<ul>
+  <li>(#773) more defensive 1.9.3 support</li>
+</ul>
+
+<h2 id="release-v111-edge-v041-1-nov-2018">Release v1.1.1, edge v0.4.1 (1 Nov 2018)</h2>
+
+<ul>
+  <li>(#768) add support for 1.9.3 back</li>
+</ul>
+
+<h2 id="release-v110-edge-v040-31-oct-2018-yanked">Release v1.1.0, edge v0.4.0 (31 OCt 2018) (yanked)</h2>
+
+<ul>
+  <li>(#768) yanked because of issues with removed 1.9.3 support</li>
+</ul>
+
+<h2 id="release-v110pre2-edge-v040pre2-18-sep-2018">Release v1.1.0.pre2, edge v0.4.0.pre2 (18 Sep 2018)</h2>
+
+<p>concurrent-ruby:</p>
+
+<ul>
+  <li>fixed documentation and README links</li>
+  <li>fix Set for TruffleRuby and Rubinius</li>
+  <li>use properly supported TruffleRuby APIs</li>
+</ul>
+
+<p>concurrent-ruby-edge:</p>
+
+<ul>
+  <li>add Promises.zip_futures_over_on</li>
+</ul>
+
+<h2 id="release-v110pre1-edge-v040pre1-15-aug-2018">Release v1.1.0.pre1, edge v0.4.0.pre1 (15 Aug 2018)</h2>
+
+<p>concurrent-ruby:</p>
+
+<ul>
+  <li>requires at least Ruby 2.0</li>
+  <li><a href="http://ruby-concurrency.github.io/concurrent-ruby/1.1.0/Concurrent/Promises.html">Promises</a>
+are moved from <code class="highlighter-rouge">concurrent-ruby-edge</code> to <code class="highlighter-rouge">concurrent-ruby</code></li>
+  <li>Add support for TruffleRuby
+    <ul>
+      <li>(#734) Fix Array/Hash/Set construction broken on TruffleRuby</li>
+      <li>AtomicReference fixed</li>
+    </ul>
+  </li>
+  <li>CI stabilization</li>
+  <li>remove sharp dependency edge -&gt; core</li>
+  <li>remove warnings</li>
+  <li>documentation updates</li>
+  <li>Exchanger is no longer documented as edge since it was already available in 
+<code class="highlighter-rouge">concurrent-ruby</code></li>
+  <li>(#644) Fix Map#each and #each_pair not returning enumerator outside of MRI</li>
+  <li>(#659) Edge promises fail during error handling</li>
+  <li>(#741) Raise on recursive Delay#value call</li>
+  <li>(#727) #717 fix global IO executor on JRuby</li>
+  <li>(#740) Drop support for CRuby 1.9, JRuby 1.7, Rubinius.</li>
+  <li>(#737) Move AtomicMarkableReference out of Edge</li>
+  <li>(#708) Prefer platform specific memory barriers</li>
+  <li>(#735) Fix wrong expected exception in channel spec assertion</li>
+  <li>(#729) Allow executor option in <code class="highlighter-rouge">Promise#then</code></li>
+  <li>(#725) fix timeout check to use timeout_interval</li>
+  <li>(#719) update engine detection</li>
+  <li>(#660) Add specs for Promise#zip/Promise.zip ordering</li>
+  <li>(#654) Promise.zip execution changes</li>
+  <li>(#666) Add thread safe set implementation</li>
+  <li>(#651) #699 #to_s, #inspect should not output negative object IDs.</li>
+  <li>(#685) Avoid RSpec warnings about raise_error</li>
+  <li>(#680) Avoid RSpec monkey patching, persist spec results locally, use RSpec
+v3.7.0</li>
+  <li>(#665) Initialize the monitor for new subarrays on Rubinius</li>
+  <li>(#661) Fix error handling in edge promises</li>
+</ul>
+
+<p>concurrent-ruby-edge:</p>
+
+<ul>
+  <li>(#659) Edge promises fail during error handling</li>
+  <li>Edge files clearly separated in <code class="highlighter-rouge">lib-edge</code></li>
+  <li>added ReInclude</li>
+</ul>
+
+<h2 id="release-v105-edge-v031-26-feb-2017">Release v1.0.5, edge v0.3.1 (26 Feb 2017)</h2>
+
+<p>concurrent-ruby:</p>
+
+<ul>
+  <li>Documentation for Event and Semaphore</li>
+  <li>Use Unsafe#fullFence and #loadFence directly since the shortcuts were removed in JRuby</li>
+  <li>Do not depend on org.jruby.util.unsafe.UnsafeHolder</li>
+</ul>
+
+<p>concurrent-ruby-edge:</p>
+
+<ul>
+  <li>(#620) Actors on Pool raise an error</li>
+  <li>(#624) Delayed promises did not interact correctly with flatting
+    <ul>
+      <li>Fix arguments yielded by callback methods</li>
+    </ul>
+  </li>
+  <li>Overridable default executor in promises factory methods</li>
+  <li>Asking actor to terminate will always resolve to <code class="highlighter-rouge">true</code></li>
+</ul>
+
+<h2 id="release-v104-edge-v030-27-dec-2016">Release v1.0.4, edge v0.3.0 (27 Dec 2016)</h2>
+
+<p>concurrent-ruby:</p>
+
+<ul>
+  <li>Nothing</li>
+</ul>
+
+<p>concurrent-ruby-edge:</p>
+
+<ul>
+  <li>New promises’ API renamed, lots of improvements, edge bumped to 0.3.0
+    <ul>
+      <li><strong>Incompatible</strong> with previous 0.2.3 version</li>
+      <li>see https://github.com/ruby-concurrency/concurrent-ruby/pull/522</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="release-v103-17-dec-2016">Release v1.0.3 (17 Dec 2016)</h2>
+
+<ul>
+  <li>Trigger execution of flattened delayed futures</li>
+  <li>Avoid forking for processor_count if possible</li>
+  <li>Semaphore Mutex and JRuby parity</li>
+  <li>Adds Map#each as alias to Map#each_pair</li>
+  <li>Fix uninitialized instance variables</li>
+  <li>Make Fixnum, Bignum merger ready</li>
+  <li>Allows Promise#then to receive an executor</li>
+  <li>TimerSet now survives a fork</li>
+  <li>Reject promise on any exception</li>
+  <li>Allow ThreadLocalVar to be initialized with a block</li>
+  <li>Support Alpha with <code class="highlighter-rouge">Concurrent::processor_count</code></li>
+  <li>Fixes format-security error when compiling ruby_193_compatible.h</li>
+  <li>Concurrent::Atom#swap fixed: reraise the exceptions from block</li>
+</ul>
+
+<h2 id="release-v102-2-may-2016">Release v1.0.2 (2 May 2016)</h2>
+
+<ul>
+  <li>Fix bug with <code class="highlighter-rouge">Concurrent::Map</code> MRI backend <code class="highlighter-rouge">#inspect</code> method</li>
+  <li>Fix bug with <code class="highlighter-rouge">Concurrent::Map</code> MRI backend using <code class="highlighter-rouge">Hash#value?</code></li>
+  <li>Improved documentation and examples</li>
+  <li>Minor updates to Edge</li>
+</ul>
+
+<h2 id="release-v101-27-february-2016">Release v1.0.1 (27 February 2016)</h2>
+
+<ul>
+  <li>Fix “uninitialized constant Concurrent::ReentrantReadWriteLock” error.</li>
+  <li>Better handling of <code class="highlighter-rouge">autoload</code> vs. <code class="highlighter-rouge">require</code>.</li>
+  <li>Improved API for Edge <code class="highlighter-rouge">Future</code> zipping.</li>
+  <li>Fix reference leak in Edge <code class="highlighter-rouge">Future</code> constructor .</li>
+  <li>Fix bug which prevented thread pools from surviving a <code class="highlighter-rouge">fork</code>.</li>
+  <li>Fix bug in which <code class="highlighter-rouge">TimerTask</code> did not correctly specify all its dependencies.</li>
+  <li>Improved support for JRuby+Truffle</li>
+  <li>Improved error messages.</li>
+  <li>Improved documentation.</li>
+  <li>Updated README and CONTRIBUTING.</li>
+</ul>
+
+<h2 id="release-v100-13-november-2015">Release v1.0.0 (13 November 2015)</h2>
+
+<ul>
+  <li>Rename <code class="highlighter-rouge">attr_volatile_with_cas</code> to <code class="highlighter-rouge">attr_atomic</code></li>
+  <li>Add <code class="highlighter-rouge">clear_each</code> to <code class="highlighter-rouge">LockFreeStack</code></li>
+  <li>Update <code class="highlighter-rouge">AtomicReference</code> documentation</li>
+  <li>Further updates and improvements to the synchronization layer.</li>
+  <li>Performance and memory usage performance with <code class="highlighter-rouge">Actor</code> logging.</li>
+  <li>Fixed <code class="highlighter-rouge">ThreadPoolExecutor</code> task count methods.</li>
+  <li>Improved <code class="highlighter-rouge">Async</code> performance for both short and long-lived objects.</li>
+  <li>Fixed bug in <code class="highlighter-rouge">LockFreeLinkedSet</code>.</li>
+  <li>Fixed bug in which <code class="highlighter-rouge">Agent#await</code> triggered a validation failure.</li>
+  <li>Further <code class="highlighter-rouge">Channel</code> updates.</li>
+  <li>Adopted a project Code of Conduct</li>
+  <li>Cleared interpreter warnings</li>
+  <li>Fixed bug in <code class="highlighter-rouge">ThreadPoolExecutor</code> task count methods</li>
+  <li>Fixed bug in ‘LockFreeLinkedSet’</li>
+  <li>Improved Java extension loading</li>
+  <li>Handle Exception children in Edge::Future</li>
+  <li>Continued improvements to channel</li>
+  <li>Removed interpreter warnings.</li>
+  <li>Shared constants now in <code class="highlighter-rouge">lib/concurrent/constants.rb</code></li>
+  <li>Refactored many tests.</li>
+  <li>Improved synchronization layer/memory model documentation.</li>
+  <li>Bug fix in Edge <code class="highlighter-rouge">Future#flat</code></li>
+  <li>Brand new <code class="highlighter-rouge">Channel</code> implementation in Edge gem.</li>
+  <li>Simplification of <code class="highlighter-rouge">RubySingleThreadExecutor</code></li>
+  <li><code class="highlighter-rouge">Async</code> improvements
+    <ul>
+      <li>Each object uses its own <code class="highlighter-rouge">SingleThreadExecutor</code> instead of the global thread pool.</li>
+      <li>No longers supports executor injection</li>
+      <li>Much better documentation</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">Atom</code> updates
+    <ul>
+      <li>No longer <code class="highlighter-rouge">Dereferenceable</code></li>
+      <li>Now <code class="highlighter-rouge">Observable</code></li>
+      <li>Added a <code class="highlighter-rouge">#reset</code> method</li>
+    </ul>
+  </li>
+  <li>Brand new <code class="highlighter-rouge">Agent</code> API and implementation. Now functionally equivalent to Clojure.</li>
+  <li>Continued improvements to the synchronization layer</li>
+  <li>Merged in the <code class="highlighter-rouge">thread_safe</code> gem
+    <ul>
+      <li><code class="highlighter-rouge">Concurrent::Array</code></li>
+      <li><code class="highlighter-rouge">Concurrent::Hash</code></li>
+      <li><code class="highlighter-rouge">Concurrent::Map</code> (formerly ThreadSafe::Cache)</li>
+      <li><code class="highlighter-rouge">Concurrent::Tuple</code></li>
+    </ul>
+  </li>
+  <li>Minor improvements to Concurrent::Map</li>
+  <li>Complete rewrite of <code class="highlighter-rouge">Exchanger</code></li>
+  <li>Removed all deprecated code (classes, methods, constants, etc.)</li>
+  <li>Updated Agent, MutexAtomic, and BufferedChannel to inherit from Synchronization::Object.</li>
+  <li>Many improved tests</li>
+  <li>Some internal reorganization</li>
+</ul>
+
+<h2 id="release-v091-09-august-2015">Release v0.9.1 (09 August 2015)</h2>
+
+<ul>
+  <li>Fixed a Rubiniux bug in synchronization object</li>
+  <li>Fixed all interpreter warnings (except circular references)</li>
+  <li>Fixed require statements when requiring <code class="highlighter-rouge">Atom</code> alone</li>
+  <li>Significantly improved <code class="highlighter-rouge">ThreadLocalVar</code> on non-JRuby platforms</li>
+  <li>Fixed error handling in Edge <code class="highlighter-rouge">Concurrent.zip</code></li>
+  <li><code class="highlighter-rouge">AtomicFixnum</code> methods <code class="highlighter-rouge">#increment</code> and <code class="highlighter-rouge">#decrement</code> now support optional delta</li>
+  <li>New <code class="highlighter-rouge">AtomicFixnum#update</code> method</li>
+  <li>Minor optimizations in <code class="highlighter-rouge">ReadWriteLock</code></li>
+  <li>New <code class="highlighter-rouge">ReentrantReadWriteLock</code> class</li>
+  <li><code class="highlighter-rouge">ThreadLocalVar#bind</code> method is now public</li>
+  <li>Refactored many tests</li>
+</ul>
+
+<h2 id="release-v090-10-july-2015">Release v0.9.0 (10 July 2015)</h2>
+
+<ul>
+  <li>Updated <code class="highlighter-rouge">AtomicReference</code>
+    <ul>
+      <li><code class="highlighter-rouge">AtomicReference#try_update</code> now simply returns instead of raising exception</li>
+      <li><code class="highlighter-rouge">AtomicReference#try_update!</code> was added to raise exceptions if an update
+fails. Note: this is the same behavior as the old <code class="highlighter-rouge">try_update</code></li>
+    </ul>
+  </li>
+  <li>Pure Java implementations of
+    <ul>
+      <li><code class="highlighter-rouge">AtomicBoolean</code></li>
+      <li><code class="highlighter-rouge">AtomicFixnum</code></li>
+      <li><code class="highlighter-rouge">Semaphore</code></li>
+    </ul>
+  </li>
+  <li>Fixed bug when pruning Ruby thread pools</li>
+  <li>Fixed bug in time calculations within <code class="highlighter-rouge">ScheduledTask</code></li>
+  <li>Default <code class="highlighter-rouge">count</code> in <code class="highlighter-rouge">CountDownLatch</code> to 1</li>
+  <li>Use monotonic clock for all timers via <code class="highlighter-rouge">Concurrent.monotonic_time</code>
+    <ul>
+      <li>Use <code class="highlighter-rouge">Process.clock_gettime(Process::CLOCK_MONOTONIC)</code> when available</li>
+      <li>Fallback to <code class="highlighter-rouge">java.lang.System.nanoTime()</code> on unsupported JRuby versions</li>
+      <li>Pure Ruby implementation for everything else</li>
+      <li>Effects <code class="highlighter-rouge">Concurrent.timer</code>, <code class="highlighter-rouge">Concurrent.timeout</code>, <code class="highlighter-rouge">TimerSet</code>, <code class="highlighter-rouge">TimerTask</code>, and <code class="highlighter-rouge">ScheduledTask</code></li>
+    </ul>
+  </li>
+  <li>Deprecated all clock-time based timer scheduling
+    <ul>
+      <li>Only support scheduling by delay</li>
+      <li>Effects <code class="highlighter-rouge">Concurrent.timer</code>, <code class="highlighter-rouge">TimerSet</code>, and <code class="highlighter-rouge">ScheduledTask</code></li>
+    </ul>
+  </li>
+  <li>Added new <code class="highlighter-rouge">ReadWriteLock</code> class</li>
+  <li>Consistent <code class="highlighter-rouge">at_exit</code> behavior for Java and Ruby thread pools.</li>
+  <li>Added <code class="highlighter-rouge">at_exit</code> handler to Ruby thread pools (already in Java thread pools)
+    <ul>
+      <li>Ruby handler stores the object id and retrieves from <code class="highlighter-rouge">ObjectSpace</code></li>
+      <li>JRuby disables <code class="highlighter-rouge">ObjectSpace</code> by default so that handler stores the object reference</li>
+    </ul>
+  </li>
+  <li>Added a <code class="highlighter-rouge">:stop_on_exit</code> option to thread pools to enable/disable <code class="highlighter-rouge">at_exit</code> handler</li>
+  <li>Updated thread pool docs to better explain shutting down thread pools</li>
+  <li>Simpler <code class="highlighter-rouge">:executor</code> option syntax for all abstractions which support this option</li>
+  <li>Added <code class="highlighter-rouge">Executor#auto_terminate?</code> predicate method (for thread pools)</li>
+  <li>Added <code class="highlighter-rouge">at_exit</code> handler to <code class="highlighter-rouge">TimerSet</code></li>
+  <li>Simplified auto-termination of the global executors
+    <ul>
+      <li>Can now disable auto-termination of global executors</li>
+      <li>Added shutdown/kill/wait_for_termination variants for global executors</li>
+    </ul>
+  </li>
+  <li>Can now disable auto-termination for <em>all</em> executors (the nuclear option)</li>
+  <li>Simplified auto-termination of the global executors</li>
+  <li>Deprecated terms “task pool” and “operation pool”
+    <ul>
+      <li>New terms are “io executor” and “fast executor”</li>
+      <li>New functions added with new names</li>
+      <li>Deprecation warnings added to functions referencing old names</li>
+    </ul>
+  </li>
+  <li>Moved all thread pool related functions from <code class="highlighter-rouge">Concurrent::Configuration</code> to <code class="highlighter-rouge">Concurrent</code>
+    <ul>
+      <li>Old functions still exist with deprecation warnings</li>
+      <li>New functions have updated names as appropriate</li>
+    </ul>
+  </li>
+  <li>All high-level abstractions default to the “io executor”</li>
+  <li>Fixed bug in <code class="highlighter-rouge">Actor</code> causing it to prematurely warm global thread pools on gem load
+    <ul>
+      <li>This also fixed a <code class="highlighter-rouge">RejectedExecutionError</code> bug when running with minitest/autorun via JRuby</li>
+    </ul>
+  </li>
+  <li>Moved global logger up to the <code class="highlighter-rouge">Concurrent</code> namespace and refactored the code</li>
+  <li>Optimized the performance of <code class="highlighter-rouge">Delay</code>
+    <ul>
+      <li>Fixed a bug in which no executor option on construction caused block execution on a global thread pool</li>
+    </ul>
+  </li>
+  <li>Numerous improvements and bug fixes to <code class="highlighter-rouge">TimerSet</code></li>
+  <li>Fixed deadlock of <code class="highlighter-rouge">Future</code> when the handler raises Exception</li>
+  <li>Added shared specs for more classes</li>
+  <li>New concurrency abstractions including:
+    <ul>
+      <li><code class="highlighter-rouge">Atom</code></li>
+      <li><code class="highlighter-rouge">Maybe</code></li>
+      <li><code class="highlighter-rouge">ImmutableStruct</code></li>
+      <li><code class="highlighter-rouge">MutableStruct</code></li>
+      <li><code class="highlighter-rouge">SettableStruct</code></li>
+    </ul>
+  </li>
+  <li>Created an Edge gem for unstable abstractions including
+    <ul>
+      <li><code class="highlighter-rouge">Actor</code></li>
+      <li><code class="highlighter-rouge">Agent</code></li>
+      <li><code class="highlighter-rouge">Channel</code></li>
+      <li><code class="highlighter-rouge">Exchanger</code></li>
+      <li><code class="highlighter-rouge">LazyRegister</code></li>
+      <li><strong>new Future Framework</strong> <a href="http://ruby-concurrency.github.io/concurrent-ruby/Concurrent/Edge.html">http://ruby-concurrency.github.io/concurrent-ruby/Concurrent/Edge.html</a> - unified
+implementation of Futures and Promises which combines Features of previous <code class="highlighter-rouge">Future</code>,
+<code class="highlighter-rouge">Promise</code>, <code class="highlighter-rouge">IVar</code>, <code class="highlighter-rouge">Event</code>, <code class="highlighter-rouge">Probe</code>, <code class="highlighter-rouge">dataflow</code>, <code class="highlighter-rouge">Delay</code>, <code class="highlighter-rouge">TimerTask</code> into single framework. It uses extensively
+new synchronization layer to make all the paths <strong>lock-free</strong> with exception of blocking threads on <code class="highlighter-rouge">#wait</code>.
+It offers better performance and does not block threads when not required.</li>
+    </ul>
+  </li>
+  <li>Actor framework changes:
+    <ul>
+      <li>fixed reset loop in Pool</li>
+      <li>Pool can use any actor as a worker, abstract worker class is no longer needed.</li>
+      <li>Actor events not have format <code class="highlighter-rouge">[:event_name, *payload]</code> instead of just the Symbol.</li>
+      <li>Actor now uses new Future/Promise Framework instead of <code class="highlighter-rouge">IVar</code> for better interoperability</li>
+      <li>Behaviour definition array was simplified to <code class="highlighter-rouge">[BehaviourClass1, [BehaviourClass2, *initialization_args]]</code></li>
+      <li>Linking behavior responds to :linked message by returning array of linked actors</li>
+      <li>Supervised behavior is removed in favour of just Linking</li>
+      <li>RestartingContext is supervised by default now, <code class="highlighter-rouge">supervise: true</code> is not required any more</li>
+      <li>Events can be private and public, so far only difference is that Linking will
+pass to linked actors only public messages. Adding private :restarting and
+:resetting events which are send before the actor restarts or resets allowing
+to add callbacks to cleanup current child actors.</li>
+      <li>Print also object_id in Reference to_s</li>
+      <li>Add AbstractContext#default_executor to be able to override executor class wide</li>
+      <li>Add basic IO example</li>
+      <li>Documentation somewhat improved</li>
+      <li>All messages should have same priority. It’s now possible to send <code class="highlighter-rouge">actor &lt;&lt; job1 &lt;&lt; job2 &lt;&lt; :terminate!</code> and
+be sure that both jobs are processed first.</li>
+    </ul>
+  </li>
+  <li>Refactored <code class="highlighter-rouge">Channel</code> to use newer synchronization objects</li>
+  <li>Added <code class="highlighter-rouge">#reset</code> and <code class="highlighter-rouge">#cancel</code> methods to <code class="highlighter-rouge">TimerSet</code></li>
+  <li>Added <code class="highlighter-rouge">#cancel</code> method to <code class="highlighter-rouge">Future</code> and <code class="highlighter-rouge">ScheduledTask</code></li>
+  <li>Refactored <code class="highlighter-rouge">TimerSet</code> to use <code class="highlighter-rouge">ScheduledTask</code></li>
+  <li>Updated <code class="highlighter-rouge">Async</code> with a factory that initializes the object</li>
+  <li>Deprecated <code class="highlighter-rouge">Concurrent.timer</code> and <code class="highlighter-rouge">Concurrent.timeout</code></li>
+  <li>Reduced max threads on pure-Ruby thread pools (abends around 14751 threads)</li>
+  <li>Moved many private/internal classes/modules into “namespace” modules</li>
+  <li>Removed brute-force killing of threads in tests</li>
+  <li>Fixed a thread pool bug when the operating system cannot allocate more threads</li>
+</ul>
+
+<h2 id="release-v080-25-january-2015">Release v0.8.0 (25 January 2015)</h2>
+
+<ul>
+  <li>C extension for MRI have been extracted into the <code class="highlighter-rouge">concurrent-ruby-ext</code> companion gem.
+Please see the README for more detail.</li>
+  <li>Better variable isolation in <code class="highlighter-rouge">Promise</code> and <code class="highlighter-rouge">Future</code> via an <code class="highlighter-rouge">:args</code> option</li>
+  <li>Continued to update intermittently failing tests</li>
+</ul>
+
+<h2 id="release-v072-24-january-2015">Release v0.7.2 (24 January 2015)</h2>
+
+<ul>
+  <li>New <code class="highlighter-rouge">Semaphore</code> class based on <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Semaphore.html">java.util.concurrent.Semaphore</a></li>
+  <li>New <code class="highlighter-rouge">Promise.all?</code> and <code class="highlighter-rouge">Promise.any?</code> class methods</li>
+  <li>Renamed <code class="highlighter-rouge">:overflow_policy</code> on thread pools to <code class="highlighter-rouge">:fallback_policy</code></li>
+  <li>Thread pools still accept the <code class="highlighter-rouge">:overflow_policy</code> option but display a warning</li>
+  <li>Thread pools now implement <code class="highlighter-rouge">fallback_policy</code> behavior when not running (rather than universally rejecting tasks)</li>
+  <li>Fixed minor <code class="highlighter-rouge">set_deref_options</code> constructor bug in <code class="highlighter-rouge">Promise</code> class</li>
+  <li>Fixed minor <code class="highlighter-rouge">require</code> bug in <code class="highlighter-rouge">ThreadLocalVar</code> class</li>
+  <li>Fixed race condition bug in <code class="highlighter-rouge">TimerSet</code> class</li>
+  <li>Fixed race condition bug in <code class="highlighter-rouge">TimerSet</code> class</li>
+  <li>Fixed signal bug in <code class="highlighter-rouge">TimerSet#post</code> method</li>
+  <li>Numerous non-functional updates to clear warning when running in debug mode</li>
+  <li>Fixed more intermittently failing tests</li>
+  <li>Tests now run on new Travis build environment</li>
+  <li>Multiple documentation updates</li>
+</ul>
+
+<h2 id="release-v071-4-december-2014">Release v0.7.1 (4 December 2014)</h2>
+
+<p>Please see the <a href="https://github.com/ruby-concurrency/concurrent-ruby/issues/142">roadmap</a> for more information on the next planned release.</p>
+
+<ul>
+  <li>Added <code class="highlighter-rouge">flat_map</code> method to <code class="highlighter-rouge">Promise</code></li>
+  <li>Added <code class="highlighter-rouge">zip</code> method to <code class="highlighter-rouge">Promise</code></li>
+  <li>Fixed bug with logging in <code class="highlighter-rouge">Actor</code></li>
+  <li>Improvements to <code class="highlighter-rouge">Promise</code> tests</li>
+  <li>Removed actor-experimental warning</li>
+  <li>Added an <code class="highlighter-rouge">IndirectImmediateExecutor</code> class</li>
+  <li>Allow disabling auto termination of global executors</li>
+  <li>Fix thread leaking in <code class="highlighter-rouge">ThreadLocalVar</code> (uses <code class="highlighter-rouge">Ref</code> gem on non-JRuby systems)</li>
+  <li>Fix thread leaking when pruning pure-Ruby thread pools</li>
+  <li>Prevent <code class="highlighter-rouge">Actor</code> from using an <code class="highlighter-rouge">ImmediateExecutor</code> (causes deadlock)</li>
+  <li>Added missing synchronizations to <code class="highlighter-rouge">TimerSet</code></li>
+  <li>Fixed bug with return value of <code class="highlighter-rouge">Concurrent::Actor::Utils::Pool#ask</code></li>
+  <li>Fixed timing bug in <code class="highlighter-rouge">TimerTask</code></li>
+  <li>Fixed bug when creating a <code class="highlighter-rouge">JavaThreadPoolExecutor</code> with minimum pool size of zero</li>
+  <li>Removed confusing warning when not using native extenstions</li>
+  <li>Improved documentation</li>
+</ul>
+
+<h2 id="release-v070-13-august-2014">Release v0.7.0 (13 August 2014)</h2>
+
+<ul>
+  <li>Merge the <a href="https://github.com/ruby-concurrency/atomic">atomic</a> gem
+    <ul>
+      <li>Pure Ruby <code class="highlighter-rouge">MutexAtomic</code> atomic reference class</li>
+      <li>Platform native atomic reference classes <code class="highlighter-rouge">CAtomic</code>, <code class="highlighter-rouge">JavaAtomic</code>, and <code class="highlighter-rouge">RbxAtomic</code></li>
+      <li>Automated <a href="https://github.com/ruby-concurrency/rake-compiler-dev-box">build process</a></li>
+      <li>Fat binary releases for <a href="https://rubygems.org/gems/concurrent-ruby/versions">multiple platforms</a> including Windows (32/64), Linux (32/64), OS X (64-bit), Solaris (64-bit), and JRuby</li>
+    </ul>
+  </li>
+  <li>C native <code class="highlighter-rouge">CAtomicBoolean</code></li>
+  <li>C native <code class="highlighter-rouge">CAtomicFixnum</code></li>
+  <li>Refactored intermittently failing tests</li>
+  <li>Added <code class="highlighter-rouge">dataflow!</code> and <code class="highlighter-rouge">dataflow_with!</code> methods to match <code class="highlighter-rouge">Future#value!</code> method</li>
+  <li>Better handling of timeout in <code class="highlighter-rouge">Agent</code></li>
+  <li>Actor Improvements
+    <ul>
+      <li>Fine-grained implementation using chain of behaviors. Each behavior is responsible for single aspect like: <code class="highlighter-rouge">Termination</code>, <code class="highlighter-rouge">Pausing</code>, <code class="highlighter-rouge">Linking</code>, <code class="highlighter-rouge">Supervising</code>, etc. Users can create custom Actors easily based on their needs.</li>
+      <li>Supervision was added. <code class="highlighter-rouge">RestartingContext</code> will pause on error waiting on its supervisor to decide what to do next ( options are <code class="highlighter-rouge">:terminate!</code>, <code class="highlighter-rouge">:resume!</code>, <code class="highlighter-rouge">:reset!</code>, <code class="highlighter-rouge">:restart!</code>). Supervising behavior also supports strategies <code class="highlighter-rouge">:one_for_one</code> and <code class="highlighter-rouge">:one_for_all</code>.</li>
+      <li>Linking was added to be able to monitor actor’s events like: <code class="highlighter-rouge">:terminated</code>, <code class="highlighter-rouge">:paused</code>, <code class="highlighter-rouge">:restarted</code>, etc.</li>
+      <li>Dead letter routing added. Rejected envelopes are collected in a configurable actor (default: <code class="highlighter-rouge">Concurrent::Actor.root.ask!(:dead_letter_routing)</code>)</li>
+      <li>Old <code class="highlighter-rouge">Actor</code> class removed and replaced by new implementation previously called <code class="highlighter-rouge">Actress</code>. <code class="highlighter-rouge">Actress</code> was kept as an alias for <code class="highlighter-rouge">Actor</code> to keep compatibility.</li>
+      <li><code class="highlighter-rouge">Utils::Broadcast</code> actor which allows Publish–subscribe pattern.</li>
+    </ul>
+  </li>
+  <li>More executors for managing serialized operations
+    <ul>
+      <li><code class="highlighter-rouge">SerializedExecution</code> mixin module</li>
+      <li><code class="highlighter-rouge">SerializedExecutionDelegator</code> for serializing <em>any</em> executor</li>
+    </ul>
+  </li>
+  <li>Updated <code class="highlighter-rouge">Async</code> with serialized execution</li>
+  <li>Updated <code class="highlighter-rouge">ImmediateExecutor</code> and <code class="highlighter-rouge">PerThreadExecutor</code> with full executor service lifecycle</li>
+  <li>Added a <code class="highlighter-rouge">Delay</code> to root <code class="highlighter-rouge">Actress</code> initialization</li>
+  <li>Minor bug fixes to thread pools</li>
+  <li>Refactored many intermittently failing specs</li>
+  <li>Removed Java interop warning <code class="highlighter-rouge">executor.rb:148 warning: ambiguous Java methods found, using submit(java.lang.Runnable)</code></li>
+  <li>Fixed minor bug in <code class="highlighter-rouge">RubyCachedThreadPool</code> overflow policy</li>
+  <li>Updated tests to use <a href="http://myronmars.to/n/dev-blog/2014/05/notable-changes-in-rspec-3">RSpec 3.0</a></li>
+  <li>Removed deprecated <code class="highlighter-rouge">Actor</code> class</li>
+  <li>Better support for Rubinius</li>
+</ul>
+
+<h2 id="release-v061-14-june-2014">Release v0.6.1 (14 June 2014)</h2>
+
+<ul>
+  <li>Many improvements to <code class="highlighter-rouge">Concurrent::Actress</code></li>
+  <li>Bug fixes to <code class="highlighter-rouge">Concurrent::RubyThreadPoolExecutor</code></li>
+  <li>Fixed several brittle tests</li>
+  <li>Moved documentation to http://ruby-concurrency.github.io/concurrent-ruby/frames.html</li>
+</ul>
+
+<h2 id="release-v060-25-may-2014">Release v0.6.0 (25 May 2014)</h2>
+
+<ul>
+  <li>Added <code class="highlighter-rouge">Concurrent::Observable</code> to encapsulate our thread safe observer sets</li>
+  <li>Improvements to new <code class="highlighter-rouge">Channel</code></li>
+  <li>Major improvements to <code class="highlighter-rouge">CachedThreadPool</code> and <code class="highlighter-rouge">FixedThreadPool</code></li>
+  <li>Added <code class="highlighter-rouge">SingleThreadExecutor</code></li>
+  <li>Added <code class="highlighter-rouge">Current::timer</code> function</li>
+  <li>Added <code class="highlighter-rouge">TimerSet</code> executor</li>
+  <li>Added <code class="highlighter-rouge">AtomicBoolean</code></li>
+  <li><code class="highlighter-rouge">ScheduledTask</code> refactoring</li>
+  <li>Pure Ruby and JRuby-optimized <code class="highlighter-rouge">PriorityQueue</code> classes</li>
+  <li>Updated <code class="highlighter-rouge">Agent</code> behavior to more closely match Clojure</li>
+  <li>Observer sets support block callbacks to the <code class="highlighter-rouge">add_observer</code> method</li>
+  <li>New algorithm for thread creation in <code class="highlighter-rouge">RubyThreadPoolExecutor</code></li>
+  <li>Minor API updates to <code class="highlighter-rouge">Event</code></li>
+  <li>Rewritten <code class="highlighter-rouge">TimerTask</code> now an <code class="highlighter-rouge">Executor</code> instead of a <code class="highlighter-rouge">Runnable</code></li>
+  <li>Fixed many brittle specs</li>
+  <li>Renamed <code class="highlighter-rouge">FixedThreadPool</code> and <code class="highlighter-rouge">CachedThreadPool</code> to <code class="highlighter-rouge">RubyFixedThreadPool</code> and <code class="highlighter-rouge">RubyCachedThreadPool</code></li>
+  <li>Created JRuby optimized <code class="highlighter-rouge">JavaFixedThreadPool</code> and <code class="highlighter-rouge">JavaCachedThreadPool</code></li>
+  <li>Consolidated fixed thread pool tests into <code class="highlighter-rouge">spec/concurrent/fixed_thread_pool_shared.rb</code> and  <code class="highlighter-rouge">spec/concurrent/cached_thread_pool_shared.rb</code></li>
+  <li><code class="highlighter-rouge">FixedThreadPool</code> now subclasses <code class="highlighter-rouge">RubyFixedThreadPool</code> or <code class="highlighter-rouge">JavaFixedThreadPool</code> as appropriate</li>
+  <li><code class="highlighter-rouge">CachedThreadPool</code> now subclasses <code class="highlighter-rouge">RubyCachedThreadPool</code> or <code class="highlighter-rouge">JavaCachedThreadPool</code> as appropriate</li>
+  <li>New <code class="highlighter-rouge">Delay</code> class</li>
+  <li><code class="highlighter-rouge">Concurrent::processor_count</code> helper function</li>
+  <li>New <code class="highlighter-rouge">Async</code> module</li>
+  <li>Renamed <code class="highlighter-rouge">NullThreadPool</code> to <code class="highlighter-rouge">PerThreadExecutor</code></li>
+  <li>Deprecated <code class="highlighter-rouge">Channel</code> (we are planning a new implementation based on <a href="http://golangtutorials.blogspot.com/2011/06/channels-in-go.html">Go</a>)</li>
+  <li>Added gem-level <a href="http://robots.thoughtbot.com/mygem-configure-block">configuration</a></li>
+  <li>Deprecated <code class="highlighter-rouge">$GLOBAL_THREAD_POOL</code> in lieu of gem-level configuration</li>
+  <li>Removed support for Ruby <a href="https://www.ruby-lang.org/en/news/2013/12/17/maintenance-of-1-8-7-and-1-9-2/">1.9.2</a></li>
+  <li>New <code class="highlighter-rouge">RubyThreadPoolExecutor</code> and <code class="highlighter-rouge">JavaThreadPoolExecutor</code> classes</li>
+  <li>All thread pools now extend the appropriate thread pool executor classes</li>
+  <li>All thread pools now support <code class="highlighter-rouge">:overflow_policy</code> (based on Java’s <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ThreadPoolExecutor.html">reject policies</a>)</li>
+  <li>Deprecated <code class="highlighter-rouge">UsesGlobalThreadPool</code> in lieu of explicit <code class="highlighter-rouge">:executor</code> option (dependency injection) on <code class="highlighter-rouge">Future</code>, <code class="highlighter-rouge">Promise</code>, and <code class="highlighter-rouge">Agent</code></li>
+  <li>Added <code class="highlighter-rouge">Concurrent::dataflow_with(executor, *inputs)</code> method to support executor dependency injection for dataflow</li>
+  <li>Software transactional memory with <code class="highlighter-rouge">TVar</code> and <code class="highlighter-rouge">Concurrent::atomically</code></li>
+  <li>First implementation of <a href="https://github.com/ruby-concurrency/concurrent-ruby/pull/49">new, high-performance</a> <code class="highlighter-rouge">Channel</code></li>
+  <li><code class="highlighter-rouge">Actor</code> is deprecated in favor of new experimental actor implementation <a href="https://github.com/ruby-concurrency/concurrent-ruby/pull/73">#73</a>. To avoid namespace collision it is living in <code class="highlighter-rouge">Actress</code> namespace until <code class="highlighter-rouge">Actor</code> is removed in next release.</li>
+</ul>
+
+<h2 id="release-v050">Release v0.5.0</h2>
+
+<p>This is the most significant release of this gem since its inception. This release includes many improvements and optimizations. It also includes several bug fixes. The major areas of focus for this release were:</p>
+
+<ul>
+  <li>Stability improvements on Ruby versions with thread-level parallelism (<a href="http://jruby.org/">JRuby</a> and <a href="http://rubini.us/">Rubinius</a>)</li>
+  <li>Creation of new low-level concurrency abstractions</li>
+  <li>Internal refactoring to use the new low-level abstractions</li>
+</ul>
+
+<p>Most of these updates had no effect on the gem API. There are a few notable exceptions which were unavoidable. Please read the <a href="API-Updates-in-v0.5.0">release notes</a> for more information.</p>
+
+<p>Specific changes include:</p>
+
+<ul>
+  <li>New class <code class="highlighter-rouge">IVar</code></li>
+  <li>New class <code class="highlighter-rouge">MVar</code></li>
+  <li>New class <code class="highlighter-rouge">ThreadLocalVar</code></li>
+  <li>New class <code class="highlighter-rouge">AtomicFixnum</code></li>
+  <li>New class method <code class="highlighter-rouge">dataflow</code></li>
+  <li>New class <code class="highlighter-rouge">Condition</code></li>
+  <li>New class <code class="highlighter-rouge">CountDownLatch</code></li>
+  <li>New class <code class="highlighter-rouge">DependencyCounter</code></li>
+  <li>New class <code class="highlighter-rouge">SafeTaskExecutor</code></li>
+  <li>New class <code class="highlighter-rouge">CopyOnNotifyObserverSet</code></li>
+  <li>New class <code class="highlighter-rouge">CopyOnWriteObserverSet</code></li>
+  <li><code class="highlighter-rouge">Future</code> updated with <code class="highlighter-rouge">execute</code> API</li>
+  <li><code class="highlighter-rouge">ScheduledTask</code> updated with <code class="highlighter-rouge">execute</code> API</li>
+  <li>New <code class="highlighter-rouge">Promise</code> API</li>
+  <li><code class="highlighter-rouge">Future</code> now extends <code class="highlighter-rouge">IVar</code></li>
+  <li><code class="highlighter-rouge">Postable#post?</code> now returns an <code class="highlighter-rouge">IVar</code></li>
+  <li>Thread safety fixes to <code class="highlighter-rouge">Dereferenceable</code></li>
+  <li>Thread safety fixes to <code class="highlighter-rouge">Obligation</code></li>
+  <li>Thread safety fixes to <code class="highlighter-rouge">Supervisor</code></li>
+  <li>Thread safety fixes to <code class="highlighter-rouge">Event</code></li>
+  <li>Various other thread safety (race condition) fixes</li>
+  <li>Refactored brittle tests</li>
+  <li>Implemented pending tests</li>
+  <li>Added JRuby and Rubinius as Travis CI build targets</li>
+  <li>Added <a href="https://codeclimate.com/">CodeClimate</a> code review</li>
+  <li>Improved YARD documentation</li>
+</ul>
+
+	    
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:rafael.orion+contatoblog@gmail.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://www.facebook.com/rafaelorion" title="Facebook"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Facebook</span>
+              </a>
+            </li><li><a href="https://github.com/rafaelorion" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/rafaelorion" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://linkedin.com/in/rafaelorion" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li><li><a href="https://www.instagram.com/rafaelorion" title="Instagram"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Instagram</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Rafael Orion
+      &nbsp;&bull;&nbsp;
+      2019
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000/">https://rafaelorion.github.io/blog</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  </body>
+</html>
