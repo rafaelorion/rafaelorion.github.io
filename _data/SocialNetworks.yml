@@ -56,6 +56,11 @@ instagram:
   baseURL: "https://www.instagram.com/"
   icon: "fa-instagram"
 
+hackerrank:
+  name: "HackerRank"
+  baseURL: "https://www.hackerrank.com/"
+  icon: "fa-hackerrank"
+
 youtube:
   name: "YouTube"
   baseURL: "https://www.youtube.com/"
