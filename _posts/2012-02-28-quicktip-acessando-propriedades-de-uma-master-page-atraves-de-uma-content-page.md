@@ -44,7 +44,3 @@ var teste = ((Label)Master.FindControl("lblTeste")).Text
 ```
 
 Até a próxima.
-
-{% if page.comments == true %}
-  {% include disqus.html %}
-{% endif %}
