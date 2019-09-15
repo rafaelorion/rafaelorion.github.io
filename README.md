@@ -1,9 +1,11 @@
 # Run Jekell
 run on http://localhost:4000/
+
 bundle exec jekyll serve
 
 # Bundle
 bundle update
+
 bundle exec jekyll build
 
 # Jekyll
@@ -37,6 +39,10 @@ https://annelledejager.github.io/blog/2017/09/22/customize-your-jekyll-blog-with
 
 
 ---
+
+- - -
+
+...
 
 
 
