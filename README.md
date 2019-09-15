@@ -42,7 +42,6 @@ https://annelledejager.github.io/blog/2017/09/22/customize-your-jekyll-blog-with
 
 - - -
 
-...
 
 
 
