@@ -72,3 +72,7 @@ repositorio = repositorio ?? new Repositorio();
 Até a próxima.
 
 []s
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

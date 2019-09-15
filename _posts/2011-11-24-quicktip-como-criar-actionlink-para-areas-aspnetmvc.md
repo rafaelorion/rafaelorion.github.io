@@ -23,3 +23,7 @@ Ou na sintaxe do Razor:
 
 
 Abraços,
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

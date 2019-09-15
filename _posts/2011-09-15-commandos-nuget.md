@@ -79,3 +79,7 @@ A documentação completa em inglês pode ser encontrada [aqui](https://docs.mic
 ## Dica
 
 O NuGet possui AutoComplete para auxiliar na digitação dos comandos e nomes de pacotes, basta pressionar a tecla Tab depois de digitar o inicio do comando.
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

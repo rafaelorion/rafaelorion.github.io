@@ -12,3 +12,7 @@ Finalmente, depois de algum tempo enrrolando, resolvi tomar vergonha na cara e c
 O objetivo é compartilhar um pouco de conhecimento e dos meus estudos.
 
 Let’s go!
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

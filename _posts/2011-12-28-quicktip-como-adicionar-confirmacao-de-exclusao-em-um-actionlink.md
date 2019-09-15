@@ -24,3 +24,7 @@ Em algumas sobrecargas o ActionLink recebe um Object para htmlAttributes, e é n
 Lembrando que também podemos setar qualquer atributo html para o ActionLink dessa mesma forma.
 
 Até a próxima.
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

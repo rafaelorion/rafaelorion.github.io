@@ -42,7 +42,7 @@ use-site-title: true
         -->
       </div>
     </div>
-    
+
     {% if post.tags.size > 0 %}
     <div class="blog-tags">
       Tags:
@@ -54,10 +54,6 @@ use-site-title: true
         {{ post.tags | join: ", " }}
       {% endif %}
     </div>
-    {% endif %}
-
-    {% if page.comments == true %}
-      {% include disqus.html %}
     {% endif %}
 
    </article>

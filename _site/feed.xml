@@ -42,6 +42,13 @@ Estrutura do DDD:
 
 Até a próxima.
 
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
         </description>
         <pubDate>Sun, 11 Mar 2012 00:00:00 -0300</pubDate>
         <link>http://localhost:4000/2012-03-11-domain-driven-design/</link>
@@ -85,6 +92,13 @@ var teste = ((Label)Master.FindControl(&quot;lblTeste&quot;)).Text
 
 
 Até a próxima.
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
 
         </description>
         <pubDate>Tue, 28 Feb 2012 00:00:00 -0300</pubDate>
@@ -170,6 +184,13 @@ Pronto! simples, agora vamos parar de utilizar banco de dados para gerenciar fil
 
 Até a próxima. []s
 
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
         </description>
         <pubDate>Thu, 02 Feb 2012 00:00:00 -0200</pubDate>
         <link>http://localhost:4000/2012-02-02-utilizando-msmq/</link>
@@ -195,6 +216,13 @@ Em algumas sobrecargas o ActionLink recebe um Object para htmlAttributes, e é n
 Lembrando que também podemos setar qualquer atributo html para o ActionLink dessa mesma forma.
 
 Até a próxima.
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
 
         </description>
         <pubDate>Wed, 28 Dec 2011 00:00:00 -0200</pubDate>
@@ -266,6 +294,13 @@ Até a próxima.
 
 []s
 
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
         </description>
         <pubDate>Mon, 28 Nov 2011 00:00:00 -0200</pubDate>
         <link>http://localhost:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</link>
@@ -299,6 +334,13 @@ Para mais informações clique aqui
 
 Até a próxima.
 []s
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
 
         </description>
         <pubDate>Sun, 27 Nov 2011 00:00:00 -0200</pubDate>
@@ -355,6 +397,13 @@ Pronto! já podemos debugar nosso projeto normalmente sem nenhum problema.
 
 []s
 
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
         </description>
         <pubDate>Fri, 25 Nov 2011 00:00:00 -0200</pubDate>
         <link>http://localhost:4000/2011-11-25-debugando-windows-service/</link>
@@ -379,6 +428,13 @@ Ou na sintaxe do Razor:
 @Html.ActionLink(“Descrição do Link”, “NomeDaPagina”, new { area=”NomeDaArea”, controller=”NomeDoController” } )
 
 Abraços,
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
 
         </description>
         <pubDate>Thu, 24 Nov 2011 00:00:00 -0200</pubDate>
@@ -460,6 +516,13 @@ Dica
 
 O NuGet possui AutoComplete para auxiliar na digitação dos comandos e nomes de pacotes, basta pressionar a tecla Tab depois de digitar o inicio do comando.
 
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
         </description>
         <pubDate>Thu, 15 Sep 2011 00:00:00 -0300</pubDate>
         <link>http://localhost:4000/2011-09-15-commandos-nuget/</link>
@@ -491,6 +554,13 @@ Nesse caso o Próximo registro inserido na tabela Funcionários assumira o valor
 Abraços,
 
 Rafael Orion
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
 
         </description>
         <pubDate>Sun, 04 Sep 2011 00:00:00 -0300</pubDate>
@@ -542,6 +612,13 @@ Depois farei um novo post demonstrando os principais comandos.
 Abraços,
 Rafael Orion
 
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
         </description>
         <pubDate>Sun, 04 Sep 2011 00:00:00 -0300</pubDate>
         <link>http://localhost:4000/2011-09-04-nuget/</link>
@@ -559,6 +636,13 @@ Finalmente, depois de algum tempo enrrolando, resolvi tomar vergonha na cara e c
 O objetivo é compartilhar um pouco de conhecimento e dos meus estudos.
 
 Let’s go!
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
 
         </description>
         <pubDate>Sun, 29 May 2011 00:00:00 -0300</pubDate>

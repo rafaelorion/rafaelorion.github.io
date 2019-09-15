@@ -28,3 +28,7 @@ Nesse caso o Próximo registro inserido na tabela Funcionários assumira o valor
 Abraços,
 
 Rafael Orion
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

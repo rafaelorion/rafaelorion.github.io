@@ -38,3 +38,7 @@ Estrutura do DDD:
 ![DDD](/img/posts/ddd-diagrama.jpg)
 
 Até a próxima.
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

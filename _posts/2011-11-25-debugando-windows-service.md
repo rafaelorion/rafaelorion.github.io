@@ -53,3 +53,7 @@ Como o Método OnStarde é do tipo protected criamos esse novo método publico p
 Pronto! já podemos debugar nosso projeto normalmente sem nenhum problema.
 
 []s
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

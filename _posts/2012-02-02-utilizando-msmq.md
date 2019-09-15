@@ -86,3 +86,7 @@ Job myJob = (Job)myMessage.Body;
 Pronto! simples, agora vamos parar de utilizar banco de dados para gerenciar filas ok 😉
 
 Até a próxima. []s
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}

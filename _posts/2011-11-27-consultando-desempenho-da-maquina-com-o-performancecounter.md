@@ -33,3 +33,7 @@ Console.WriteLine(" % Acesso ao HD: {0}", hd.NextValue());
 
 Até a próxima.
 []s
+
+{% if page.comments == true %}
+  {% include disqus.html %}
+{% endif %}
