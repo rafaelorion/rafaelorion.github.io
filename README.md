@@ -1,3 +1,46 @@
+#Run Jekell
+run on http://localhost:4000/
+bundle exec jekyll serve
+
+#Bundle
+bundle update
+bundle exec jekyll build
+
+#Jekyll
+https://medium.com/@fatih_yildizli/building-a-static-web-blog-with-jekyll-and-github-pages-local-machine-54cfc7fe1598
+https://jekyllrb.com/docs/troubleshooting/#configuration-problems
+
+#Themes
+https://jekyllthemes.io/free
+http://jekyllthemes.org/page11/
+
+#Markdown
+https://docs.microsoft.com/pt-br/contribute/how-to-write-use-markdown
+https://pt.wikipedia.org/wiki/Markdown
+https://jekyllrb.com/docs/posts/
+https://dev-notes.eu/2016/01/images-in-kramdown-jekyll/
+https://kramdown.gettalong.org/syntax.html#inline-attribute-lists
+http://assemble.io/docs/Cheatsheet-Markdown.html
+
+#Bootstrap
+https://getbootstrap.com/docs/3.4/components/
+
+
+#Disqus
+http://sgeos.github.io/jekyll/disqus/2016/02/15/adding-disqus-to-a-jekyll-blog.html
+
+#Google analytics
+https://www.readmodwrite.com/2019-01-18-jekyll-seo-tags/
+https://desiredpersona.com/google-analytics-jekyll/
+https://curtisvermeeren.github.io/2016/11/18/Jekyll-Google-Analytics.html
+https://ongspxm.github.io/blog/2016/09/jekyll-google-analytics/
+https://annelledejager.github.io/blog/2017/09/22/customize-your-jekyll-blog-with-disqus-comments,-analytics-and-customized-theme.html
+
+
+---
+
+
+
 # Beautiful Jekyll
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/daattali/20)
@@ -180,13 +223,13 @@ If you want to use this theme to host a website that will be available at `https
 
 If you want to use this theme to create a website for a particular repository, it will be available at `https://YOURUSERNAME.github.io/PROJECTNAME`, and that is called a [Project Page](https://help.github.com/articles/user-organization-and-project-pages/). You can have a Project Page for any repository you have on GitHub.
 
-**When using this theme for a Project Page, by default your website will be served from the `gh-pages` branch**, so you must take the following steps: 
+**When using this theme for a Project Page, by default your website will be served from the `gh-pages` branch**, so you must take the following steps:
 
 1. [Delete the existing `gh-pages` branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository#deleting-a-branch)
 
 2. [Create a new branch named `gh-pages` from the `master` branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository#creating-a-branch)
 
-Alternatively, instead of the above two steps, you can opt to use the `master` branch instead of `gh-pages` branch as your website's source by choosing that option in the main Settings page. 
+Alternatively, instead of the above two steps, you can opt to use the `master` branch instead of `gh-pages` branch as your website's source by choosing that option in the main Settings page.
 
 ## Showcased users (success stories!)
 
@@ -322,4 +365,4 @@ If you do fork or clone this project to use as a template for your site, I would
 
 - If you have a project page and you want a custom 404 page, you must have a custom domain.  See https://help.github.com/articles/custom-404-pages/.  This means that if you have a regular User Page you can use the 404 page from this theme, but if it's a website for a specific repository, the 404 page will not be used.
 
-- If there are many navigation bar links and avatar, some of the links may get partially hidden behind the avatar. 
+- If there are many navigation bar links and avatar, some of the links may get partially hidden behind the avatar.

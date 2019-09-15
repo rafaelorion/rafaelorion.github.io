@@ -1,11 +1,10 @@
-bundle update
-bundle exec jekyll build
-
-
-
-#run on http://localhost:4000/
+#Run Jekell
+run on http://localhost:4000/
 bundle exec jekyll serve
 
+#Bundle
+bundle update
+bundle exec jekyll build
 
 #Jekyll
 https://medium.com/@fatih_yildizli/building-a-static-web-blog-with-jekyll-and-github-pages-local-machine-54cfc7fe1598
