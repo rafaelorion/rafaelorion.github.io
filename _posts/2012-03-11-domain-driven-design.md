@@ -35,6 +35,6 @@ E para quem quer se aprofundar no assunto recomendo a leitura do [livro do Evans
 
 Estrutura do DDD:
 
-![Nuget](/img/posts/ddd-diagrama.jpg)
+![DDD](/img/posts/ddd-diagrama.jpg)
 
 Até a próxima.

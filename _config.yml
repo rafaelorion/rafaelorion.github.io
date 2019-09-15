@@ -124,7 +124,7 @@ url-pretty: "https://rafaelorion.github.io"  # eg. "deanattali.com/beautiful-jek
 # --- Comments --- #
 
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-# disqus: "http://disqus.com/by/rafaelorion_disqus"
+disqus: rafaelorion-github-io
 
 # If you want to use JustComments fill with the API Key
 #just-comments: "ABCD-EFGH-IJKL"
