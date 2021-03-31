@@ -251,7 +251,8 @@ PLATFORMS
 DEPENDENCIES
   github-pages (= 197)
   jekyll-paginate
+  nokogiri (= 1.10.4)
   tzinfo-data
 
 BUNDLED WITH
-   1.17.3
+   2.2.15

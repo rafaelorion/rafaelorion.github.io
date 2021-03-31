@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
-  <title>Rafael Orion / Blog - A virtual proof that I am awesome</title>
+  <title>Rafael Orion / Blog - Dev_Blog</title>
 
   <meta name="author" content="Rafael Orion" />
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - A virtual proof that I am awesome" href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - Dev_Blog" href="http://localhost:4000/feed.xml" />
 
   
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -204,6 +204,124 @@
       <div class="posts-list">
   
   <article class="post-preview">
+    <a href="/2021-03-30-dot-net-cli/">
+	  <h2 class="post-title">.Net CLI</h2>
+
+	  
+    </a>
+
+    <p class="post-meta">
+      Posted on March 30, 2021
+    </p>
+
+    <div class="post-entry-container">
+      
+      <div class="post-entry">
+        <p><img src="../img/posts/dotnetcore.png" alt=".Net CLI" align="left" /></p>
+
+<p>Depois dessa pequena pausa, que tal voltar falando um pouco sobre o CLI do .NET</p>
+
+<p>Junto com a vinda do .NET Core ganhamos de brinde o CLI (<strong>Command Line Interface</strong>), a nova ferramenta cross-platform que nos permite criar, compilar, publicar e manipular packages das nossas aplicações feitas com .net core.</p>
+
+<p>Com o CLI fica mais fácil automatizar algumas tarefas de devops, desenvolver utilizando outros sistemas operacionais como Mac/Linux ou até mesmo migrar do VisualStudio para o VsCode ;)</p>
+
+<p>Para utilizar os comandos do CLI basta ter o .Net Core instalado e usar o terminal de sua preferência.</p>
+
+<p><strong>A estrutura dos comandos segue o seguinte padrão:</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dotnet &lt;command&gt; &lt;argument&gt; &lt;option&gt;
+</code></pre></div></div>
+
+<p><strong>Alguns exemplos:</strong></p>
+<ul>
+  <li>Para criar uma nova aplicação Console chamada “NewConsole”
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new console -n NewConsole
+</code></pre></div>    </div>
+  </li>
+  <li>para criar uma nova aplicação web mvc
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new mvc
+</code></pre></div>    </div>
+  </li>
+  <li>Adiciona referência do Newtonsoft.json no projeto
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Newtonsoft.json
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="alguns-comandos-básicos-são">Alguns comandos básicos são:</h2>
+
+<ul>
+  <li><strong>dotnet new</strong> = Cria um novo projeto ou solution baseado em algum template específico</li>
+  <li><strong>dotnet restore</strong> = Restaura as dependências do projeto</li>
+  <li><strong>dotnet build</strong> = Compila a aplicação</li>
+  <li><strong>dotnet Run</strong> = Executa a aplicação</li>
+  <li><strong>dotnet publish</strong> = Efetuar o deploy da aplicação</li>
+  <li><strong>dotnet test</strong> = Executa os testes unitários</li>
+  <li><strong>dotnet vtest</strong> = Executa os testes unitários de um arquivo específico</li>
+  <li><strong>dotnet pack</strong> = Gera um pacote do nuget com o código</li>
+  <li><strong>dotnet clean</strong> = Limpa o output do projeto</li>
+  <li><strong>dotnet sln</strong> = Modifica o .NET Core solution file.</li>
+  <li><strong>dotnet add package</strong> = Adiciona a referência de um pacote do nuget no projeto</li>
+  <li><strong>dotnet add reference</strong> = Adiciona referência de um outro projeto</li>
+  <li><strong>dotnet remove package</strong> = Remove a referência de um pacote do nuget</li>
+  <li><strong>dotnet remove reference</strong> =	Remove a referência de um projeto</li>
+  <li><strong>dotnet list reference</strong> = Lista todas as referências</li>
+</ul>
+
+<h2 id="referências">Referências:</h2>
+<ul>
+  <li><a href="https://docs.microsoft.com/pt-br/dotnet/core/tools">docs.microsoft.com/pt-br/dotnet/core/tools</a></li>
+  <li><a href="https://docs.microsoft.com/pt-br/dotnet/core/tools/dotnet">docs.microsoft.com/pt-br/dotnet/core/tools/dotnet</a></li>
+</ul>
+
+<p>Até a próxima.</p>
+
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+        <!-- ORIGINAL
+        Depois dessa pequena pausa, que tal voltar falando um pouco sobre o CLI do .NET Junto com a vinda do .NET Core ganhamos de brinde o CLI (Command Line Interface), a nova ferramenta cross-platform que nos permite criar, compilar, publicar e manipular packages das nossas aplicações feitas com .net core....
+        
+        
+          <a href="/2021-03-30-dot-net-cli/" class="post-read-more">[Read&nbsp;More]</a>
+        
+        -->
+      </div>
+    </div>
+
+    
+    <div class="blog-tags">
+      Tags:
+      
+      
+      <a href="/tags#cli">cli</a>
+      
+      <a href="/tags#dotnet">dotnet</a>
+      
+      <a href="/tags#microsoft">microsoft</a>
+      
+      <a href="/tags#core">core</a>
+      
+      
+    </div>
+    
+
+   </article>
+  
+  <article class="post-preview">
     <a href="/2012-03-11-domain-driven-design/">
 	  <h2 class="post-title">Domain Driven Design (DDD)</h2>
 
@@ -267,9 +385,7 @@
 
 
         <!-- ORIGINAL
-        
-
-
+        Comecei a ouvir falar de Domain Driven Design (ou DDD para os íntimos) na época em que entrei no grupo de discuções do DotNet Architects, percebi que tinha muita gente da comunidade falando a respeito e resolvi entender um pouco mais sobre esse tipo de arquitetura. O DDD é um...
         
         
           <a href="/2012-03-11-domain-driven-design/" class="post-read-more">[Read&nbsp;More]</a>
@@ -348,9 +464,7 @@ Para isso basta usar o comando FindControl como no exemplo:</p>
 <p>Até a próxima.</p>
 
         <!-- ORIGINAL
-        
-
-
+        Agora vou dar uma dica bem simples de como acessar propriedades que estão em uma master page por uma de suas paginas filho. Primeiramente vamos declarar uma propriedade publica na MasterPage: Public String PropriedadePublica { get { return (String)Session[&quot;PropriedadePublica&quot;]; } set { Session[&quot;PropriedadePublica&quot;] = value; } } Estou utilizando sessions...
         
         
           <a href="/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/" class="post-read-more">[Read&nbsp;More]</a>
@@ -478,9 +592,7 @@ Job myJob = (Job)myMessage.Body;
 
 
         <!-- ORIGINAL
-        
-
-
+        O MSMQ (Microsoft Message Queue) é uma implementaçao da Microsoft presente desde o windows 95 para o enfileiramento de Mensagens. As filas trabalham com a politica FIFO (First In First Out), ou seja, em uma fila podemos empilhar uma serie de mensagens, e sempre sera recuperado uma a uma começando...
         
         
           <a href="/2012-02-02-utilizando-msmq/" class="post-read-more">[Read&nbsp;More]</a>
@@ -554,9 +666,7 @@ Segue um exemplo abaixo:</p>
 
 
         <!-- ORIGINAL
-        
-
-
+        Para adicionar uma confirmação de exclusão ou qualquer alerta em um ActionLink do asp.Net MVC é muito simples. Segue um exemplo abaixo: @Html.ActionLink(“Excluir”, “Delete”, new { id = item.Id }, new { @onClick = “javascript:return ” + “confirm(‘Confirma a exclusão?’)”}) Em algumas sobrecargas o ActionLink recebe um Object para htmlAttributes,...
         
         
           <a href="/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/" class="post-read-more">[Read&nbsp;More]</a>
@@ -670,9 +780,7 @@ public IList Empresas
 
 
         <!-- ORIGINAL
-        
-
-
+        Em alguns casos precisamos trabalhar com tipos nulos, mas por padrão nem todos os tipos de variáveis aceitam, porem em c# é muito simples criarmos variáveis que possam assumir valores nulos. Nullable Qualquer tipo pode passar a ser nullable , por exemplo uma variável do tipo int por padrão não...
         
         
           <a href="/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/" class="post-read-more">[Read&nbsp;More]</a>
@@ -750,9 +858,7 @@ Console.WriteLine(" % Acesso ao HD: {0}", hd.NextValue());
 
 
         <!-- ORIGINAL
-        
-
-
+        Com o PerformanceCounter podemos obter diversas informações sobre o desempenho atual da maquina, como por exemplo quantidade de memória em uso, espaço livre no HD, processamento, etc. Quando precisamos rodar um processo muito pesado em um servidor através de um serviço periódico muitas vezes vale a pena conferir a situação...
         
         
           <a href="/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/" class="post-read-more">[Read&nbsp;More]</a>
@@ -851,9 +957,7 @@ Console.WriteLine(" % Acesso ao HD: {0}", hd.NextValue());
 
 
         <!-- ORIGINAL
-        
-
-
+        Hoje vou ensinar uma forma para debugar windows service. Ao criarmos um projeto do tipo WindowsService não conseguimos debugar normalmente como qualquer outro tipo de projeto, porem temos uma forma bem simples para contornar esse problema. Primeiramente devemos criar uma condição na classe Program.cs para identificar se o nosso projeto...
         
         
           <a href="/2011-11-25-debugando-windows-service/" class="post-read-more">[Read&nbsp;More]</a>
@@ -928,9 +1032,7 @@ Apesar de ser algo simples fica a dica.</p>
 
 
         <!-- ORIGINAL
-        
-
-
+        Fala ae galera. Quando comecei a trabalhar com áreas no asp.net MVC3 me deparei com essa situação de criar um link que aponte para uma área diferente. Apesar de ser algo simples fica a dica. &amp;lt;%= Html.ActionLink(“Descrição do Link”, “NomeDaPagina”, new { area=”NomeDaArea”, controller=”NomeDoController” } )%&amp;gt; Ou na sintaxe do...
         
         
           <a href="/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1056,9 +1158,7 @@ Apesar de ser algo simples fica a dica.</p>
 
 
         <!-- ORIGINAL
-        
-
-
+        No post anterior falei um pouco sobre o NuGet, agora vou listar alguns dos principais comandos para você utilizar no console do Visual Studio. Para exibir o shell de comandos do NuGet, vá no menu View/Other Windows/Package Manage Console. A seguinte janela irá ficar visível: No combo do lado esquerdo...
         
         
           <a href="/2011-09-15-commandos-nuget/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1140,9 +1240,7 @@ Apesar de ser algo simples fica a dica.</p>
 
 
         <!-- ORIGINAL
-        
-
-
+        Fala ae Galera. Vou postar uma dica simples mas útil. Ao Criarmos uma coluna identity no Sql Server, mesmo depois de apagar todos os dados da tabela, ao inserirmos um novo registro ele continuará incrementando o valor desse campo a partir do ultimo valor inserido. Para zerar esse contador basta...
         
         
           <a href="/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1240,9 +1338,7 @@ Rafael Orion</p>
 
 
         <!-- ORIGINAL
-        
-
-
+        NuGet é um projeto open source para gerenciar pacotes na plataforma .NET. Com o NuGet as tarefas de adicionar uma biblioteca,configurar e atualizar ficaram muito mais fáceis. Basta buscar nele a biblioteca que deseja utilizar que fará o trabalho de configurar seu ambiente e instalar todas as dependências necessárias deixando...
         
         
           <a href="/2011-09-04-nuget/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1306,9 +1402,7 @@ Rafael Orion</p>
 
 
         <!-- ORIGINAL
-        
-
-
+        Finalmente, depois de algum tempo enrrolando, resolvi tomar vergonha na cara e criar um blog próprio (depois de algumas experiencias em um blog com o pessoal da faculdade). O objetivo é compartilhar um pouco de conhecimento e dos meus estudos. Let’s go! Please enable JavaScript to view the comments powered...
         
         
           <a href="/2011-05-29-hello-world/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1424,7 +1518,7 @@ Rafael Orion</p>
       <p class="copyright text-muted">
       Rafael Orion
       &nbsp;&bull;&nbsp;
-      2019
+      2021
 
       
       &nbsp;&bull;&nbsp;

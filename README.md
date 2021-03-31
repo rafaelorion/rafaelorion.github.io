@@ -3,6 +3,12 @@ run on http://localhost:4000/
 
 bundle exec jekyll serve
 
+
+
+sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev
+sudo bundle install
+
+
 # Bundle
 bundle update
 
