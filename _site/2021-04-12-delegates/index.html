@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Delegates</title>
+
+  <meta name="author" content="Rafael Orion" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - Dev_Blog" href="http://localhost:4000/feed.xml" />
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148027710-1"></script>
+    <script>
+          window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148027710-1');
+</script>
+
+
+  
+
+  
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-148027710-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Delegates" />
+  
+
+   
+  <meta property="og:description" content="Hoje vamos falar um pouco sobre Delegates, o próprio nome já passa uma ideia do seu propósito. Delegates são formas de delegar funções para outros métodos, um delegate representa uma referencia para um método que pode ser passado via parâmetro. Com isso abrimos um leque de possibilidades, como escolher o...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2021-04-12-delegates/" />
+  <link rel="canonical" href="http://localhost:4000/2021-04-12-delegates/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/dev.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Delegates" />
+  
+
+  
+  <meta name="twitter:description" content="Hoje vamos falar um pouco sobre Delegates, o próprio nome já passa uma ideia do seu propósito. Delegates são formas de delegar funções para outros métodos, um delegate representa uma referencia para um método que pode ser passado via parâmetro. Com isso abrimos um leque de possibilidades, como escolher o...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/dev.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">Rafael Orion / Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/aboutme">Sobre</a></li>
+          <li><a href="/contact">Contato</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Resources</a>
+            <div class="navlinks-children">
+              <a href="https://jekyllrb.com/">Jekell</a>
+              <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+              <a href="http://www.markdowntutorial.com/">Learn markdown</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/dev.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Delegates</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on April 12, 2021</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p><img src="../img/posts/delegate.png" alt="Delegate" align="left" /></p>
+
+<p>Hoje vamos falar um pouco sobre Delegates, o próprio nome já passa uma ideia do seu propósito.</p>
+
+<p>Delegates são formas de delegar funções para outros métodos, um delegate representa uma referencia para um método que pode ser passado via parâmetro.</p>
+
+<p>Com isso abrimos um leque de possibilidades, como escolher o comportamento de uma funcionalidade em runtime, definir o callback para uma função e até mesmo extender o comportamento de alguma classe externa sem a necessidade de mudança direta no código original.</p>
+
+<p>Delegates são semelhantes a ponteiros de função do C++, a referência da chamada de um método é enviada ou atribuída a um delegate em vez da função concreta, tornando assim os delegates ferramentas tão flexíveis no desenvolvimento de uma aplicação.</p>
+
+<p>Um delegate é declarado utilizando a palavra reservada <strong>delegate</strong> como no exemplo a seguir:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">delegate</span> <span class="kt">string</span> <span class="nf">MeuDelegate</span><span class="p">(</span><span class="kt">string</span> <span class="n">nome</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Um delegate pode ser atribuído diretamente recebendo o nome de um método já existente ou através de uma expressão lambda.</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MeuDelegate</span> <span class="n">meuDelegate</span> <span class="p">=</span> <span class="n">FuncaoTeste</span><span class="p">;</span>
+
+<span class="n">MeuDelegate</span> <span class="n">meuDelegate2</span> <span class="p">=</span> <span class="p">(</span><span class="n">nome</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="s">$"Bem vindo </span><span class="p">{</span><span class="n">nome</span><span class="p">}</span><span class="s">!"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="delegate-ou-multicastdelegate">Delegate ou MulticastDelegate?</h2>
+
+<p>Um delegate pode possuir retorno ou ser void, se um delegate não tiver nenhum retorno (void) ele automaticamente será do tipo System.MulticastDelegate, por conta disso, suportando o agrupamento com outras funções usando o operador “+=”</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">Del</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">DelegateMethod1</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"DelegateMethod1 "</span> <span class="p">+</span> <span class="n">message</span><span class="p">);</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">DelegateMethod2</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"DelegateMethod2 "</span> <span class="p">+</span> <span class="n">message</span><span class="p">);</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">DelegateMethod3</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"DelegateMethod3 "</span> <span class="p">+</span> <span class="n">message</span><span class="p">);</span>
+
+<span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">Del</span> <span class="n">d1</span> <span class="p">=</span> <span class="n">DelegateMethod1</span><span class="p">;</span>
+  <span class="n">Del</span> <span class="n">d2</span> <span class="p">=</span> <span class="n">DelegateMethod2</span><span class="p">;</span>
+  <span class="n">Del</span> <span class="n">d3</span> <span class="p">=</span> <span class="n">DelegateMethod3</span><span class="p">;</span>
+
+  <span class="n">Del</span> <span class="n">allMethodsDelegate</span> <span class="p">=</span> <span class="n">d1</span> <span class="p">+</span> <span class="n">d2</span><span class="p">;</span>
+  <span class="n">allMethodsDelegate</span> <span class="p">+=</span> <span class="n">d3</span><span class="p">;</span>
+
+  <span class="nf">allMethodsDelegate</span><span class="p">(</span><span class="s">"Rafael Orion"</span><span class="p">);</span> <span class="c1">//Os 3 métodos serão executados</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Se o delegate tiver algum retorno, nesse caso ele será do tipo System.Delegate e não suporta agrupamento de  métodos como o caso anterior.</p>
+
+<h2 id="colocando-a-mão-na-massa">Colocando a mão na massa!</h2>
+
+<p>Vamos montar um exemplo um pouco mais prático, imagine que temos uma função externa para fazer um processamento dos dados de uma lista, mas queremos a possibilidade de injetar alguns filtros quando necessário.</p>
+
+<p><strong>Aqui temos nossa classe do tipo Usuario:</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">enum</span> <span class="n">Sexo</span> <span class="p">{</span> <span class="n">Masculino</span><span class="p">,</span> <span class="n">Feminino</span> <span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Usuario</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="n">Sexo</span> <span class="n">Sexo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">Estado</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">Usuario</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="kt">string</span> <span class="n">nome</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idade</span><span class="p">,</span> <span class="n">Sexo</span> <span class="n">sexo</span><span class="p">,</span> <span class="kt">string</span> <span class="n">estado</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Id</span> <span class="p">=</span> <span class="n">id</span><span class="p">;</span>
+    <span class="n">Nome</span> <span class="p">=</span> <span class="n">nome</span><span class="p">;</span>
+    <span class="n">Idade</span> <span class="p">=</span> <span class="n">idade</span><span class="p">;</span>
+    <span class="n">Sexo</span> <span class="p">=</span> <span class="n">sexo</span><span class="p">;</span>
+    <span class="n">Estado</span> <span class="p">=</span> <span class="n">estado</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">public</span> <span class="k">override</span> <span class="kt">string</span> <span class="nf">ToString</span><span class="p">()</span> <span class="p">=&gt;</span> <span class="k">return</span> <span class="s">$"Id:</span><span class="p">{</span><span class="n">Id</span><span class="p">}</span><span class="s"> - </span><span class="p">{</span><span class="n">Nome</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">Sexo</span><span class="p">}</span><span class="s"> ,</span><span class="p">{</span><span class="n">Idade</span><span class="p">}</span><span class="s"> anos de </span><span class="p">{</span><span class="n">Estado</span><span class="p">}</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Aqui nosso delegate chamado “Filtro” que pode receber qualquer método com mesmos parâmetros e retorno:</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">delegate</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="nf">Filtro</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="n">usuarios</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Aqui temos uma função que irá receber uma lista de Usuários, ordenar e exibir:</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="n">usuarios</span><span class="p">,</span> <span class="n">Filtro</span> <span class="n">filtros</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">//Efetua a ordenação</span>
+  <span class="kt">var</span> <span class="n">usuariosOrdenados</span> <span class="p">=</span> <span class="n">usuarios</span><span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">_</span><span class="p">.</span><span class="n">Nome</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+
+  <span class="c1">//Verifica se o delegate foi atribuído ou não</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">filtros</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">usuariosOrdenados</span> <span class="p">=</span> <span class="nf">filtros</span><span class="p">(</span><span class="n">usuariosOrdenados</span><span class="p">);</span> <span class="c1">//Executa o delegate enviado</span>
+  <span class="p">}</span>
+
+  <span class="c1">//Exibe o resultado no console da aplicação</span>
+  <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">usuario</span> <span class="k">in</span> <span class="n">usuariosOrdenados</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">usuario</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Se chamarmos a nossa função ExibirUsuariosOrdenados sem passar nenhum delegate de filtro o resultado será somente nossa lista de nomes ordenada.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">usuarios</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;()</span>
+  <span class="p">{</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="s">"Usuario 6"</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Feminino</span><span class="p">,</span> <span class="s">"rio de janeiro"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="s">"Usuario 4"</span><span class="p">,</span> <span class="m">41</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Masculino</span><span class="p">,</span> <span class="s">"minas gerais"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="s">"Usuario 3"</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Masculino</span><span class="p">,</span> <span class="s">"rio de janeiro"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="s">"Usuario 8"</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Masculino</span><span class="p">,</span> <span class="s">"sao paulo"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="s">"Usuario 5"</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Feminino</span><span class="p">,</span> <span class="s">"sao paulo"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="s">"Usuario 7"</span><span class="p">,</span> <span class="m">19</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Feminino</span><span class="p">,</span> <span class="s">"sao paulo"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="s">"Usuario 1"</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Masculino</span><span class="p">,</span> <span class="s">"sao paulo"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="s">"Usuario 9"</span><span class="p">,</span> <span class="m">23</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Masculino</span><span class="p">,</span> <span class="s">"rio de janeiro"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="s">"Usuario 2"</span><span class="p">,</span> <span class="m">29</span><span class="p">,</span> <span class="n">Sexo</span><span class="p">.</span><span class="n">Feminino</span><span class="p">,</span> <span class="s">"sao paulo"</span><span class="p">),</span>
+  <span class="p">};</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Exibindo todos sem filtro"</span><span class="p">);</span>
+  <span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">usuarios</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>nesse caso o resultado seria:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exibindo todos sem filtro
+Id:1 - Usuario 1, Masculino ,15 anos de sao paulo
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:3 - Usuario 3, Masculino ,12 anos de rio de janeiro
+Id:4 - Usuario 4, Masculino ,41 anos de minas gerais
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:6 - Usuario 6, Feminino ,18 anos de rio de janeiro
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:8 - Usuario 8, Masculino ,12 anos de sao paulo
+Id:9 - Usuario 9, Masculino ,23 anos de rio de janeiro
+</code></pre></div></div>
+
+<p><strong>Criando um método para usar no delegate</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="nf">FiltroMaioresDeIdade</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="n">usuarios</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">usuarios</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">_</span><span class="p">.</span><span class="n">Idade</span> <span class="p">&gt;</span> <span class="m">18</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Se passarmos o nosso método FiltroMaioresDeIdade para o delegate o resultado será:</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Exibindo com filtro de idade"</span><span class="p">);</span>
+<span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">usuarios</span><span class="p">,</span> <span class="n">FiltroMaioresDeIdade</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Resultado:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exibindo com filtro de idade
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:4 - Usuario 4, Masculino ,41 anos de minas gerais
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:9 - Usuario 9, Masculino ,23 anos de rio de janeiro
+</code></pre></div></div>
+
+<p><strong>Também podemos definir atribuir um delegate usando lambda:</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Exibindo com filtro de cidade usando Lambda"</span><span class="p">);</span>
+<span class="n">Filtro</span> <span class="n">filtroPaulistas</span> <span class="p">=</span> <span class="p">(</span><span class="n">lista</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">lista</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">_</span><span class="p">.</span><span class="n">Estado</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="s">"sao paulo"</span><span class="p">)).</span><span class="nf">ToList</span><span class="p">());</span>
+<span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">usuarios</span><span class="p">,</span> <span class="n">filtroPaulistas</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Resultado:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exibindo com filtro de cidade usando Lambda
+Id:1 - Usuario 1, Masculino ,15 anos de sao paulo
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:8 - Usuario 8, Masculino ,12 anos de sao paulo
+</code></pre></div></div>
+
+<h2 id="ok-mas-posso-executar-mais-de-uma-função-ao-mesmo-tempo-usando-o-mesmo-delegate">Ok, mas posso executar mais de uma função ao mesmo tempo usando o mesmo delegate?</h2>
+
+<p>A resposta para essa pergunta é <strong>depende</strong>.
+Se o seu delegate tiver um retorno assim como no exemplo anterior não será possível encadear mais de uma função, isso só é possível para métodos void.</p>
+
+<p>Então seguindo a lógica do nosso exemplo, se quisermos enviar mais de um filtro ao mesmo tempo temos que fazer algumas alterações:</p>
+
+<p><strong>Primeiramente nosso delegate não pode mais ter um retorno, para continuar alterando nossa lista sem um retorno vamos apelar para a mágica da passagem de parâmetro por referência, possibilitando que nosso método altere a lista original</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">delegate</span> <span class="k">void</span> <span class="nf">Filtro</span><span class="p">(</span><span class="k">ref</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="n">usuarios</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Os métodos dos filtros também precisam ser alterados:</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">FiltroMaioresDeIdade</span><span class="p">(</span><span class="k">ref</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="n">usuarios</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">usuarios</span> <span class="p">=</span> <span class="n">usuarios</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">_</span><span class="p">.</span><span class="n">Idade</span> <span class="p">&gt;</span> <span class="m">18</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">FiltroPaulistas</span><span class="p">(</span><span class="k">ref</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;</span> <span class="n">usuarios</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">usuarios</span> <span class="p">=</span> <span class="n">usuarios</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">_</span><span class="p">.</span><span class="n">Estado</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="s">"sao paulo"</span><span class="p">)).</span><span class="nf">ToList</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Agora já podemos trabalhar com um ou mais filtros</strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Exibindo com filtro de idade"</span><span class="p">);</span>
+  <span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">usuarios</span><span class="p">,</span> <span class="n">FiltroMaioresDeIdade</span><span class="p">);</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"\n"</span><span class="p">);</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Exibindo com filtro de cidade"</span><span class="p">);</span>
+  <span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">usuarios</span><span class="p">,</span> <span class="n">FiltroPaulistas</span><span class="p">);</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"\n"</span><span class="p">);</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Exibindo com filtro de idade e cidade"</span><span class="p">);</span>
+  <span class="n">Filtro</span> <span class="n">multiplosFiltros</span> <span class="p">=</span> <span class="n">FiltroMaioresDeIdade</span><span class="p">;</span>
+  <span class="n">multiplosFiltros</span><span class="p">+=</span> <span class="n">FiltroPaulistas</span><span class="p">;</span> <span class="c1">//Atribuindo um segundo método por meio do operador +</span>
+  <span class="nf">ExibirUsuariosOrdenados</span><span class="p">(</span><span class="n">usuarios</span><span class="p">,</span> <span class="n">multiplosFiltros</span><span class="p">);</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"\n"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Resultado:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Exibindo com filtro de idade
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:4 - Usuario 4, Masculino ,41 anos de minas gerais
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:9 - Usuario 9, Masculino ,23 anos de rio de janeiro
+
+Exibindo com filtro de cidade
+Id:1 - Usuario 1, Masculino ,15 anos de sao paulo
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:8 - Usuario 8, Masculino ,12 anos de sao paulo
+
+Exibindo com filtro de idade e cidade
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+</code></pre></div></div>
+
+<p>Como podem ver no exemplo é possível passar diversos métodos para o mesmo delegate, todos serão executados quando o delegate for executado.</p>
+
+<p>Lembrando que esse problema apresentado poderia ser feito de diversas outras formas muito melhores, a ideia aqui é somente exemplificar o uso de um delegate de uma maneira simples, garanto que irá se deparar com diversas possibilidade no seu dia a dia. ;)</p>
+
+<h2 id="referências">Referências:</h2>
+<ul>
+  <li><a href="https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/delegates/">Delegados (Guia de Programação em C#)</a></li>
+  <li><a href="https://docs.microsoft.com/pt-br/previous-versions/visualstudio/visual-studio-2008/ff652490(v=orm.10)">Delegates and Events</a></li>
+</ul>
+
+<p>Até a próxima.</p>
+
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#c#">c#</a>
+          
+            <a href="/tags#dotnet">dotnet</a>
+          
+            <a href="/tags#microsoft">microsoft</a>
+          
+            <a href="/tags#delegates">delegates</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Delegates&url=http%3A%2F%2Flocalhost%3A4000%2F2021-04-12-delegates%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+  <!--- Share on Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-04-12-delegates%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fa fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-04-12-delegates%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2021-03-30-dot-net-cli/" data-toggle="tooltip" data-placement="top" title=".Net CLI">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:rafael.orion+contatoblog@gmail.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://www.facebook.com/rafaelorion" title="Facebook"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Facebook</span>
+              </a>
+            </li><li><a href="https://github.com/rafaelorion" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/rafaelorion" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://linkedin.com/in/rafaelorion" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li><li><a href="https://www.hackerrank.com/rafaelorion" title="HackerRank"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-hackerrank fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">HackerRank</span>
+              </a>
+            </li><li><a href="https://www.instagram.com/rafaelorion" title="Instagram"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Instagram</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Rafael Orion
+      &nbsp;&bull;&nbsp;
+      2021
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000/">https://rafaelorion.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 
-  <title>.Net CLI</title>
+  <title>Security Policy</title>
 
   <meta name="author" content="Rafael Orion" />
 
@@ -81,19 +81,19 @@
   
 
   
-  <meta property="og:title" content=".Net CLI" />
+  <meta property="og:title" content="Security Policy" />
   
 
    
-  <meta property="og:description" content="Depois dessa pequena pausa, que tal voltar falando um pouco sobre o CLI do .NET Junto com a vinda do .NET Core ganhamos de brinde o CLI (Command Line Interface), a nova ferramenta cross-platform que nos permite criar, compilar, publicar e manipular packages das nossas aplicações feitas com .net core....">
+  <meta property="og:description" content="# Security Policy ## Supported Versions Use this section to tell people about which versions of your project are currently being supported with security updates. | Version | Supported | | ------- | ------------------ | | 5.1.x | :white_check_mark: | | 5.0.x | :x: | | 4.0.x | :white_check_mark: |...">
   
 
 
   <meta property="og:type" content="website" />
 
   
-  <meta property="og:url" content="http://localhost:4000/2021-03-30-dot-net-cli/" />
-  <link rel="canonical" href="http://localhost:4000/2021-03-30-dot-net-cli/" />
+  <meta property="og:url" content="http://localhost:4000/SECURITY/" />
+  <link rel="canonical" href="http://localhost:4000/SECURITY/" />
   
 
   
@@ -107,11 +107,11 @@
   <meta name="twitter:creator" content="@" />
 
   
-  <meta name="twitter:title" content=".Net CLI" />
+  <meta name="twitter:title" content="Security Policy" />
   
 
   
-  <meta name="twitter:description" content="Depois dessa pequena pausa, que tal voltar falando um pouco sobre o CLI do .NET Junto com a vinda do .NET Core ganhamos de brinde o CLI (Command Line Interface), a nova ferramenta cross-platform que nos permite criar, compilar, publicar e manipular packages das nossas aplicações feitas com .net core....">
+  <meta name="twitter:description" content="# Security Policy ## Supported Versions Use this section to tell people about which versions of your project are currently being supported with security updates. | Version | Supported | | ------- | ------------------ | | 5.1.x | :white_check_mark: | | 5.0.x | :x: | | 4.0.x | :white_check_mark: |...">
   
 
   
@@ -182,12 +182,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-heading">
-          <h1>.Net CLI</h1>
+        <div class="page-heading">
+          <h1>Security Policy</h1>
 		  
 		  
-		  
-		  <span class="post-meta">Posted on March 30, 2021</span>
 		  
         </div>
       </div>
@@ -200,189 +198,52 @@
 
 
 
-<div class="container">
+<div class="container" role="main">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1 id="security-policy">Security Policy</h1>
 
-      
+<h2 id="supported-versions">Supported Versions</h2>
 
-      <article role="main" class="blog-post">
-        <p><img src="../img/posts/dotnetcore.png" alt=".Net CLI" align="left" /></p>
+<p>Use this section to tell people about which versions of your project are
+currently being supported with security updates.</p>
 
-<p>Depois dessa pequena pausa, que tal voltar falando um pouco sobre o CLI do .NET</p>
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Supported</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5.1.x</td>
+      <td>:white_check_mark:</td>
+    </tr>
+    <tr>
+      <td>5.0.x</td>
+      <td>:x:</td>
+    </tr>
+    <tr>
+      <td>4.0.x</td>
+      <td>:white_check_mark:</td>
+    </tr>
+    <tr>
+      <td>&lt; 4.0</td>
+      <td>:x:</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Junto com a vinda do .NET Core ganhamos de brinde o CLI (<strong>Command Line Interface</strong>), a nova ferramenta cross-platform que nos permite criar, compilar, publicar e manipular packages das nossas aplicações feitas com .net core.</p>
+<h2 id="reporting-a-vulnerability">Reporting a Vulnerability</h2>
 
-<p>Com o CLI fica mais fácil automatizar algumas tarefas de devops, desenvolver utilizando outros sistemas operacionais como Mac/Linux ou até mesmo migrar do VisualStudio para o VsCode ;)</p>
+<p>Use this section to tell people how to report a vulnerability.</p>
 
-<p>Para utilizar os comandos do CLI basta ter o .Net Core instalado e usar o terminal de sua preferência.</p>
+<p>Tell them where to go, how often they can expect to get an update on a
+reported vulnerability, what to expect if the vulnerability is accepted or
+declined, etc.</p>
 
-<p><strong>A estrutura dos comandos segue o seguinte padrão:</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> dotnet &lt;command&gt; &lt;argument&gt; &lt;option&gt;
-</code></pre></div></div>
-
-<p><strong>Alguns exemplos:</strong></p>
-<ul>
-  <li>Para criar uma nova aplicação Console chamada “NewConsole”
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new console -n NewConsole
-</code></pre></div>    </div>
-  </li>
-  <li>para criar uma nova aplicação web mvc
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet new mvc
-</code></pre></div>    </div>
-  </li>
-  <li>Adiciona referência do Newtonsoft.json no projeto
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Newtonsoft.json
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<h2 id="alguns-comandos-básicos-são">Alguns comandos básicos são:</h2>
-
-<ul>
-  <li><strong>dotnet new</strong> = Cria um novo projeto ou solution baseado em algum template específico</li>
-  <li><strong>dotnet restore</strong> = Restaura as dependências do projeto</li>
-  <li><strong>dotnet build</strong> = Compila a aplicação</li>
-  <li><strong>dotnet Run</strong> = Executa a aplicação</li>
-  <li><strong>dotnet publish</strong> = Efetuar o deploy da aplicação</li>
-  <li><strong>dotnet test</strong> = Executa os testes unitários</li>
-  <li><strong>dotnet vtest</strong> = Executa os testes unitários de um arquivo específico</li>
-  <li><strong>dotnet pack</strong> = Gera um pacote do nuget com o código</li>
-  <li><strong>dotnet clean</strong> = Limpa o output do projeto</li>
-  <li><strong>dotnet sln</strong> = Modifica o .NET Core solution file.</li>
-  <li><strong>dotnet add package</strong> = Adiciona a referência de um pacote do nuget no projeto</li>
-  <li><strong>dotnet add reference</strong> = Adiciona referência de um outro projeto</li>
-  <li><strong>dotnet remove package</strong> = Remove a referência de um pacote do nuget</li>
-  <li><strong>dotnet remove reference</strong> =	Remove a referência de um projeto</li>
-  <li><strong>dotnet list reference</strong> = Lista todas as referências</li>
-</ul>
-
-<h2 id="referências">Referências:</h2>
-<ul>
-  <li><a href="https://docs.microsoft.com/pt-br/dotnet/core/tools">docs.microsoft.com/pt-br/dotnet/core/tools</a></li>
-  <li><a href="https://docs.microsoft.com/pt-br/dotnet/core/tools/dotnet">docs.microsoft.com/pt-br/dotnet/core/tools/dotnet</a></li>
-</ul>
-
-<p>Até a próxima.</p>
-
-<div class="comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'rafaelorion-github-io';
-        /* ensure that pages with query string get the same discussion */
-            var url_parts = window.location.href.split("?");
-            var disqus_url = url_parts[0];
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-
-
-      </article>
-
-      
-        <div class="blog-tags">
-          Tags:
-          
-          
-            <a href="/tags#cli">cli</a>
-          
-            <a href="/tags#dotnet">dotnet</a>
-          
-            <a href="/tags#microsoft">microsoft</a>
-          
-            <a href="/tags#core">core</a>
-          
-          
-        </div>
-      
-
-      
-        <!-- Check if any share-links are active -->
-
-
-
-
-<section id = "social-share-section">
-  <span class="sr-only">Share: </span>
-
-  
-  <!--- Share on Twitter -->
-    <a href="https://twitter.com/intent/tweet?text=.Net+CLI&url=http%3A%2F%2Flocalhost%3A4000%2F2021-03-30-dot-net-cli%2F"
-      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
-      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
-      <span class="sr-only">Twitter</span>
-    </a>
-  
-
-  
-  <!--- Share on Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-03-30-dot-net-cli%2F"
-      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
-      <span class="fa fa-fw fa-facebook" aria-hidden="true"></span>
-      <span class="sr-only">Facebook</span>
-    </a>
-  
-
-  
-  <!--- Share on LinkedIn -->
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-03-30-dot-net-cli%2F"
-      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
-      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
-      <span class="sr-only">LinkedIn</span>
-    </a>
-  
-
-</section>
-
-
-
-      
-
-      <ul class="pager blog-pager">
-        
-        <li class="previous">
-          <a href="/2012-03-11-domain-driven-design/" data-toggle="tooltip" data-placement="top" title="Domain Driven Design (DDD)">&larr; Previous Post</a>
-        </li>
-        
-        
-        <li class="next">
-          <a href="/2021-04-12-delegates/" data-toggle="tooltip" data-placement="top" title="Delegates">Next Post &rarr;</a>
-        </li>
-        
-      </ul>
-
-      
-        <div class="disqus-comments">
-          <div class="comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'rafaelorion-github-io';
-        /* ensure that pages with query string get the same discussion */
-            var url_parts = window.location.href.split("?");
-            var disqus_url = url_parts[0];
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-        </div>
-          
-        <div class="staticman-comments">
-          
-
-        </div>
-        <div class="justcomments-comments">
-          
-        </div>
-      
+	    
     </div>
   </div>
 </div>

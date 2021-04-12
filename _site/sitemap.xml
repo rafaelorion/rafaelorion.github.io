@@ -53,6 +53,10 @@
 <lastmod>2021-03-30T00:00:00-03:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2021-04-12-delegates/</loc>
+<lastmod>2021-04-12T00:00:00-03:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/aboutme/</loc>
 </url>
 <url>
@@ -63,6 +67,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/tags/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/SECURITY/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/nstall-dependencies/gems/concurrent-ruby-1.1.5/CHANGELOG/</loc>

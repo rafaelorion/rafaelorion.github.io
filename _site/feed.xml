@@ -7,6 +7,262 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Delegates</title>
+        <description>
+          
+          
+
+Hoje vamos falar um pouco sobre Delegates, o próprio nome já passa uma ideia do seu propósito.
+
+Delegates são formas de delegar funções para outros métodos, um delegate representa uma referencia para um método que pode ser passado via parâmetro.
+
+Com isso abrimos um leque de possibilidades, como escolher o comportamento de uma funcionalidade em runtime, definir o callback para uma função e até mesmo extender o comportamento de alguma classe externa sem a necessidade de mudança direta no código original.
+
+Delegates são semelhantes a ponteiros de função do C++, a referência da chamada de um método é enviada ou atribuída a um delegate em vez da função concreta, tornando assim os delegates ferramentas tão flexíveis no desenvolvimento de uma aplicação.
+
+Um delegate é declarado utilizando a palavra reservada delegate como no exemplo a seguir:
+public delegate string MeuDelegate(string nome);
+
+
+Um delegate pode ser atribuído diretamente recebendo o nome de um método já existente ou através de uma expressão lambda.
+MeuDelegate meuDelegate = FuncaoTeste;
+
+MeuDelegate meuDelegate2 = (nome) =&amp;gt; ($&quot;Bem vindo {nome}!&quot;);
+
+
+Delegate ou MulticastDelegate?
+
+Um delegate pode possuir retorno ou ser void, se um delegate não tiver nenhum retorno (void) ele automaticamente será do tipo System.MulticastDelegate, por conta disso, suportando o agrupamento com outras funções usando o operador “+=”
+
+public delegate void Del(string message);
+
+public static void DelegateMethod1(string message) =&amp;gt; Console.WriteLine(&quot;DelegateMethod1 &quot; + message);
+public static void DelegateMethod2(string message) =&amp;gt; Console.WriteLine(&quot;DelegateMethod2 &quot; + message);
+public static void DelegateMethod3(string message) =&amp;gt; Console.WriteLine(&quot;DelegateMethod3 &quot; + message);
+
+void Main()
+{
+  Del d1 = DelegateMethod1;
+  Del d2 = DelegateMethod2;
+  Del d3 = DelegateMethod3;
+
+  Del allMethodsDelegate = d1 + d2;
+  allMethodsDelegate += d3;
+
+  allMethodsDelegate(&quot;Rafael Orion&quot;); //Os 3 métodos serão executados
+}
+
+
+Se o delegate tiver algum retorno, nesse caso ele será do tipo System.Delegate e não suporta agrupamento de  métodos como o caso anterior.
+
+Colocando a mão na massa!
+
+Vamos montar um exemplo um pouco mais prático, imagine que temos uma função externa para fazer um processamento dos dados de uma lista, mas queremos a possibilidade de injetar alguns filtros quando necessário.
+
+Aqui temos nossa classe do tipo Usuario:
+public enum Sexo { Masculino, Feminino }
+
+public class Usuario
+{
+  public int Id { get; set; }
+  public string Nome { get; set; }
+  public int Idade { get; set; }
+  public Sexo Sexo { get; set; }
+  public string Estado { get; set; }
+
+  public Usuario(int id, string nome, int idade, Sexo sexo, string estado)
+  {
+    Id = id;
+    Nome = nome;
+    Idade = idade;
+    Sexo = sexo;
+    Estado = estado;
+  }
+  public override string ToString() =&amp;gt; return $&quot;Id:{Id} - {Nome}, {Sexo} ,{Idade} anos de {Estado}&quot;;
+}
+
+
+Aqui nosso delegate chamado “Filtro” que pode receber qualquer método com mesmos parâmetros e retorno:
+public delegate List&amp;lt;Usuario&amp;gt; Filtro(List&amp;lt;Usuario&amp;gt; usuarios);
+
+
+Aqui temos uma função que irá receber uma lista de Usuários, ordenar e exibir:
+public void ExibirUsuariosOrdenados(List&amp;lt;Usuario&amp;gt; usuarios, Filtro filtros = null)
+{
+  //Efetua a ordenação
+  var usuariosOrdenados = usuarios.OrderBy(_ =&amp;gt; _.Nome).ToList();
+
+  //Verifica se o delegate foi atribuído ou não
+  if(filtros != null)
+  {
+    usuariosOrdenados = filtros(usuariosOrdenados); //Executa o delegate enviado
+  }
+
+  //Exibe o resultado no console da aplicação
+  foreach(var usuario in usuariosOrdenados)
+  {
+    Console.WriteLine(usuario.ToString());
+  }
+}
+
+
+Se chamarmos a nossa função ExibirUsuariosOrdenados sem passar nenhum delegate de filtro o resultado será somente nossa lista de nomes ordenada.
+
+void Main()
+{
+  var usuarios = new List&amp;lt;Usuario&amp;gt;()
+  {
+    new Usuario(6,&quot;Usuario 6&quot;, 18, Sexo.Feminino, &quot;rio de janeiro&quot;),
+    new Usuario(4,&quot;Usuario 4&quot;, 41, Sexo.Masculino, &quot;minas gerais&quot;),
+    new Usuario(3,&quot;Usuario 3&quot;, 12, Sexo.Masculino, &quot;rio de janeiro&quot;),
+    new Usuario(8,&quot;Usuario 8&quot;, 12, Sexo.Masculino, &quot;sao paulo&quot;),
+    new Usuario(5,&quot;Usuario 5&quot;, 34, Sexo.Feminino, &quot;sao paulo&quot;),
+    new Usuario(7,&quot;Usuario 7&quot;, 19, Sexo.Feminino, &quot;sao paulo&quot;),
+    new Usuario(1,&quot;Usuario 1&quot;, 15, Sexo.Masculino, &quot;sao paulo&quot;),
+    new Usuario(9,&quot;Usuario 9&quot;, 23, Sexo.Masculino, &quot;rio de janeiro&quot;),
+    new Usuario(2,&quot;Usuario 2&quot;, 29, Sexo.Feminino, &quot;sao paulo&quot;),
+  };
+
+  Console.WriteLine(&quot;Exibindo todos sem filtro&quot;);
+  ExibirUsuariosOrdenados(usuarios);
+}
+
+
+nesse caso o resultado seria:
+Exibindo todos sem filtro
+Id:1 - Usuario 1, Masculino ,15 anos de sao paulo
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:3 - Usuario 3, Masculino ,12 anos de rio de janeiro
+Id:4 - Usuario 4, Masculino ,41 anos de minas gerais
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:6 - Usuario 6, Feminino ,18 anos de rio de janeiro
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:8 - Usuario 8, Masculino ,12 anos de sao paulo
+Id:9 - Usuario 9, Masculino ,23 anos de rio de janeiro
+
+
+Criando um método para usar no delegate
+public List&amp;lt;Usuario&amp;gt; FiltroMaioresDeIdade(List&amp;lt;Usuario&amp;gt; usuarios)
+{
+  return usuarios.Where(_ =&amp;gt; _.Idade &amp;gt; 18).ToList();
+}
+
+
+Se passarmos o nosso método FiltroMaioresDeIdade para o delegate o resultado será:
+Console.WriteLine(&quot;Exibindo com filtro de idade&quot;);
+ExibirUsuariosOrdenados(usuarios, FiltroMaioresDeIdade);
+
+
+Resultado:
+Exibindo com filtro de idade
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:4 - Usuario 4, Masculino ,41 anos de minas gerais
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:9 - Usuario 9, Masculino ,23 anos de rio de janeiro
+
+
+Também podemos definir atribuir um delegate usando lambda:
+Console.WriteLine(&quot;Exibindo com filtro de cidade usando Lambda&quot;);
+Filtro filtroPaulistas = (lista) =&amp;gt; (lista.Where(_ =&amp;gt; _.Estado.Equals(&quot;sao paulo&quot;)).ToList());
+ExibirUsuariosOrdenados(usuarios, filtroPaulistas);
+
+
+Resultado:
+Exibindo com filtro de cidade usando Lambda
+Id:1 - Usuario 1, Masculino ,15 anos de sao paulo
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:8 - Usuario 8, Masculino ,12 anos de sao paulo
+
+
+Ok, mas posso executar mais de uma função ao mesmo tempo usando o mesmo delegate?
+
+A resposta para essa pergunta é depende.
+Se o seu delegate tiver um retorno assim como no exemplo anterior não será possível encadear mais de uma função, isso só é possível para métodos void.
+
+Então seguindo a lógica do nosso exemplo, se quisermos enviar mais de um filtro ao mesmo tempo temos que fazer algumas alterações:
+
+Primeiramente nosso delegate não pode mais ter um retorno, para continuar alterando nossa lista sem um retorno vamos apelar para a mágica da passagem de parâmetro por referência, possibilitando que nosso método altere a lista original
+public delegate void Filtro(ref List&amp;lt;Usuario&amp;gt; usuarios);
+
+
+Os métodos dos filtros também precisam ser alterados:
+public void FiltroMaioresDeIdade(ref List&amp;lt;Usuario&amp;gt; usuarios)
+{
+  usuarios = usuarios.Where(_ =&amp;gt; _.Idade &amp;gt; 18).ToList();
+}
+
+public void FiltroPaulistas(ref List&amp;lt;Usuario&amp;gt; usuarios)
+{
+  usuarios = usuarios.Where(_ =&amp;gt; _.Estado.Equals(&quot;sao paulo&quot;)).ToList();
+}
+
+
+Agora já podemos trabalhar com um ou mais filtros
+  Console.WriteLine(&quot;Exibindo com filtro de idade&quot;);
+  ExibirUsuariosOrdenados(usuarios, FiltroMaioresDeIdade);
+  Console.WriteLine(&quot;\n&quot;);
+
+  Console.WriteLine(&quot;Exibindo com filtro de cidade&quot;);
+  ExibirUsuariosOrdenados(usuarios, FiltroPaulistas);
+  Console.WriteLine(&quot;\n&quot;);
+
+  Console.WriteLine(&quot;Exibindo com filtro de idade e cidade&quot;);
+  Filtro multiplosFiltros = FiltroMaioresDeIdade;
+  multiplosFiltros+= FiltroPaulistas; //Atribuindo um segundo método por meio do operador +
+  ExibirUsuariosOrdenados(usuarios, multiplosFiltros);
+  Console.WriteLine(&quot;\n&quot;);
+
+
+Resultado:
+Exibindo com filtro de idade
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:4 - Usuario 4, Masculino ,41 anos de minas gerais
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:9 - Usuario 9, Masculino ,23 anos de rio de janeiro
+
+Exibindo com filtro de cidade
+Id:1 - Usuario 1, Masculino ,15 anos de sao paulo
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+Id:8 - Usuario 8, Masculino ,12 anos de sao paulo
+
+Exibindo com filtro de idade e cidade
+Id:2 - Usuario 2, Feminino ,29 anos de sao paulo
+Id:5 - Usuario 5, Feminino ,34 anos de sao paulo
+Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
+
+
+Como podem ver no exemplo é possível passar diversos métodos para o mesmo delegate, todos serão executados quando o delegate for executado.
+
+Lembrando que esse problema apresentado poderia ser feito de diversas outras formas muito melhores, a ideia aqui é somente exemplificar o uso de um delegate de uma maneira simples, garanto que irá se deparar com diversas possibilidade no seu dia a dia. ;)
+
+Referências:
+
+  Delegados (Guia de Programação em C#)
+  Delegates and Events
+
+
+Até a próxima.
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+
+        </description>
+        <pubDate>Mon, 12 Apr 2021 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2021-04-12-delegates/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-04-12-delegates/</guid>
+      </item>
+    
+      <item>
         <title>.Net CLI</title>
         <description>
           
