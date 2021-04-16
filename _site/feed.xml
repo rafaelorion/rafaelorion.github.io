@@ -7,7 +7,127 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Delegates</title>
+        <title>Generics em C#</title>
+        <description>
+          
+          
+
+Conforme vamos avançando no entendimento de uma linguagem começamos a ter contato com alguns conceitos que no primeiro momento podem parecer complicados, mas são a chave para resolver diversos problemas.
+
+Introduzido no .net Framework 2.0, o generics apresenta o conceito de parâmetros de tipo, onde em vez de usar um tipo fixo, podemos receber o tipo via parâmetro, deixando assim o nosso código mais flexível.
+
+Pode parecer complexo mas até mesmo quem não está familiarizado com o termo generics já deve ter esbarrado com ele em algum momento, nem que seja na hora de declarar uma bela lista de string usando:
+var lista = new List&amp;lt;string&amp;gt;;
+
+
+Representado geralmente (mas não obrigatoriamente) pelo carácter T, o Generics pode ser usado tanto diretamente no método como na classe para um escopo mais abrangente.
+
+Temos a possibilidade de criar classes e métodos que adiam a especificação de um ou mais tipos até que a classe seja instanciada ou o método utilizada, uma das características do Generics é a tipagem segura, além de você pode usar sem custo ou risco de conversões de tempo de execução ou operações boxing, como ocorre com o tipo object.
+
+Usando classes genéricas
+
+Calma, já disse que não é tão complicado quanto parece, simplificando, assim como nosso método pode receber o valor de uma variável por parâmetro, o tipo dessa variável também pode vir via parâmetro. ;)
+
+Ex:
+
+public void ShowMessage&amp;lt;T&amp;gt;(T obj) {
+  Console.WriteLine (obj.ToString());
+}
+
+void Main() {
+  ShowMessage&amp;lt;int&amp;gt;(3);
+  ShowMessage&amp;lt;DateTime&amp;gt;(DateTime.Now);
+  ShowMessage&amp;lt;string&amp;gt;(&quot;Rafael&quot;);
+}
+
+
+No exemplo temos um método chamado ShowMessage, que ira receber um parâmetro chamado obj, e o tipo desse parâmetro também ira ser informado por meio do T.
+
+quando passamos o ,  ou  apos o nome do método, estamos informando qual vai ser o valor do parâmetro.
+
+A declaração também pode ser feita diretamente com a classe:
+class Wallet&amp;lt;T&amp;gt;
+{
+  private List&amp;lt;T&amp;gt; MyItems;
+  public DateTime Created { get; private set; }
+  public DateTime LastUpdate { get; private set; }
+  public T LastItem { get; private set; }
+
+  public Wallet()
+  {
+    MyItems =  new List&amp;lt;T&amp;gt;();
+    Created = DateTime.Now;
+  }
+
+  public void Add(T data)
+  {
+    MyItems.Add (data);	
+    LastUpdate = DateTime.Now;
+    LastItem = data;
+  }
+}
+
+void Main()
+{
+  var stringWallet = new Wallet&amp;lt;string&amp;gt;();
+  stringWallet.Add(&quot;teste 1&quot;);
+  stringWallet.Add(&quot;teste 2&quot;);
+  stringWallet.Add(&quot;teste 3&quot;);
+	
+  var intWallet = new Wallet&amp;lt;int&amp;gt;();
+  intWallet.Add(1);
+  intWallet.Add(2);
+  intWallet.Add(3);	
+}
+
+
+No exemplo acima criamos uma classe chamada Wallet que ira armazenar uma lista de itens de qualquer tipo, como as operações executadas por ela são genéricas isso torna nossa vida muito mais fácil, em vez de criar uma wallet especifica para cada tipo que queremos armazenar podemos fazer isso uma única vez usando Generics.
+
+Como podem ver o tipo T que informamos no momento que instanciámos a classe é utilizado de diversas maneiras, tanto para declarar o tipo de alguma variável, como tipo em parâmetros dos métodos e até mesmo como retorno da nossa função.
+
+Por conversão costumamos usar a letra T como a variável que irá receber o tipo, mas podemos usar qualquer outro nome ou até mesmo receber mais de um tipo, como por exemplo:
+
+public void ShowMessage&amp;lt;T1, T2&amp;gt;(T1 obj, T2 obj2) {
+  Console.WriteLine (obj.ToString() + &quot; &quot; +  obj2.ToString());
+}
+
+void Main() {
+  ShowMessage&amp;lt;string, int&amp;gt;(&quot;Rafael&quot;, 99);
+}
+
+
+Apesar de “genérico” o  Generics pode seguir algumas regras para ajudar na codificação.
+Por exemplo podemos querer qualquer variável que implemente a interface IList somente;
+
+public T Clear&amp;lt;T&amp;gt;(T obj) where T: IList {
+  obj.Clear();
+  return obj;	
+}
+
+
+Nesse caso o método só poderá receber como parâmetro alguma classe que implemente a interface IList, essa regra é feita utilizando o “where T: IList”.
+
+Até a próxima.
+
+Referências:
+
+  Generics
+
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+        </description>
+        <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2021-04-16-generics/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-04-16-generics/</guid>
+      </item>
+    
+      <item>
+        <title>Delegates em C#</title>
         <description>
           
           

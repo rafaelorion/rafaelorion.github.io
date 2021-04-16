@@ -204,8 +204,171 @@
       <div class="posts-list">
   
   <article class="post-preview">
+    <a href="/2021-04-16-generics/">
+	  <h2 class="post-title">Generics em C#</h2>
+
+	  
+    </a>
+
+    <p class="post-meta">
+      Posted on April 16, 2021
+    </p>
+
+    <div class="post-entry-container">
+      
+      <div class="post-entry">
+        <p><img src="../img/posts/generic.jpg" alt="Generics em c#" align="left" /></p>
+
+<p>Conforme vamos avançando no entendimento de uma linguagem começamos a ter contato com alguns conceitos que no primeiro momento podem parecer complicados, mas são a chave para resolver diversos problemas.</p>
+
+<p>Introduzido no .net Framework 2.0, o <strong>generics</strong> apresenta o conceito de parâmetros de tipo, onde em vez de usar um tipo fixo, podemos receber o tipo via parâmetro, deixando assim o nosso código mais flexível.</p>
+
+<p>Pode parecer complexo mas até mesmo quem não está familiarizado com o termo <strong>generics</strong> já deve ter esbarrado com ele em algum momento, nem que seja na hora de declarar uma bela lista de string usando:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">lista</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;;</span>
+</code></pre></div></div>
+
+<p>Representado geralmente (mas não obrigatoriamente) pelo carácter <strong>T</strong>, o <strong>Generics</strong> pode ser usado tanto diretamente no método como na classe para um escopo mais abrangente.</p>
+
+<p>Temos a possibilidade de criar classes e métodos que adiam a especificação de um ou mais tipos até que a classe seja instanciada ou o método utilizada, uma das características do <strong>Generics</strong> é a tipagem segura, além de você pode usar sem custo ou risco de conversões de tempo de execução ou operações boxing, como ocorre com o tipo <strong>object</strong>.</p>
+
+<h2 id="usando-classes-genéricas">Usando classes genéricas</h2>
+
+<p>Calma, já disse que não é tão complicado quanto parece, simplificando, assim como nosso método pode receber o valor de uma variável por parâmetro, o tipo dessa variável também pode vir via parâmetro. ;)</p>
+
+<p>Ex:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="n">ShowMessage</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">Main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">ShowMessage</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="m">3</span><span class="p">);</span>
+  <span class="n">ShowMessage</span><span class="p">&lt;</span><span class="n">DateTime</span><span class="p">&gt;(</span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+  <span class="n">ShowMessage</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">"Rafael"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>No exemplo temos um método chamado ShowMessage, que ira receber um parâmetro chamado obj, e o tipo desse parâmetro também ira ser informado por meio do T.</p>
+
+<p>quando passamos o <int>, <DateTime> ou <string> apos o nome do método, estamos informando qual vai ser o valor do parâmetro.</string></DateTime></int></p>
+
+<p>A declaração também pode ser feita diretamente com a classe:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Wallet</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">MyItems</span><span class="p">;</span>
+  <span class="k">public</span> <span class="n">DateTime</span> <span class="n">Created</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="n">DateTime</span> <span class="n">LastUpdate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="n">T</span> <span class="n">LastItem</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nf">Wallet</span><span class="p">()</span>
+  <span class="p">{</span>
+    <span class="n">MyItems</span> <span class="p">=</span>  <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+    <span class="n">Created</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">MyItems</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">data</span><span class="p">);</span>	
+    <span class="n">LastUpdate</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+    <span class="n">LastItem</span> <span class="p">=</span> <span class="n">data</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">stringWallet</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Wallet</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+  <span class="n">stringWallet</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"teste 1"</span><span class="p">);</span>
+  <span class="n">stringWallet</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"teste 2"</span><span class="p">);</span>
+  <span class="n">stringWallet</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"teste 3"</span><span class="p">);</span>
+	
+  <span class="kt">var</span> <span class="n">intWallet</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Wallet</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+  <span class="n">intWallet</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+  <span class="n">intWallet</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+  <span class="n">intWallet</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>	
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>No exemplo acima criamos uma classe chamada Wallet que ira armazenar uma lista de itens de qualquer tipo, como as operações executadas por ela são genéricas isso torna nossa vida muito mais fácil, em vez de criar uma wallet especifica para cada tipo que queremos armazenar podemos fazer isso uma única vez usando Generics.</p>
+
+<p>Como podem ver o tipo T que informamos no momento que instanciámos a classe é utilizado de diversas maneiras, tanto para declarar o tipo de alguma variável, como tipo em parâmetros dos métodos e até mesmo como retorno da nossa função.</p>
+
+<p>Por conversão costumamos usar a letra T como a variável que irá receber o tipo, mas podemos usar qualquer outro nome ou até mesmo receber mais de um tipo, como por exemplo:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="n">ShowMessage</span><span class="p">&lt;</span><span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">&gt;(</span><span class="n">T1</span> <span class="n">obj</span><span class="p">,</span> <span class="n">T2</span> <span class="n">obj2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span>  <span class="n">obj2</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">void</span> <span class="nf">Main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">ShowMessage</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;(</span><span class="s">"Rafael"</span><span class="p">,</span> <span class="m">99</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Apesar de “genérico” o  Generics pode seguir algumas regras para ajudar na codificação.
+Por exemplo podemos querer qualquer variável que implemente a interface IList somente;</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">T</span> <span class="n">Clear</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">obj</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span><span class="p">:</span> <span class="n">IList</span> <span class="p">{</span>
+  <span class="n">obj</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">obj</span><span class="p">;</span>	
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Nesse caso o método só poderá receber como parâmetro alguma classe que implemente a interface IList, essa regra é feita utilizando o “where T: IList”.</p>
+
+<p>Até a próxima.</p>
+
+<h2 id="referências">Referências:</h2>
+<ul>
+  <li><a href="https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/generics/">Generics</a></li>
+</ul>
+
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+        <!-- ORIGINAL
+        Conforme vamos avançando no entendimento de uma linguagem começamos a ter contato com alguns conceitos que no primeiro momento podem parecer complicados, mas são a chave para resolver diversos problemas. Introduzido no .net Framework 2.0, o generics apresenta o conceito de parâmetros de tipo, onde em vez de usar um...
+        
+        
+          <a href="/2021-04-16-generics/" class="post-read-more">[Read&nbsp;More]</a>
+        
+        -->
+      </div>
+    </div>
+
+    
+    <div class="blog-tags">
+      Tags:
+      
+      
+      <a href="/tags#c#">c#</a>
+      
+      <a href="/tags#dotnet">dotnet</a>
+      
+      <a href="/tags#microsoft">microsoft</a>
+      
+      <a href="/tags#generics">generics</a>
+      
+      
+    </div>
+    
+
+   </article>
+  
+  <article class="post-preview">
     <a href="/2021-04-12-delegates/">
-	  <h2 class="post-title">Delegates</h2>
+	  <h2 class="post-title">Delegates em C#</h2>
 
 	  
     </a>
