@@ -604,10 +604,16 @@ Por exemplo podemos querer qualquer variável que implemente a interface IList s
 <div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">delegate</span> <span class="kt">string</span> <span class="nf">MeuDelegate</span><span class="p">(</span><span class="kt">string</span> <span class="n">nome</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>Um delegate pode ser atribuído diretamente recebendo o nome de um método já existente ou através de uma expressão lambda.</p>
-<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MeuDelegate</span> <span class="n">meuDelegate</span> <span class="p">=</span> <span class="n">FuncaoTeste</span><span class="p">;</span>
+<p>Um delegate pode ser atribuído de diversas formas, utilizando um <strong>método nomeado</strong>, <strong>anonymous function</strong> ou até mesmo uma <strong>Lambda expression</strong>.</p>
 
-<span class="n">MeuDelegate</span> <span class="n">meuDelegate2</span> <span class="p">=</span> <span class="p">(</span><span class="n">nome</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="s">$"Bem vindo </span><span class="p">{</span><span class="n">nome</span><span class="p">}</span><span class="s">!"</span><span class="p">);</span>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Inicializando com um método já existente</span>
+<span class="n">MeuDelegate</span> <span class="n">meuDelegate</span> <span class="p">=</span> <span class="n">FuncaoTeste</span><span class="p">;</span> 
+
+<span class="c1">//Inicializando com uma anonymous function</span>
+<span class="n">MeuDelegate</span> <span class="n">meuDelegate2</span> <span class="p">=</span> <span class="k">delegate</span><span class="p">(</span><span class="kt">string</span> <span class="n">nome</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s">$"Bem vindo </span><span class="p">{</span><span class="n">nome</span><span class="p">}</span><span class="s">!"</span><span class="p">;</span> <span class="p">};</span>
+
+<span class="c1">//Inicializando com uma Lambda expression</span>
+<span class="n">MeuDelegate</span> <span class="n">meuDelegate3</span> <span class="p">=</span> <span class="p">(</span><span class="n">nome</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="s">$"Bem vindo </span><span class="p">{</span><span class="n">nome</span><span class="p">}</span><span class="s">!"</span><span class="p">);</span>
 </code></pre></div></div>
 
 <h2 id="delegate-ou-multicastdelegate">Delegate ou MulticastDelegate?</h2>
@@ -868,6 +874,8 @@ Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
       <a href="/tags#microsoft">microsoft</a>
       
       <a href="/tags#delegates">delegates</a>
+      
+      <a href="/tags#anonymous function">anonymous function</a>
       
       
     </div>

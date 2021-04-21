@@ -3,7 +3,7 @@ layout: post
 title: Delegates em C#
 image:
 subtitle:
-tags: [c#,dotnet, microsoft, delegates]
+tags: [c#,dotnet, microsoft, delegates, anonymous function]
 ---
 
 ![Delegate](../img/posts/delegate.png){:align="left"}
@@ -21,11 +21,17 @@ Um delegate é declarado utilizando a palavra reservada **delegate** como no exe
 public delegate string MeuDelegate(string nome);
 ``` 
 
-Um delegate pode ser atribuído diretamente recebendo o nome de um método já existente ou através de uma expressão lambda.
-```cs
-MeuDelegate meuDelegate = FuncaoTeste;
+Um delegate pode ser atribuído de diversas formas, utilizando um **método nomeado**, **anonymous function** ou até mesmo uma **Lambda expression**.
 
-MeuDelegate meuDelegate2 = (nome) => ($"Bem vindo {nome}!");
+```cs
+//Inicializando com um método já existente
+MeuDelegate meuDelegate = FuncaoTeste; 
+
+//Inicializando com uma anonymous function
+MeuDelegate meuDelegate2 = delegate(string nome) { return $"Bem vindo {nome}!"; };
+
+//Inicializando com uma Lambda expression
+MeuDelegate meuDelegate3 = (nome) => ($"Bem vindo {nome}!");
 ``` 
 
 
