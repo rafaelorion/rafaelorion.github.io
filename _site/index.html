@@ -204,6 +204,216 @@
       <div class="posts-list">
   
   <article class="post-preview">
+    <a href="/2021-04-21-anonymous-type-dynamic-object/">
+	  <h2 class="post-title">Anonymous type, Dynamic e Object</h2>
+
+	  
+    </a>
+
+    <p class="post-meta">
+      Posted on April 21, 2021
+    </p>
+
+    <div class="post-entry-container">
+      
+      <div class="post-entry">
+        <p><img src="../img/posts/anonymous.jpg" alt="Anonymous type" align="left" width="350px" /></p>
+
+<h2 id="anonymous-type">Anonymous Type</h2>
+
+<p>Os <strong>Tipos anônimos</strong> são utilizados para encapsular propriedades em um objeto somente leitura.</p>
+
+<p>Introduzidos no <strong>c# 3.0</strong> junto com o <strong>var</strong>, com ele podemos criar um objeto definindo diretamente no construtor as propriedades que queremos, sem precisar usar uma classe já existente.</p>
+
+<p>Para instanciar um objeto do tipo anonimo o processo é similar a de uma classe comum, porem omitimos o tipo do objeto como no exemplo a seguir:</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">produto</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Nome</span><span class="p">=</span> <span class="s">"Teclado"</span><span class="p">,</span> <span class="n">Descricao</span><span class="p">=</span><span class="s">"Keychron K8"</span><span class="p">,</span> <span class="n">Preco</span> <span class="p">=</span> <span class="p">(</span><span class="kt">decimal</span><span class="p">)</span><span class="m">69.00</span> <span class="p">};</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Produto "</span> <span class="p">+</span> <span class="n">produto</span><span class="p">.</span><span class="n">Nome</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">produto</span><span class="p">.</span><span class="n">Descricao</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Bem simples não é verdade?</p>
+
+<p>Note que não temos nenhuma classe com as definições do nosso produto, todos os campos foram definidos e os valores atribuídos diretamente no momento da instância.</p>
+
+<p>Como os tipos anonimos são readonly nao podemos alterar o valor de nenhuma das propriedade, isso resultaria em um erro de compilação.</p>
+
+<h2 id="object-x-dynamic-x-var-x-anonymous-type">Object x Dynamic x var x Anonymous Type</h2>
+
+<p>Uma confusão bem comum é com relação aos tipos anonimos, dynamic e object, para quem ainda não tem esses conceitos bem definidos pode parecer que é tudo igual, então vamos tentar esclarecer um pouco.</p>
+
+<h2 id="object">Object</h2>
+<p>Introduzido no <strong>c# 1.0</strong>, o tipo <strong>object</strong> pode receber qualquer tipo de valor, já que todas as classes em .Net herdam do tipo object.</p>
+
+<p>Por se tratar de um tipo, pode ser declarado sem receber nenhum valor inicial, porem mesmo aceitando qualquer tipo de valor, quando utilizado precisamos fazer cast para o tipo desejado.</p>
+
+<p>uma variável do tipo object alem de poder receber qualquer valor, também pode alterar entre valores de diferentes tipos a qualquer momento.</p>
+
+<p>exemplo:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">object</span> <span class="n">obj</span> <span class="p">=</span> <span class="s">"Rafael Orion"</span><span class="p">;</span> <span class="c1">//Declarando e iniciando uma variável object recebendo uma string</span>
+<span class="n">obj</span> <span class="p">=</span> <span class="m">35</span><span class="p">;</span> <span class="c1">//sobrescrevendo o valor inicial com um valor do tipo inteiro</span>
+
+<span class="kt">int</span> <span class="n">number1</span> <span class="p">=</span> <span class="n">obj</span><span class="p">;</span> <span class="c1">// compile error</span>
+<span class="kt">int</span> <span class="n">number2</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">obj</span><span class="p">;</span> <span class="c1">// correct</span>
+</code></pre></div></div>
+
+<p>Note que apesar da nossa variável estár com um valor inteiro, não é possível utilizar ele como inteiro sem efetuar a conversão antes, isso irá gerar um erro de compilação.</p>
+
+<h2 id="var">Var</h2>
+<p>Introduzido no <strong>c# 3.0</strong>, o var nada mais é do que uma forma de declarar alguma variável sem informar diretamente o seu tipo, o tipo será deduzido baseado no valor recebido, por conta disso o valor da variável sempre deve ser informado no momento da declaração.</p>
+
+<p>Diferente do object, dynamic e anonymous type, o var não é um tipo de valor, e sim somente uma forma de declarar os objetos, apesar de não obter nenhum ganho de performance na sua utilização ele é considerado por muitos uma boa pratica por deixar o código um pouco mais limpo e menos redundante.
+Exemplo:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Usuario</span> <span class="n">usuario1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Usuario</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">usuario2</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Usuario</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Note que em ambos os casos estamos instanciando um objeto do tipo “Usuario”, porem utilizamos o var não temos a redundância de informar o nome da classe duas vezes.</p>
+
+<p>Justamente por não ser um tipo, e sim somente um atalho para definir o tipo por Inferência, quando utilizado o var a variável receberá o tipo do valor que está recebendo, e por conta disso não pode ser alterado posteriormente.</p>
+
+<p>exemplo:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="s">"Rafael"</span><span class="p">;</span>
+<span class="n">obj</span> <span class="p">=</span> <span class="s">"Rafael Orion"</span><span class="p">;</span>
+<span class="n">obj</span> <span class="p">=</span> <span class="m">35</span><span class="p">;</span> <span class="c1">// compile error</span>
+</code></pre></div></div>
+<p>No exemplo acima nossa variável obj será do tipo string por conta do valor que está sendo atribuído, se tentarmos atribuir um valor de um tipo diferente do inicial teremos um erro de compilação.</p>
+
+<h2 id="anonymous-type-1">Anonymous Type</h2>
+<p>Introduzido no <strong>c# 3.0</strong>, como explicado anteriormente, podemos criar um objeto dinamicamente sem a necessidade de uma classe prévia que contenha a estrutura desejada.</p>
+
+<p>Para declarar um anonymous type precisamos utilizar o var, já que não temos uma palavra reservada especificamente para esse tipo.</p>
+
+<h2 id="dynamic">Dynamic</h2>
+<p>Introduzido no <strong>c# 4.0</strong>, e similar ao tipo object, com o dynamic podemos receber qualquer valor de forma bem flexível com a vantagem do cast ser feito automaticamente.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">dynamic</span> <span class="n">obj</span> <span class="p">=</span> <span class="s">"Rafael Orion"</span><span class="p">;</span>
+<span class="n">obj</span> <span class="p">=</span> <span class="m">35</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">number1</span> <span class="p">=</span> <span class="n">obj</span><span class="p">;</span> <span class="c1">// correct</span>
+<span class="kt">int</span> <span class="n">number2</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">obj</span><span class="p">;</span> <span class="c1">// correct</span>
+</code></pre></div></div>
+
+<p>Isso só é possível pois diferente do tipo object, dynamic não possui todas as informações sobre o valor recebido, algumas só serão resolvidas em runtime.</p>
+
+<p>O fato de não ser fortemente tipado pode deixar o seu uso mais prático, porem pode ocultar alguns problemas que só iram explodir em runtime. como dizia o tio Ben, “Com grandes poderes vêm grandes responsabilidades” .</p>
+
+<h2 id="exemplos">Exemplos:</h2>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">usuario</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Id</span><span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Nome</span> <span class="p">=</span> <span class="s">"Rafael"</span><span class="p">,</span> <span class="n">Profissao</span><span class="p">=</span> <span class="s">"Programador"</span><span class="p">};</span> <span class="c1">//Anonymous Type </span>
+<span class="n">usuario</span><span class="p">.</span><span class="n">Nome</span> <span class="p">=</span> <span class="s">"Orion"</span><span class="p">;</span>  <span class="c1">// compile error</span>
+
+<span class="c1">//Verificando o tipo da nossa variável</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">usuario</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//&lt;&gt;f__AnonymousType0`3</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="s">"dynamic:"</span><span class="p">);</span>
+<span class="kt">dynamic</span> <span class="n">obj1</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+<span class="kt">dynamic</span> <span class="n">obj2</span> <span class="p">=</span> <span class="s">"Orion"</span><span class="p">;</span>
+<span class="kt">dynamic</span> <span class="n">obj3</span> <span class="p">=</span> <span class="n">usuario</span><span class="p">;</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">obj1</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//Int32</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">obj2</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//String</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">obj3</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//&lt;&gt;f__AnonymousType0`3</span>
+
+<span class="kt">object</span> <span class="n">obj4</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+<span class="kt">object</span> <span class="n">obj5</span> <span class="p">=</span> <span class="s">"Orion"</span><span class="p">;</span>
+<span class="kt">object</span> <span class="n">obj6</span> <span class="p">=</span> <span class="n">usuario</span><span class="p">;</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"objects:"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj4</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//Int32</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj5</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//String</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj6</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//&lt;&gt;f__AnonymousType0`3</span>
+
+<span class="kt">var</span> <span class="n">obj7</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">obj8</span> <span class="p">=</span> <span class="s">"Orion"</span><span class="p">;</span>
+<span class="kt">var</span> <span class="n">obj9</span> <span class="p">=</span> <span class="n">usuario</span><span class="p">;</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="s">"var:"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj7</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//Int32</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj8</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//String</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">obj9</span><span class="p">.</span><span class="nf">GetType</span><span class="p">().</span><span class="n">Name</span><span class="p">);</span> <span class="c1">//&lt;&gt;f__AnonymousType0`3</span>
+		
+</code></pre></div></div>
+
+<h2 id="como-passar-um-tipo-anonimo-via-parâmetro">Como passar um tipo anonimo via parâmetro?</h2>
+
+<p>Se quisermos passar um tipo anônimo como parâmetro em alguma função precisamos utilizar o tipo dynamic, apesar do tipo object também suportar um tipo anonimo não teremos acesso as propriedades diretamente sem efetuar um cast para dynamic ou utilizando reflection, por conta disso o dynamic se encaixa melhor na situação.</p>
+
+<p>exemplo:</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">usuario</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Id</span><span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Nome</span> <span class="p">=</span> <span class="s">"Rafael"</span><span class="p">,</span> <span class="n">Profissao</span><span class="p">=</span> <span class="s">"Programador"</span><span class="p">};</span>
+  <span class="nf">Teste</span><span class="p">(</span><span class="n">usuario</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">Teste</span><span class="p">(</span><span class="kt">dynamic</span> <span class="n">usuario</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">usuario</span><span class="p">.</span><span class="n">Nome</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Como podemos ver a união do <strong>var</strong> com <strong>Anonymous Type</strong> e <strong>dynamic</strong> podem formar uma combinação muito poderosa e flexível. =)</p>
+
+<p>Até a próxima.</p>
+
+<h2 id="referências">Referências:</h2>
+<ul>
+  <li><a href="https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/anonymous-types">Tipos anônimos (Guia de Programação em C#)</a></li>
+</ul>
+
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+        <!-- ORIGINAL
+        Anonymous Type Os Tipos anônimos são utilizados para encapsular propriedades em um objeto somente leitura. Introduzidos no c# 3.0 junto com o var, com ele podemos criar um objeto definindo diretamente no construtor as propriedades que queremos, sem precisar usar uma classe já existente. Para instanciar um objeto do tipo...
+        
+        
+          <a href="/2021-04-21-anonymous-type-dynamic-object/" class="post-read-more">[Read&nbsp;More]</a>
+        
+        -->
+      </div>
+    </div>
+
+    
+    <div class="blog-tags">
+      Tags:
+      
+      
+      <a href="/tags#c#">c#</a>
+      
+      <a href="/tags#dotnet">dotnet</a>
+      
+      <a href="/tags#microsoft">microsoft</a>
+      
+      <a href="/tags#Anonymous type">Anonymous type</a>
+      
+      <a href="/tags#tipos anonimos">tipos anonimos</a>
+      
+      <a href="/tags#dynamic">dynamic</a>
+      
+      <a href="/tags#var">var</a>
+      
+      <a href="/tags#object">object</a>
+      
+      <a href="/tags#anonimo">anonimo</a>
+      
+      
+    </div>
+    
+
+   </article>
+  
+  <article class="post-preview">
     <a href="/2021-04-16-generics/">
 	  <h2 class="post-title">Generics em C#</h2>
 
@@ -217,7 +427,7 @@
     <div class="post-entry-container">
       
       <div class="post-entry">
-        <p><img src="../img/posts/generic.jpg" alt="Generics em c#" align="left" /></p>
+        <p><img src="../img/posts/generic.jpg" alt="Generics em c#" align="left" width="350px" /></p>
 
 <p>Conforme vamos avançando no entendimento de uma linguagem começamos a ter contato com alguns conceitos que no primeiro momento podem parecer complicados, mas são a chave para resolver diversos problemas.</p>
 
