@@ -85,7 +85,7 @@
   
 
    
-  <meta property="og:description" content="Agora que já entendemos o funcionamento de um (delegate)[https://rafaelorion.github.io/2021-04-12-delegates/], chegou a hora de falar dos seus irmãos mais novos. Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, Action, Func e Predicate, apesar de serem baseados...">
+  <meta property="og:description" content="Agora que já entendemos o funcionamento de um delegate, chegou a hora de falar dos seus irmãos mais novos. Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, Action, Func e Predicate, apesar de serem baseados...">
   
 
 
@@ -111,7 +111,7 @@
   
 
   
-  <meta name="twitter:description" content="Agora que já entendemos o funcionamento de um (delegate)[https://rafaelorion.github.io/2021-04-12-delegates/], chegou a hora de falar dos seus irmãos mais novos. Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, Action, Func e Predicate, apesar de serem baseados...">
+  <meta name="twitter:description" content="Agora que já entendemos o funcionamento de um delegate, chegou a hora de falar dos seus irmãos mais novos. Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, Action, Func e Predicate, apesar de serem baseados...">
   
 
   
@@ -209,7 +209,7 @@
       <article role="main" class="blog-post">
         <p><img src="../img/posts/csharp.png" alt="C sharp" align="left" width="350px" /></p>
 
-<p>Agora que já entendemos o funcionamento de um (delegate)[https://rafaelorion.github.io/2021-04-12-delegates/], chegou a hora de falar dos seus irmãos mais novos.</p>
+<p>Agora que já entendemos o funcionamento de um <a href="https://rafaelorion.github.io/2021-04-12-delegates"><strong>delegate</strong></a>, chegou a hora de falar dos seus irmãos mais novos.</p>
 
 <p>Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, <strong>Action</strong>, <strong>Func</strong> e <strong>Predicate</strong>, 
 apesar de serem baseados no <strong>delegate</strong>, eles são especializações focadas em diferentes situações.</p>
@@ -275,15 +275,15 @@ apesar de serem baseados no <strong>delegate</strong>, eles são especializaçõ
 <span class="k">public</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
 <span class="p">{</span>
   <span class="kt">var</span> <span class="n">lista</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Usuario</span><span class="p">&gt;(){</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">1</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 1"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u1@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span> <span class="p">}</span> <span class="p">,</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">2</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 2"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u2@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">false</span> <span class="p">}</span>    <span class="p">,</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">3</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 3"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u3@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span> <span class="p">}</span> <span class="p">,</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">4</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 4"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u4@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">false</span> <span class="p">}</span>    <span class="p">,</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">5</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 5"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u5@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span> <span class="p">}</span> <span class="p">,</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">6</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 6"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">""</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span> <span class="p">}</span> <span class="p">,</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">7</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">""</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"Usuario 7"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span> <span class="p">}</span> <span class="p">,</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">1</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 1"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u1@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">2</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 2"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u2@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">false</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">3</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 3"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u3@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">4</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 4"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u4@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">false</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">5</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 5"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"u5@teste.com"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">6</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario 6"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">""</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=</span><span class="m">7</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">""</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"Usuario 7"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span><span class="p">},</span>
     <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(),</span>
-    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=-</span><span class="m">2</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario -2"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"aaa"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span> <span class="p">}</span>    <span class="p">,</span>
+    <span class="k">new</span> <span class="nf">Usuario</span><span class="p">(){</span><span class="n">Id</span><span class="p">=-</span><span class="m">2</span><span class="p">,</span> <span class="n">Nome</span><span class="p">=</span><span class="s">"Usuario -2"</span><span class="p">,</span> <span class="n">Email</span><span class="p">=</span><span class="s">"aaa"</span><span class="p">,</span> <span class="n">Ativo</span><span class="p">=</span><span class="k">true</span><span class="p">},</span>
     <span class="k">null</span>
   <span class="p">};</span>
 
@@ -327,10 +327,10 @@ apesar de serem baseados no <strong>delegate</strong>, eles são especializaçõ
 
 <p>Assim como o <strong>Action</strong> e o <strong>Predicate</strong> os parâmetros não necessariamente precisam ser todos do mesmo tipo.</p>
 
-<p>No caso da Func, o primeiro tipos especificado obrigatoriamente será o retorno da função, e os demais os parâmetros que serão recebidos, no exemplo abaixo nossa func irá retornar um valor do tipo <strong>int</strong> e irá receber 2 valores, sendo o primeiro do tipo <strong>string</strong> e o segundo do tipo <strong>bool</strong>.
-´´´cs
-Func&lt;int, string, bool&gt; myFunc;
-´´´</p>
+<p>No caso da Func, o primeiro tipos especificado obrigatoriamente será o retorno da função, e os demais os parâmetros que serão recebidos, no exemplo abaixo nossa func irá retornar um valor do tipo <strong>int</strong> e irá receber 2 valores, sendo o primeiro do tipo <strong>string</strong> e o segundo do tipo <strong>bool</strong>.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Func</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;</span> <span class="n">myFunc</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p>Exemplo:</p>
 <div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
