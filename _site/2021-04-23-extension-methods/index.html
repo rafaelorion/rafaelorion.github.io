@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+  <title>Usando Extension Methods em c#</title>
+
+  <meta name="author" content="Rafael Orion" />
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - Dev_Blog" href="http://localhost:4000/feed.xml" />
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148027710-1"></script>
+    <script>
+          window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148027710-1');
+</script>
+
+
+  
+
+  
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-148027710-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+  
+    
+      
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    
+      <link rel="stylesheet" href="/css/bootstrap-social.css" />
+    
+      <link rel="stylesheet" href="/css/main.css" />
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+    
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+    
+  
+
+  
+
+  
+
+  
+
+    <!-- Facebook OpenGraph tags -->
+  
+
+  
+  <meta property="og:title" content="Usando Extension Methods em c#" />
+  
+
+   
+  <meta property="og:description" content="Métodos de extensão são um recurso muito interessante para estendermos alguma classe já existente, independente dela ter sido criada por nós mesmo, uma biblioteca de terceiros ou até mesmo da própria microsoft. Imagino que a maioria dos devs já passou pela situação de utilizar alguma biblioteca e pensar “nossa bem...">
+  
+
+
+  <meta property="og:type" content="website" />
+
+  
+  <meta property="og:url" content="http://localhost:4000/2021-04-23-extension-methods/" />
+  <link rel="canonical" href="http://localhost:4000/2021-04-23-extension-methods/" />
+  
+
+  
+  <meta property="og:image" content="http://localhost:4000/img/dev.png" />
+  
+
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@" />
+  <meta name="twitter:creator" content="@" />
+
+  
+  <meta name="twitter:title" content="Usando Extension Methods em c#" />
+  
+
+  
+  <meta name="twitter:description" content="Métodos de extensão são um recurso muito interessante para estendermos alguma classe já existente, independente dela ter sido criada por nós mesmo, uma biblioteca de terceiros ou até mesmo da própria microsoft. Imagino que a maioria dos devs já passou pela situação de utilizar alguma biblioteca e pensar “nossa bem...">
+  
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/img/dev.png" />
+  
+
+  
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><a class="navbar-brand" href="http://localhost:4000/">Rafael Orion / Blog</a></div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/aboutme">Sobre</a></li>
+          <li><a href="/contact">Contato</a></li>
+          <li class="navlinks-container">
+            <a class="navlinks-parent" href="javascript:void(0)">Resources</a>
+            <div class="navlinks-children">
+              <a href="https://jekyllrb.com/">Jekell</a>
+              <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+              <a href="http://www.markdowntutorial.com/">Learn markdown</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+
+	
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+	    <a href="http://localhost:4000/">
+	      <img class="avatar-img" src="/img/dev.png" />
+		</a>
+	  </div>
+	</div>
+	
+
+  </div>
+</nav>
+
+
+    <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Usando Extension Methods em c#</h1>
+		  
+		  
+		  
+		  <span class="post-meta">Posted on April 23, 2021</span>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      
+
+      <article role="main" class="blog-post">
+        <p><img src="../img/posts/extension.jpg" alt="Extension Methods" align="left" width="350px" /></p>
+
+<p><strong>Métodos de extensão</strong> são um recurso muito interessante para estendermos alguma <strong>classe</strong> já existente, independente dela ter sido criada por nós mesmo, uma biblioteca de terceiros ou até mesmo da própria microsoft.</p>
+
+<p>Imagino que a maioria dos devs já passou pela situação de utilizar alguma biblioteca e pensar “nossa bem que podia ter uma função X aqui!”.</p>
+
+<p>Mas porque não voce mesmo extender essa biblioteca para atender todas as suas necessidades hem?</p>
+
+<p>Vamos direto ao exemplo!</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">void</span> <span class="nf">Main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">teste</span> <span class="p">=</span> <span class="s">"Rafael"</span><span class="p">.</span><span class="nf">GerarTag</span><span class="p">();</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">teste</span><span class="p">);</span> <span class="c1">//&lt;Rafael /&gt;</span>
+
+  <span class="kt">var</span> <span class="n">teste2</span> <span class="p">=</span> <span class="s">"Rafael"</span><span class="p">.</span><span class="nf">GerarTag</span><span class="p">(</span><span class="s">"Orion"</span><span class="p">);</span> <span class="c1">//&lt;Rafael&gt;Orion&lt;/Rafael&gt;</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span> <span class="p">(</span><span class="n">teste2</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">HtmlExtension</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">GerarTag</span> <span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"&lt;"</span> <span class="p">+</span> <span class="k">value</span> <span class="p">+</span> <span class="s">" /&gt;"</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">GerarTag</span> <span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="k">value</span><span class="p">,</span> <span class="kt">string</span> <span class="n">value2</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"&lt;"</span> <span class="p">+</span> <span class="k">value</span> <span class="p">+</span> <span class="s">"&gt;"</span> <span class="p">+</span> <span class="n">value2</span> <span class="p">+</span> <span class="s">"&lt;/"</span> <span class="p">+</span> <span class="k">value</span> <span class="p">+</span> <span class="s">"&gt;"</span> <span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>No exemplo acima criamos <strong>2 métodos</strong> que estendem a <strong>classe string</strong> transformando um texto em uma tag html.</p>
+
+<p>Desde que a HtmlExtension esteja na mesma namespace ou a referencia ao namespace esteja adicionada, qualquer strings terá esses 2 novo métodos disponíveis, parece até magica. ;)</p>
+
+<p>Para criar uma classe de extensão  precisamos seguir algumas regrinhas simples, primeiramente a classe e os métodos devem ser do tipo <strong>static</strong>.</p>
+
+<p>Mas oq transforma efetivamente o método estático em uma extensão é o uso do <strong>this</strong> localizado no primeiro parâmetro da função.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">GerarTag</span> <span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>No exemplo acima, como o <strong>this</strong> está antes do parâmetro do tipo <strong>string</strong>, isso indica que ele será uma extensão da classe string, nesse caso como só temos um único parâmetro que faz a referencia para a base da nossa extension, na hora do uso não será necessário passar nenhum parâmetro, pois o this indica que o valor da própria variável será utilizado para popular esse parâmetro automaticamente.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="nf">GerarTag</span> <span class="p">(</span><span class="k">this</span> <span class="kt">string</span> <span class="k">value</span><span class="p">,</span> <span class="kt">string</span> <span class="n">value2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Nesse caso, além da referencia para a nossa extension temos mais um parâmetro, somente o segundo parâmetro será necessário durante o uso conforme os exemplos anteriores.</p>
+
+<p>Bem simples não? a mesma lógica vale para qualquer tipo de classe até mesmo as suas próprias classes.</p>
+
+<p>Até a próxima.</p>
+
+<h2 id="referências">Referências:</h2>
+<ul>
+  <li><a href="https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/classes-and-structs/how-to-implement-and-call-a-custom-extension-method">Como implementar e chamar um método de extensão personalizado</a></li>
+</ul>
+
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          Tags:
+          
+          
+            <a href="/tags#c#">c#</a>
+          
+            <a href="/tags#dotnet">dotnet</a>
+          
+            <a href="/tags#microsoft">microsoft</a>
+          
+            <a href="/tags#Extension Methods">Extension Methods</a>
+          
+            <a href="/tags#extension">extension</a>
+          
+          
+        </div>
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+  <!--- Share on Twitter -->
+    <a href="https://twitter.com/intent/tweet?text=Usando+Extension+Methods+em+c%23&url=http%3A%2F%2Flocalhost%3A4000%2F2021-04-23-extension-methods%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fa fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+  <!--- Share on Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-04-23-extension-methods%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fa fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+  <!--- Share on LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-04-23-extension-methods%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fa fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pager blog-pager">
+        
+        <li class="previous">
+          <a href="/2021-04-21-anonymous-type-dynamic-object/" data-toggle="tooltip" data-placement="top" title="Anonymous type, Dynamic e Object">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="next">
+          <a href="/2021-04-25-func-action-predicate/" data-toggle="tooltip" data-placement="top" title="Func, Action e Predicate">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+        <div class="disqus-comments">
+          <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'rafaelorion-github-io';
+        /* ensure that pages with query string get the same discussion */
+            var url_parts = window.location.href.split("?");
+            var disqus_url = url_parts[0];
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+        </div>
+          
+        <div class="staticman-comments">
+          
+
+        </div>
+        <div class="justcomments-comments">
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links"><li><a href="/feed.xml" title="RSS"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">RSS</span>
+              </a>
+            </li><li><a href="mailto:rafael.orion+contatoblog@gmail.com" title="Email me"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Email me</span>
+              </a>
+            </li><li><a href="https://www.facebook.com/rafaelorion" title="Facebook"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Facebook</span>
+              </a>
+            </li><li><a href="https://github.com/rafaelorion" title="GitHub"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">GitHub</span>
+              </a>
+            </li><li><a href="https://twitter.com/rafaelorion" title="Twitter"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Twitter</span>
+              </a>
+            </li><li><a href="https://linkedin.com/in/rafaelorion" title="LinkedIn"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">LinkedIn</span>
+              </a>
+            </li><li><a href="https://www.hackerrank.com/rafaelorion" title="HackerRank"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-hackerrank fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">HackerRank</span>
+              </a>
+            </li><li><a href="https://www.instagram.com/rafaelorion" title="Instagram"><span class="fa-stack fa-lg" aria-hidden="true">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+                <span class="sr-only">Instagram</span>
+              </a>
+            </li></ul>
+      <p class="copyright text-muted">
+      Rafael Orion
+      &nbsp;&bull;&nbsp;
+      2021
+
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://localhost:4000/">https://rafaelorion.github.io</a>
+      
+
+      
+      </p>
+          <!-- Please don't remove this, keep my open source work credited :) -->
+    <p class="theme-by text-muted">
+      Theme by
+      <a href="https://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script>
+      	if (typeof jQuery == 'undefined') {
+          document.write('<script src="/js/jquery-1.11.2.min.js"></scr' + 'ipt>');
+      	}
+      </script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/bootstrap.min.js"></script>
+    
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/js/main.js"></script>
+    
+  
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -3,6 +3,10 @@ run on http://localhost:4000/
 
 bundle exec jekyll serve
 
+ou
+
+bundle exec jekyll serve --incremental
+
 
 
 sudo apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev

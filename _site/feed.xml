@@ -7,6 +7,274 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Func, Action e Predicate</title>
+        <description>
+          
+          
+
+Agora que já entendemos o funcionamento de um delegate, chegou a hora de falar dos seus irmãos mais novos.
+
+Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, Action, Func e Predicate, 
+apesar de serem baseados no delegate, eles são especializações focadas em diferentes situações.
+
+Action
+
+Introduzido no Framework 2.0, Action é uma especialização do delegate focada em funções sem retorno com até 16 parâmetros.
+
+O objetivo é poupar de criar um delegate especifico para essas situações, com isso em vez de ter que compartilhar a assinatura do nosso delegate com todos os pontos do sistema podemos simplesmente trabalhar com uma action de forma genérica.
+
+Situado dentro da namespace System, a classe Action possui 17 sobrecargas diferentes, que vão de zero a 16 parâmetros, cobrindo a maioria das situações! (se a sua função tiver mais que 16 parâmetros provavelmente você tem sérios problemas de arquitetura ;) )
+
+Exemplo:
+public void ShowMessageInPortuguese(string s1, string s2)
+{
+  Console.WriteLine(&quot;Bem vindo &quot; + s1 + &quot; e &quot; + s2);
+}
+
+public void Main()
+{
+  //Declaração de um Action que espere 2 parâmetros do tipo string
+  Action&amp;lt;string, string&amp;gt; actionShowMessage;
+	
+  //Podemos declarar essa função utilizando lambda
+  actionShowMessage = (s1, s2) =&amp;gt; {Console.WriteLine(&quot;Hello &quot; + s1 + &quot; and &quot; + s2);}; 
+	
+  //Ou usando um método concreto com a assinatura compatível
+  actionShowMessage += ShowMessageInPortuguese;
+	
+  //Executando as 2 actions atribuídas ao mesmo tempo
+  actionShowMessage(&quot;Rafael&quot;,&quot;Orion&quot;); 
+  /*Resultado:
+    Hello Rafael and Orion
+    Bem vindo Rafael e Orion
+  */
+
+  //Declarando uma action sem parâmetros
+  Action welcomeAction;
+
+  //Atribuindo um comportamento à action
+  welcomeAction = () =&amp;gt; Console.WriteLine(&quot;Welcome!&quot;);
+
+  //Executando a action
+  welcomeAction(); //Welcome!
+}
+
+
+Assim como um Multicast Delegate (delegate sem retorno), podemos encadear múltiplos métodos na mesma action como vimos no exemplo acima.
+
+Predicate
+
+Introduzido no Framework 2.0, O predicate, é uma especialização do delegate focada em funções com retorno booleano e que pode receber somente 1 valor como parâmetro, geralmente utilizado para critérios de validação.
+
+Exemplo:
+class Usuario
+{
+	public int Id { get; set; }
+	public string Nome { get; set; }
+	public string Email { get; set; }
+	public bool Ativo { get; set; }
+}
+
+public void Main()
+{
+  var lista = new List&amp;lt;Usuario&amp;gt;(){
+    new Usuario(){Id=1, Nome=&quot;Usuario 1&quot;, Email=&quot;u1@teste.com&quot;, Ativo=true},
+    new Usuario(){Id=2, Nome=&quot;Usuario 2&quot;, Email=&quot;u2@teste.com&quot;, Ativo=false},
+    new Usuario(){Id=3, Nome=&quot;Usuario 3&quot;, Email=&quot;u3@teste.com&quot;, Ativo=true},
+    new Usuario(){Id=4, Nome=&quot;Usuario 4&quot;, Email=&quot;u4@teste.com&quot;, Ativo=false},
+    new Usuario(){Id=5, Nome=&quot;Usuario 5&quot;, Email=&quot;u5@teste.com&quot;, Ativo=true},
+    new Usuario(){Id=6, Nome=&quot;Usuario 6&quot;, Email=&quot;&quot;, Ativo=true},
+    new Usuario(){Id=7, Nome=&quot;&quot;, Email=&quot;Usuario 7&quot;, Ativo=true},
+    new Usuario(),
+    new Usuario(){Id=-2, Nome=&quot;Usuario -2&quot;, Email=&quot;aaa&quot;, Ativo=true},
+    null
+  };
+
+ //Criando um predicate que recebe um usuário como parâmetro e retorna um bool informando se é valido ou não
+ var predicateValidUser = new Predicate&amp;lt;Usuario&amp;gt; (u =&amp;gt;
+		u != null &amp;amp;&amp;amp;
+		u.Id &amp;gt; 0 &amp;amp;&amp;amp;
+		!string.IsNullOrEmpty(u.Nome) &amp;amp;&amp;amp;
+		!string.IsNullOrEmpty(u.Email)
+	);
+
+	//Aplicando 0 predicate para filtrar os dados
+	var usuariosFiltrados = lista.Where(usuario =&amp;gt; predicateValidUser(usuario)).ToList();
+	
+	//Utilizando uma action para exibir o resultado
+	usuariosFiltrados.ForEach (ShowActiveUsers);
+	
+  //ou
+	usuariosFiltrados.ForEach (usuario =&amp;gt;
+	{
+		if (usuario.Ativo)
+		{
+			Console.WriteLine ($&quot;({usuario.Id}) {usuario.Nome} &amp;lt;{usuario.Email}&amp;gt;&quot;);
+		}
+	});
+
+}
+
+void ShowActiveUsers (Usuario usuario)
+{
+	if (usuario.Ativo)
+	{
+		Console.WriteLine ($&quot;({usuario.Id}) {usuario.Nome} &amp;lt;{usuario.Email}&amp;gt;&quot;);
+	}
+}
+
+
+Func
+
+Introduzido no Framework 3.5, Func é uma especialização do delegate focada em funções com retorno e até 16 parâmetros.
+
+Assim como o Action e o Predicate os parâmetros não necessariamente precisam ser todos do mesmo tipo.
+
+No caso da Func, o primeiro tipos especificado obrigatoriamente será o retorno da função, e os demais os parâmetros que serão recebidos, no exemplo abaixo nossa func irá retornar um valor do tipo int e irá receber 2 valores, sendo o primeiro do tipo string e o segundo do tipo bool.
+
+Func&amp;lt;int, string, bool&amp;gt; myFunc;
+
+
+Exemplo:
+void Main()
+{
+  //Declara uma func que recebe 2 strings e retorna uma string
+  Func&amp;lt;string,string, string&amp;gt; funcComparation;
+	
+  //Atribui um método concreto a func
+  funcComparation = ShowLongest;
+	
+  //executa a func
+  var result = funcComparation(&quot;Rafael&quot;, &quot;Orion&quot;);
+	
+  Console.WriteLine(result); //Rafael
+}
+
+string ShowLongest(string value1, string value2)
+{
+  return value1.Length &amp;gt; value2.Length? value1: value2;
+}
+
+
+
+Delegate, Action, Func, Predicate … Qual devo usar?
+
+Como podemos ver os quatro são bem parecidos, basicamente o delegate seria a forma mais genérica e abrangente, ja o action, func e predicate seriam um delegate pronto, cada um focado em uma situação especifica.
+
+
+  Delegate: É a assinatura de uma função que pode receber diferentes implementações, podendo receber parâmetros e retornar ou não valores.
+  Func: É um tipo de delegate, obrigatoriamente retornando algum valor e podendo ter de 0 a 16 parâmetros
+  Action: Seria equivalente a uma Func porém obrigatoriamente sem retorno
+  Predicate: Seria equivalente a uma Func mas que recebe somente um parâmetro e obrigatoriamente deve retornar um valor booleano
+
+
+Ok, mas se o delegate já pode fazer tudo isso, porque utilizar func, action ou predicate?
+
+Assim como podemos somente usar um if comum em vez de um if ternário, array em vez de list ou ate mesmo usar um while em vez de for, o que nos leva a fazer essas escolhas seria deixar o nosso código mais claro e objetivo.
+
+Func, Action e Predicate são especializações do delegate para fins específicos.
+
+Se eu tenho uma função que irá receber um delegate para executar uma validação e sei que o resultado sera true ou false, porque não usar direto o predicate, isso já comunica de cara a nossa intenção, alem de poupar algumas linhas declarando a estrutura do nosso delegate.
+
+O mesmo vale para func e action, sem falar que muitas partes do framework como um simples foreach esperam esses tipos de dados, isso já seria um bom motivo para aprender seu funcionamento. ;)
+
+O intuito é deixar os delegates para as situações mais especificas que não podem ser resolvidas utilizando action, func e predicate.
+
+Espero que tenha ficado claro, sei que de cara não parece muito simples, mas recomendo fazer alguns testes com eles que garanto que irão facilitar muito sua vida. =)
+
+Até a próxima.
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+        </description>
+        <pubDate>Sun, 25 Apr 2021 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2021-04-25-func-action-predicate/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-04-25-func-action-predicate/</guid>
+      </item>
+    
+      <item>
+        <title>Usando Extension Methods em c#</title>
+        <description>
+          
+          
+
+Métodos de extensão são um recurso muito interessante para estendermos alguma classe já existente, independente dela ter sido criada por nós mesmo, uma biblioteca de terceiros ou até mesmo da própria microsoft.
+
+Imagino que a maioria dos devs já passou pela situação de utilizar alguma biblioteca e pensar “nossa bem que podia ter uma função X aqui!”.
+
+Mas porque não voce mesmo extender essa biblioteca para atender todas as suas necessidades hem?
+
+Vamos direto ao exemplo!
+
+void Main()
+{
+  var teste = &quot;Rafael&quot;.GerarTag();
+  Console.WriteLine(teste); //&amp;lt;Rafael /&amp;gt;
+
+  var teste2 = &quot;Rafael&quot;.GerarTag(&quot;Orion&quot;); //&amp;lt;Rafael&amp;gt;Orion&amp;lt;/Rafael&amp;gt;
+  Console.WriteLine (teste2);
+}
+
+
+public static class HtmlExtension
+{
+  public static string GerarTag (this string value)
+  {
+    return &quot;&amp;lt;&quot; + value + &quot; /&amp;gt;&quot;;
+  }
+
+  public static string GerarTag (this string value, string value2)
+  {
+    return &quot;&amp;lt;&quot; + value + &quot;&amp;gt;&quot; + value2 + &quot;&amp;lt;/&quot; + value + &quot;&amp;gt;&quot; ;
+  }
+}
+
+
+
+No exemplo acima criamos 2 métodos que estendem a classe string transformando um texto em uma tag html.
+
+Desde que a HtmlExtension esteja na mesma namespace ou a referencia ao namespace esteja adicionada, qualquer strings terá esses 2 novo métodos disponíveis, parece até magica. ;)
+
+Para criar uma classe de extensão  precisamos seguir algumas regrinhas simples, primeiramente a classe e os métodos devem ser do tipo static.
+
+Mas oq transforma efetivamente o método estático em uma extensão é o uso do this localizado no primeiro parâmetro da função.
+
+public static string GerarTag (this string value)
+
+
+No exemplo acima, como o this está antes do parâmetro do tipo string, isso indica que ele será uma extensão da classe string, nesse caso como só temos um único parâmetro que faz a referencia para a base da nossa extension, na hora do uso não será necessário passar nenhum parâmetro, pois o this indica que o valor da própria variável será utilizado para popular esse parâmetro automaticamente.
+
+public static string GerarTag (this string value, string value2)
+
+
+Nesse caso, além da referencia para a nossa extension temos mais um parâmetro, somente o segundo parâmetro será necessário durante o uso conforme os exemplos anteriores.
+
+Bem simples não? a mesma lógica vale para qualquer tipo de classe até mesmo as suas próprias classes.
+
+Até a próxima.
+
+Referências:
+
+  Como implementar e chamar um método de extensão personalizado
+
+
+
+    
+    
+    Please enable JavaScript to view the comments powered by Disqus.
+
+
+        </description>
+        <pubDate>Fri, 23 Apr 2021 00:00:00 -0300</pubDate>
+        <link>http://localhost:4000/2021-04-23-extension-methods/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-04-23-extension-methods/</guid>
+      </item>
+    
+      <item>
         <title>Anonymous type, Dynamic e Object</title>
         <description>
           
