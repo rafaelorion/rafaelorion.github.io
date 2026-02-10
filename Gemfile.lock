@@ -256,5 +256,3 @@ DEPENDENCIES
   nokogiri (= 1.13.6)
   tzinfo-data
 
-BUNDLED WITH
-   2.2.15
