@@ -1,2 +1,10 @@
 docker build -t jekell-blog:v1.0 .
 docker run -it -p 4000:4000 --name blog  jekell-blog:v1.0
+
+
+
+docker build -t jekel-blog:v1.0 .
+docker run -d -p 4000:4000 --name blog  jekell-blog:v1.0
+
+docker exec blog ls
+docker cp blog:/blog/_site .

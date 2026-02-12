@@ -12,7 +12,7 @@
 
   
 
-  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - Dev_Blog" href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Rafael Orion / Blog - Dev_Blog" href="http://0.0.0.0:4000/feed.xml" />
 
   
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -92,12 +92,12 @@
   <meta property="og:type" content="website" />
 
   
-  <meta property="og:url" content="http://localhost:4000/" />
-  <link rel="canonical" href="http://localhost:4000/" />
+  <meta property="og:url" content="http://0.0.0.0:4000/" />
+  <link rel="canonical" href="http://0.0.0.0:4000/" />
   
 
   
-  <meta property="og:image" content="http://localhost:4000/img/dev.png" />
+  <meta property="og:image" content="http://0.0.0.0:4000/img/dev.png" />
   
 
 
@@ -115,7 +115,7 @@
   
 
   
-  <meta name="twitter:image" content="http://localhost:4000/img/dev.png" />
+  <meta name="twitter:image" content="http://0.0.0.0:4000/img/dev.png" />
   
 
   
@@ -138,7 +138,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button><a class="navbar-brand" href="http://localhost:4000/">Rafael Orion / Blog</a></div>
+      </button><a class="navbar-brand" href="http://0.0.0.0:4000/">Rafael Orion / Blog</a></div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -159,7 +159,7 @@
 	
 	<div class="avatar-container">
 	  <div class="avatar-img-border">
-	    <a href="http://localhost:4000/">
+	    <a href="http://0.0.0.0:4000/">
 	      <img class="avatar-img" src="/img/dev.png" />
 		</a>
 	  </div>
@@ -408,7 +408,9 @@ apesar de serem baseados no <strong>delegate</strong>, eles são especializaçõ
 </div>
 
         <!-- ORIGINAL
-        Agora que já entendemos o funcionamento de um delegate, chegou a hora de falar dos seus irmãos mais novos. Com o objetivo de ser um tipo especifico de delegate pré moldados para as situações mais comuns o .net criou esses tres tipos, Action, Func e Predicate, apesar de serem baseados...
+        
+
+
         
         
           <a href="/2021-05-02-func-action-predicate/" class="post-read-more">[Read&nbsp;More]</a>
@@ -535,7 +537,9 @@ apesar de serem baseados no <strong>delegate</strong>, eles são especializaçõ
 </div>
 
         <!-- ORIGINAL
-        Métodos de extensão são um recurso muito interessante para estendermos alguma classe já existente, independente dela ter sido criada por nós mesmo, uma biblioteca de terceiros ou até mesmo da própria microsoft. Imagino que a maioria dos devs já passou pela situação de utilizar alguma biblioteca e pensar “nossa bem...
+        
+
+
         
         
           <a href="/2021-04-23-extension-methods/" class="post-read-more">[Read&nbsp;More]</a>
@@ -737,7 +741,9 @@ Exemplo:</p>
 </div>
 
         <!-- ORIGINAL
-        Anonymous Type Os Tipos anônimos são utilizados para encapsular propriedades em um objeto somente leitura. Introduzidos no c# 3.0 junto com o var, com ele podemos criar um objeto definindo diretamente no construtor as propriedades que queremos, sem precisar usar uma classe já existente. Para instanciar um objeto do tipo...
+        
+
+
         
         
           <a href="/2021-04-21-anonymous-type-dynamic-object/" class="post-read-more">[Read&nbsp;More]</a>
@@ -910,7 +916,9 @@ Por exemplo podemos querer qualquer variável que implemente a interface IList s
 </div>
 
         <!-- ORIGINAL
-        Conforme vamos avançando no entendimento de uma linguagem começamos a ter contato com alguns conceitos que no primeiro momento podem parecer complicados, mas são a chave para resolver diversos problemas. Introduzido no .net Framework 2.0, o generics apresenta o conceito de parâmetros de tipo, onde em vez de usar um...
+        
+
+
         
         
           <a href="/2021-04-16-generics/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1215,7 +1223,9 @@ Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
 
 
         <!-- ORIGINAL
-        Hoje vamos falar um pouco sobre Delegates, o próprio nome já passa uma ideia do seu propósito. Delegates são formas de delegar funções para outros métodos, um delegate representa uma referencia para um método que pode ser passado via parâmetro. Com isso abrimos um leque de possibilidades, como escolher o...
+        
+
+
         
         
           <a href="/2021-04-12-delegates/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1335,7 +1345,9 @@ Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
 
 
         <!-- ORIGINAL
-        Depois dessa pequena pausa, que tal voltar falando um pouco sobre o CLI do .NET Junto com a vinda do .NET Core ganhamos de brinde o CLI (Command Line Interface), a nova ferramenta cross-platform que nos permite criar, compilar, publicar e manipular packages das nossas aplicações feitas com .net core....
+        
+
+
         
         
           <a href="/2021-03-30-dot-net-cli/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1427,7 +1439,9 @@ Id:7 - Usuario 7, Feminino ,19 anos de sao paulo
 
 
         <!-- ORIGINAL
-        Comecei a ouvir falar de Domain Driven Design (ou DDD para os íntimos) na época em que entrei no grupo de discuções do DotNet Architects, percebi que tinha muita gente da comunidade falando a respeito e resolvi entender um pouco mais sobre esse tipo de arquitetura. O DDD é um...
+        
+
+
         
         
           <a href="/2012-03-11-domain-driven-design/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1506,7 +1520,9 @@ Para isso basta usar o comando FindControl como no exemplo:</p>
 <p>Até a próxima.</p>
 
         <!-- ORIGINAL
-        Agora vou dar uma dica bem simples de como acessar propriedades que estão em uma master page por uma de suas paginas filho. Primeiramente vamos declarar uma propriedade publica na MasterPage: Public String PropriedadePublica { get { return (String)Session[&quot;PropriedadePublica&quot;]; } set { Session[&quot;PropriedadePublica&quot;] = value; } } Estou utilizando sessions...
+        
+
+
         
         
           <a href="/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1634,7 +1650,9 @@ Job myJob = (Job)myMessage.Body;
 
 
         <!-- ORIGINAL
-        O MSMQ (Microsoft Message Queue) é uma implementaçao da Microsoft presente desde o windows 95 para o enfileiramento de Mensagens. As filas trabalham com a politica FIFO (First In First Out), ou seja, em uma fila podemos empilhar uma serie de mensagens, e sempre sera recuperado uma a uma começando...
+        
+
+
         
         
           <a href="/2012-02-02-utilizando-msmq/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1708,7 +1726,9 @@ Segue um exemplo abaixo:</p>
 
 
         <!-- ORIGINAL
-        Para adicionar uma confirmação de exclusão ou qualquer alerta em um ActionLink do asp.Net MVC é muito simples. Segue um exemplo abaixo: @Html.ActionLink(“Excluir”, “Delete”, new { id = item.Id }, new { @onClick = “javascript:return ” + “confirm(‘Confirma a exclusão?’)”}) Em algumas sobrecargas o ActionLink recebe um Object para htmlAttributes,...
+        
+
+
         
         
           <a href="/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1822,7 +1842,9 @@ public IList Empresas
 
 
         <!-- ORIGINAL
-        Em alguns casos precisamos trabalhar com tipos nulos, mas por padrão nem todos os tipos de variáveis aceitam, porem em c# é muito simples criarmos variáveis que possam assumir valores nulos. Nullable Qualquer tipo pode passar a ser nullable , por exemplo uma variável do tipo int por padrão não...
+        
+
+
         
         
           <a href="/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1900,7 +1922,9 @@ Console.WriteLine(" % Acesso ao HD: {0}", hd.NextValue());
 
 
         <!-- ORIGINAL
-        Com o PerformanceCounter podemos obter diversas informações sobre o desempenho atual da maquina, como por exemplo quantidade de memória em uso, espaço livre no HD, processamento, etc. Quando precisamos rodar um processo muito pesado em um servidor através de um serviço periódico muitas vezes vale a pena conferir a situação...
+        
+
+
         
         
           <a href="/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/" class="post-read-more">[Read&nbsp;More]</a>
@@ -1999,7 +2023,9 @@ Console.WriteLine(" % Acesso ao HD: {0}", hd.NextValue());
 
 
         <!-- ORIGINAL
-        Hoje vou ensinar uma forma para debugar windows service. Ao criarmos um projeto do tipo WindowsService não conseguimos debugar normalmente como qualquer outro tipo de projeto, porem temos uma forma bem simples para contornar esse problema. Primeiramente devemos criar uma condição na classe Program.cs para identificar se o nosso projeto...
+        
+
+
         
         
           <a href="/2011-11-25-debugando-windows-service/" class="post-read-more">[Read&nbsp;More]</a>
@@ -2074,7 +2100,9 @@ Apesar de ser algo simples fica a dica.</p>
 
 
         <!-- ORIGINAL
-        Fala ae galera. Quando comecei a trabalhar com áreas no asp.net MVC3 me deparei com essa situação de criar um link que aponte para uma área diferente. Apesar de ser algo simples fica a dica. &amp;lt;%= Html.ActionLink(“Descrição do Link”, “NomeDaPagina”, new { area=”NomeDaArea”, controller=”NomeDoController” } )%&amp;gt; Ou na sintaxe do...
+        
+
+
         
         
           <a href="/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/" class="post-read-more">[Read&nbsp;More]</a>
@@ -2200,7 +2228,9 @@ Apesar de ser algo simples fica a dica.</p>
 
 
         <!-- ORIGINAL
-        No post anterior falei um pouco sobre o NuGet, agora vou listar alguns dos principais comandos para você utilizar no console do Visual Studio. Para exibir o shell de comandos do NuGet, vá no menu View/Other Windows/Package Manage Console. A seguinte janela irá ficar visível: No combo do lado esquerdo...
+        
+
+
         
         
           <a href="/2011-09-15-commandos-nuget/" class="post-read-more">[Read&nbsp;More]</a>
@@ -2282,7 +2312,9 @@ Apesar de ser algo simples fica a dica.</p>
 
 
         <!-- ORIGINAL
-        Fala ae Galera. Vou postar uma dica simples mas útil. Ao Criarmos uma coluna identity no Sql Server, mesmo depois de apagar todos os dados da tabela, ao inserirmos um novo registro ele continuará incrementando o valor desse campo a partir do ultimo valor inserido. Para zerar esse contador basta...
+        
+
+
         
         
           <a href="/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/" class="post-read-more">[Read&nbsp;More]</a>
@@ -2380,7 +2412,9 @@ Rafael Orion</p>
 
 
         <!-- ORIGINAL
-        NuGet é um projeto open source para gerenciar pacotes na plataforma .NET. Com o NuGet as tarefas de adicionar uma biblioteca,configurar e atualizar ficaram muito mais fáceis. Basta buscar nele a biblioteca que deseja utilizar que fará o trabalho de configurar seu ambiente e instalar todas as dependências necessárias deixando...
+        
+
+
         
         
           <a href="/2011-09-04-nuget/" class="post-read-more">[Read&nbsp;More]</a>
@@ -2444,7 +2478,9 @@ Rafael Orion</p>
 
 
         <!-- ORIGINAL
-        Finalmente, depois de algum tempo enrrolando, resolvi tomar vergonha na cara e criar um blog próprio (depois de algumas experiencias em um blog com o pessoal da faculdade). O objetivo é compartilhar um pouco de conhecimento e dos meus estudos. Let’s go! Please enable JavaScript to view the comments powered...
+        
+
+
         
         
           <a href="/2011-05-29-hello-world/" class="post-read-more">[Read&nbsp;More]</a>
@@ -2560,11 +2596,11 @@ Rafael Orion</p>
       <p class="copyright text-muted">
       Rafael Orion
       &nbsp;&bull;&nbsp;
-      2021
+      2026
 
       
       &nbsp;&bull;&nbsp;
-      <a href="http://localhost:4000/">https://rafaelorion.github.io</a>
+      <a href="http://0.0.0.0:4000/">https://rafaelorion.github.io</a>
       
 
       

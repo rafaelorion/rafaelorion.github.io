@@ -3,8 +3,8 @@
   <channel>
     <title>Rafael Orion / Blog</title>
     <description>Dev_Blog</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://0.0.0.0:4000/</link>
+    <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Func, Action e Predicate</title>
@@ -192,8 +192,8 @@ Até a próxima.
 
         </description>
         <pubDate>Sun, 02 May 2021 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2021-05-02-func-action-predicate/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-05-02-func-action-predicate/</guid>
+        <link>http://0.0.0.0:4000/2021-05-02-func-action-predicate/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2021-05-02-func-action-predicate/</guid>
       </item>
     
       <item>
@@ -270,8 +270,8 @@ Referências:
 
         </description>
         <pubDate>Fri, 23 Apr 2021 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2021-04-23-extension-methods/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-04-23-extension-methods/</guid>
+        <link>http://0.0.0.0:4000/2021-04-23-extension-methods/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2021-04-23-extension-methods/</guid>
       </item>
     
       <item>
@@ -427,8 +427,8 @@ Referências:
 
         </description>
         <pubDate>Wed, 21 Apr 2021 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2021-04-21-anonymous-type-dynamic-object/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-04-21-anonymous-type-dynamic-object/</guid>
+        <link>http://0.0.0.0:4000/2021-04-21-anonymous-type-dynamic-object/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2021-04-21-anonymous-type-dynamic-object/</guid>
       </item>
     
       <item>
@@ -547,8 +547,8 @@ Referências:
 
         </description>
         <pubDate>Fri, 16 Apr 2021 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2021-04-16-generics/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-04-16-generics/</guid>
+        <link>http://0.0.0.0:4000/2021-04-16-generics/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2021-04-16-generics/</guid>
       </item>
     
       <item>
@@ -809,8 +809,8 @@ Até a próxima.
 
         </description>
         <pubDate>Mon, 12 Apr 2021 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2021-04-12-delegates/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-04-12-delegates/</guid>
+        <link>http://0.0.0.0:4000/2021-04-12-delegates/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2021-04-12-delegates/</guid>
       </item>
     
       <item>
@@ -884,8 +884,8 @@ Até a próxima.
 
         </description>
         <pubDate>Tue, 30 Mar 2021 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2021-03-30-dot-net-cli/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-03-30-dot-net-cli/</guid>
+        <link>http://0.0.0.0:4000/2021-03-30-dot-net-cli/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2021-03-30-dot-net-cli/</guid>
       </item>
     
       <item>
@@ -933,8 +933,8 @@ Até a próxima.
 
         </description>
         <pubDate>Sun, 11 Mar 2012 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2012-03-11-domain-driven-design/</link>
-        <guid isPermaLink="true">http://localhost:4000/2012-03-11-domain-driven-design/</guid>
+        <link>http://0.0.0.0:4000/2012-03-11-domain-driven-design/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2012-03-11-domain-driven-design/</guid>
       </item>
     
       <item>
@@ -977,8 +977,8 @@ Até a próxima.
 
         </description>
         <pubDate>Tue, 28 Feb 2012 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/</link>
-        <guid isPermaLink="true">http://localhost:4000/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/</guid>
+        <link>http://0.0.0.0:4000/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2012-02-28-quicktip-acessando-propriedades-de-uma-master-page-atraves-de-uma-content-page/</guid>
       </item>
     
       <item>
@@ -1068,8 +1068,8 @@ Até a próxima. []s
 
         </description>
         <pubDate>Thu, 02 Feb 2012 00:00:00 -0200</pubDate>
-        <link>http://localhost:4000/2012-02-02-utilizando-msmq/</link>
-        <guid isPermaLink="true">http://localhost:4000/2012-02-02-utilizando-msmq/</guid>
+        <link>http://0.0.0.0:4000/2012-02-02-utilizando-msmq/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2012-02-02-utilizando-msmq/</guid>
       </item>
     
       <item>
@@ -1101,8 +1101,8 @@ Até a próxima.
 
         </description>
         <pubDate>Wed, 28 Dec 2011 00:00:00 -0200</pubDate>
-        <link>http://localhost:4000/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/</guid>
+        <link>http://0.0.0.0:4000/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-12-28-quicktip-como-adicionar-confirmacao-de-exclusao-em-um-actionlink/</guid>
       </item>
     
       <item>
@@ -1178,8 +1178,8 @@ Até a próxima.
 
         </description>
         <pubDate>Mon, 28 Nov 2011 00:00:00 -0200</pubDate>
-        <link>http://localhost:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</guid>
+        <link>http://0.0.0.0:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-11-28-utilizando-tipos-nulos-em-c-nullable-types/</guid>
       </item>
     
       <item>
@@ -1219,8 +1219,8 @@ Até a próxima.
 
         </description>
         <pubDate>Sun, 27 Nov 2011 00:00:00 -0200</pubDate>
-        <link>http://localhost:4000/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/</guid>
+        <link>http://0.0.0.0:4000/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-11-27-consultando-desempenho-da-maquina-com-o-performancecounter/</guid>
       </item>
     
       <item>
@@ -1281,8 +1281,8 @@ Pronto! já podemos debugar nosso projeto normalmente sem nenhum problema.
 
         </description>
         <pubDate>Fri, 25 Nov 2011 00:00:00 -0200</pubDate>
-        <link>http://localhost:4000/2011-11-25-debugando-windows-service/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-11-25-debugando-windows-service/</guid>
+        <link>http://0.0.0.0:4000/2011-11-25-debugando-windows-service/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-11-25-debugando-windows-service/</guid>
       </item>
     
       <item>
@@ -1313,8 +1313,8 @@ Abraços,
 
         </description>
         <pubDate>Thu, 24 Nov 2011 00:00:00 -0200</pubDate>
-        <link>http://localhost:4000/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/</guid>
+        <link>http://0.0.0.0:4000/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-11-24-quicktip-como-criar-actionlink-para-areas-aspnetmvc/</guid>
       </item>
     
       <item>
@@ -1400,8 +1400,8 @@ O NuGet possui AutoComplete para auxiliar na digitação dos comandos e nomes de
 
         </description>
         <pubDate>Thu, 15 Sep 2011 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2011-09-15-commandos-nuget/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-09-15-commandos-nuget/</guid>
+        <link>http://0.0.0.0:4000/2011-09-15-commandos-nuget/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-09-15-commandos-nuget/</guid>
       </item>
     
       <item>
@@ -1439,8 +1439,8 @@ Rafael Orion
 
         </description>
         <pubDate>Sun, 04 Sep 2011 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/</guid>
+        <link>http://0.0.0.0:4000/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-09-04-quicktip-como-zerar-campo-identity-no-sql/</guid>
       </item>
     
       <item>
@@ -1496,8 +1496,8 @@ Rafael Orion
 
         </description>
         <pubDate>Sun, 04 Sep 2011 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2011-09-04-nuget/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-09-04-nuget/</guid>
+        <link>http://0.0.0.0:4000/2011-09-04-nuget/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-09-04-nuget/</guid>
       </item>
     
       <item>
@@ -1521,8 +1521,8 @@ Let’s go!
 
         </description>
         <pubDate>Sun, 29 May 2011 00:00:00 -0300</pubDate>
-        <link>http://localhost:4000/2011-05-29-hello-world/</link>
-        <guid isPermaLink="true">http://localhost:4000/2011-05-29-hello-world/</guid>
+        <link>http://0.0.0.0:4000/2011-05-29-hello-world/</link>
+        <guid isPermaLink="true">http://0.0.0.0:4000/2011-05-29-hello-world/</guid>
       </item>
     
   </channel>

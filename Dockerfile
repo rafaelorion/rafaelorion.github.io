@@ -7,6 +7,12 @@ COPY --chown=jekyll:jekyll Gemfile.lock .
 
 COPY . .
 
+RUN chmod a+x /blog 
 RUN bundle install
 
+
 CMD ["jekyll", "serve"]
+
+#COPY  /site /site
+
+EXPOSE 4000
